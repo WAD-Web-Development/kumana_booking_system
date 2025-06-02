@@ -72,7 +72,7 @@
             <div class="col-lg-5 col-md-8 col-sm-10 p-5 shadow-effect rounded light-background">
 
                 <div class="text-center mb-5">
-                    <img src="{{ asset('assets/img/logo.png') }}" alt="Logo" style="max-width: 150px; border-radius: 50%;">
+                    <img src="{{ asset('assets/img/logo.jpg') }}" alt="Logo" style="max-width: 150px; border-radius: 50%;">
                 </div>
 
                 <h3 class="text-center mb-4 login-title">Sign In</h3>
