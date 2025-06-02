@@ -131,6 +131,16 @@
     <div class="d-flex align-items-center justify-content-center min-vh-100">
         <div class="row w-100 justify-content-center">
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <!-- Form Section -->
             <div class="col-lg-5 col-md-8 col-sm-10 p-5 shadow-effect rounded light-background">
 
@@ -152,8 +162,8 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" placeholder="Enter email" required>
-                        @error('username')
+                        <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter email" required>
+                        @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

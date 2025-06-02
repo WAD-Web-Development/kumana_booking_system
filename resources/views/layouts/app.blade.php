@@ -40,15 +40,15 @@
 
 <body style="height: 100% !important;">
     <div class="page-wrapper">
-        @include('components.nav-bar')
+        {{-- @include('components.nav-bar') --}}
 
         <div class="content-wrapper">
             @yield('content')
         </div>
 
-        <div class="footer-wrapper">
+        {{-- <div class="footer-wrapper">
             @include('components.footer')
-        </div>
+        </div> --}}
     </div>
 
     @include('libraries.scripts')
