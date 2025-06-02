@@ -13,7 +13,7 @@
 
     <style>
         body {
-            background: rgba(39, 126, 182, 1);
+            background: rgb(79, 172, 134);
         }
     </style>
 </head>
