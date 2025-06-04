@@ -159,10 +159,27 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
+
                     <div class="mb-3">
                         <label class="form-label">Email</label>
                         <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter email" required>
                         @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Contact Number</label>
+                        <input type="text" class="form-control @error('contact_no') is-invalid @enderror" name="contact_no" placeholder="Enter contact number" required>
+                        @error('contact_no')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Nationality</label>
+                        <input type="text" name="nationality" class="form-control @error('nationality') is-invalid @enderror" placeholder="Enter nationality" required>
+                        @error('nationality')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('contact_no')->nullable()->unique()->after('email');
-            $table->tinyInteger('is_active')->default(1)->after('contact_no');
+        Schema::create('package_images', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('package_id');
+            $table->string('image_path', 2048);
+            $table->timestamps();
         });
     }
 
@@ -22,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['contact_no', 'is_active']);
-        });
+        Schema::dropIfExists('package_images');
     }
 };
