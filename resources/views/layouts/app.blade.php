@@ -11,44 +11,22 @@
     @include('libraries.styles')
 
     <style>
-        html, body {
-            height: 100% !important;
-            margin: 0;
-            padding: 0;
-            background: rgba(225, 236, 250, 1);
-        }
 
-        .page-wrapper {
-            min-height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .content-wrapper {
-            flex: 1;
-        }
-
-        .footer-wrapper {
-            flex-shrink: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
     </style>
 </head>
 
 <body style="height: 100% !important;">
     <div class="page-wrapper">
-        {{-- @include('components.nav-bar') --}}
+
+        @include('components.nav-bar')
 
         <div class="content-wrapper">
             @yield('content')
         </div>
 
-        {{-- <div class="footer-wrapper">
-            @include('components.footer')
-        </div> --}}
+        <div class="footer-wrapper">
+            {{-- @include('components.footer') --}}
+        </div>
     </div>
 
     @include('libraries.scripts')

@@ -9,7 +9,7 @@
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     }
 
-    .login-title {
+    .guest-title {
         color: #126323;
         font-weight: 700;
         font-size: 1.5rem;
@@ -75,15 +75,24 @@
                     <img src="{{ asset('assets/img/logo.jpg') }}" alt="Logo" style="max-width: 150px; border-radius: 50%;">
                 </div>
 
-                <h3 class="text-center mb-4 login-title">Sign In</h3>
+                <h3 class="text-center mb-4 guest-title">Sign In</h3>
 
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" placeholder="Enter email" required>
-                        @error('username')
+                        <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter email" required>
+                        @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>

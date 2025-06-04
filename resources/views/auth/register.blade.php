@@ -131,16 +131,6 @@
     <div class="d-flex align-items-center justify-content-center min-vh-100">
         <div class="row w-100 justify-content-center">
 
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
             <!-- Form Section -->
             <div class="col-lg-5 col-md-8 col-sm-10 p-5 shadow-effect rounded light-background">
 
@@ -148,8 +138,17 @@
                     <img src="{{ asset('assets/img/logo.jpg') }}" alt="Logo" style="max-width: 150px; border-radius: 50%;">
                 </div>
 
-                <h3 class="text-center mb-4 register-title">Sign Up</h3>
+                <h3 class="text-center mb-4 guest-title">Sign Up</h3>
 
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 <form method="POST" action="{{ route('register') }}">
                     @csrf

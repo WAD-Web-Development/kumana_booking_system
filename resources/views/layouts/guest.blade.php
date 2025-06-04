@@ -12,9 +12,6 @@
     @include('libraries.styles')
 
     <style>
-        body {
-            background: rgb(79, 172, 134);
-        }
     </style>
 </head>
 
