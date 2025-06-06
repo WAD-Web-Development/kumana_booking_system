@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\CloseDateController as ACloseDateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,12 @@ use App\Http\Controllers\HomeController;
 
 // User
 Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+
+
+// Admin
+Route::middleware(['admin'])->group(function () {
+
+    Route::resource('close-date', ACloseDateController::class);
+
+});
+// Admin - end
