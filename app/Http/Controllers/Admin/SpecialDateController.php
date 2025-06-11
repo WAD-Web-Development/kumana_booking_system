@@ -7,7 +7,7 @@ use domain\Facades\SpecialDateFacade;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSpecialDateRequest;
 
-class SpecialDateController extends Controller
+class SpecialDateController extends ParentController
 {
     /**
      * Display a listing of the resource.
