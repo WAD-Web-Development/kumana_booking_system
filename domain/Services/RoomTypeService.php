@@ -2,15 +2,15 @@
 
 namespace domain\Services;
 
-use App\Models\SpecialDate;
+use App\Models\RoomType;
 
-class SpecialDateService
+class RoomTypeService
 {
-    protected $specialDate;
+    protected $roomType;
 
     public function __construct()
     {
-        $this->specialDate = new SpecialDate();
+        $this->roomType = new RoomType();
     }
 
     /**
@@ -20,21 +20,21 @@ class SpecialDateService
      */
     public function all()
     {
-        return $this->specialDate->all();
+        return $this->roomType->all();
     }
 
     public function allWithParamAndPaginate($data, $limit = 10)
     {
         if($data && array_key_exists('sr', $data)){
-            return $this->specialDate->where('title', 'LIKE', '%'.$data['sr'].'%')->orderBy('title')->paginate($limit);
+            return $this->roomType->where('title', 'LIKE', '%'.$data['sr'].'%')->orderBy('title')->paginate($limit);
         } else {
-            return $this->specialDate->orderBy('title')->paginate($limit);
+            return $this->roomType->orderBy('title')->paginate($limit);
         }
     }
 
     public function first()
     {
-        return $this->specialDate->first();
+        return $this->roomType->first();
     }
 
     /**
@@ -45,19 +45,13 @@ class SpecialDateService
      */
     public function get($id)
     {
-        return $this->specialDate->find($id);
+        return $this->roomType->find($id);
     }
 
     public function store($data)
     {
-        $specialDate = $this->specialDate->create([
-            'title' => $data['title'],
-            'start_date' => $data['start_date'],
-            'end_date' => $data['end_date'],
-            'description' => $data['description'],
-            'is_full_day' => $data['is_full_day'],
-            'image_path' => $data['image_path'],
-            'is_closed' => $data['is_closed'],
+        $roomType = $this->roomType->create([
+            // 'title' => $data['title'],
         ]);
     }
 
@@ -75,7 +69,7 @@ class SpecialDateService
         }
     }
 
-    public function updateSpecialDateStatus($data)
+    public function updateRoomTypeStatus($data)
     {
         $row = $this->get($data['id']);
 
