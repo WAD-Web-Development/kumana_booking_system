@@ -17,7 +17,7 @@ return new class extends Migration
             $table->mediumText('description')->nullable();
             $table->mediumText('note')->nullable();
             $table->tinyInteger('is_active')->default(1);
-            $table->string('image_path')->nullable();
+            $table->string('image_path', 2048)->nullable();
             $table->tinyInteger('is_special')->default(0);
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();

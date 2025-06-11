@@ -19,10 +19,22 @@ class AdminUserSeeder extends Seeder
 
         $adminUsers = [
             [
-                'name' => 'Admin',
-                'email' => 'admin@mail.com',
+                'name' => 'Admin1',
+                'email' => 'admin1@mail.com',
                 'password' => Hash::make('admin123'),
-                'contact_no' => '+94111234567',
+                'contact_no' => '+94111234561',
+            ],
+            [
+                'name' => 'Admin2',
+                'email' => 'admin2@mail.com',
+                'password' => Hash::make('admin123'),
+                'contact_no' => '+94111234562',
+            ],
+            [
+                'name' => 'Admin3',
+                'email' => 'admin3@mail.com',
+                'password' => Hash::make('admin123'),
+                'contact_no' => '+94111234563',
             ],
         ];
 
