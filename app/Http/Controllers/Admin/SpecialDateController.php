@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use domain\Facades\CloseDateFacade;
+use domain\Facades\SpecialDateFacade;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCloseDateRequest;
+use App\Http\Requests\StoreSpecialDateRequest;
 
-class CloseDateController extends Controller
+class SpecialDateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class CloseDateController extends Controller
     {
         try {
 
-            $closeDates = CloseDateFacade::allWithParamAndPaginate($request->all());
+            $specialDates = SpecialDateFacade::allWithParamAndPaginate($request->all());
 
-            return view('pages.admin.close_dates.index', compact('closeDates'));
+            return view('pages.admin.special_dates.index', compact('specialDates'));
         } catch (Throwable $th) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
@@ -29,19 +29,19 @@ class CloseDateController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.close_dates.create');
+        return view('pages.admin.special_dates.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCloseDateRequest $request)
+    public function store(StoreSpecialDateRequest $request)
     {
         try {
 
-            CloseDateFacade::store($request->all());
+            SpecialDateFacade::store($request->all());
 
-            return redirect()->route('close-date.index')->with('success', 'Close Date Added Successfully');
+            return redirect()->route('special-date.index')->with('success', 'Close Date Added Successfully');
         } catch (Throwable $th) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
@@ -62,9 +62,9 @@ class CloseDateController extends Controller
     {
         try {
 
-            $closeDate = CloseDateFacade::get($id);
+            $specialDate = SpecialDateFacade::get($id);
 
-            return view('pages.admin.close_dates.edit', compact('closeDate'));
+            return view('pages.admin.special_dates.edit', compact('specialDate'));
         } catch (Throwable $th) {
 
             return redirect()->back()->with('error', 'Something went wrong');
@@ -74,13 +74,13 @@ class CloseDateController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreCloseDateRequest $request, string $id)
+    public function update(StoreSpecialDateRequest $request, string $id)
     {
         try {
 
-            CloseDateFacade::update($id, $request->all());
+            SpecialDateFacade::update($id, $request->all());
 
-            return redirect()->route('close-date.index')->with('success', 'Close Date Updated Successfully');
+            return redirect()->route('special-date.index')->with('success', 'Close Date Updated Successfully');
         } catch (Throwable $th) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
@@ -93,7 +93,7 @@ class CloseDateController extends Controller
     {
         try {
 
-            CloseDateFacade::destroy($id);
+            SpecialDateFacade::destroy($id);
 
             return json_encode(array('response' => 'success', 'message' => 'Close Date Deleted Successfully!'));
         } catch (Exception $e) {

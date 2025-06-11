@@ -2,15 +2,15 @@
 
 namespace domain\Services;
 
-use App\Models\CloseDate;
+use App\Models\SpecialDate;
 
-class CloseDateService
+class SpecialDateService
 {
-    protected $closeDate;
+    protected $specialDate;
 
     public function __construct()
     {
-        $this->closeDate = new CloseDate();
+        $this->specialDate = new SpecialDate();
     }
 
     /**
@@ -20,21 +20,21 @@ class CloseDateService
      */
     public function all()
     {
-        return $this->closeDate->all();
+        return $this->specialDate->all();
     }
 
     public function allWithParamAndPaginate($data, $limit = 10)
     {
         if($data && array_key_exists('sr', $data)){
-            return $this->closeDate->where('title', 'LIKE', '%'.$data['sr'].'%')->orderBy('title')->paginate($limit);
+            return $this->specialDate->where('title', 'LIKE', '%'.$data['sr'].'%')->orderBy('title')->paginate($limit);
         } else {
-            return $this->closeDate->orderBy('title')->paginate($limit);
+            return $this->specialDate->orderBy('title')->paginate($limit);
         }
     }
 
     public function first()
     {
-        return $this->closeDate->first();
+        return $this->specialDate->first();
     }
 
     /**
@@ -45,12 +45,12 @@ class CloseDateService
      */
     public function get($id)
     {
-        return $this->closeDate->find($id);
+        return $this->specialDate->find($id);
     }
 
     public function store($data)
     {
-        $closeDate = $this->closeDate->create([
+        $specialDate = $this->specialDate->create([
             'title' => $data['title'],
             'date' => $data['date'],
             'description' => $data['description'],
@@ -71,7 +71,7 @@ class CloseDateService
         }
     }
 
-    public function updateEducationStatus($data)
+    public function updateSpecialDateStatus($data)
     {
         $row = $this->get($data['id']);
 

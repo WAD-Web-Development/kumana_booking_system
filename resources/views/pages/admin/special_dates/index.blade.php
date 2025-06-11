@@ -5,8 +5,8 @@
         <div class="card admin-card w-100 shadow-lg">
             <div class="card-header bg-white border-0 p-4">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0 admin-title">Close Dates Management</h5>
-                    <a href="{{ route('close-date.create') }}" class="btn admin-btn btn-sm mb-0 px-4">+&nbsp; Add New</a>
+                    <h5 class="mb-0 admin-title">Special Date Management</h5>
+                    <a href="{{ route('special-date.create') }}" class="btn admin-btn btn-sm mb-0 px-4">+&nbsp; Add New</a>
                 </div>
             </div>
 
@@ -29,18 +29,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($closeDates as $closeDate)
-                                <tr id="row{{ $closeDate->id }}">
-                                    <td> {{ $closeDate->date }} </td>
-                                    <td> {{ $closeDate->title }} </td>
+                            @forelse ($specialDates as $specialDate)
+                                <tr id="row{{ $specialDate->id }}">
+                                    <td> {{ $specialDate->date }} </td>
+                                    <td> {{ $specialDate->title }} </td>
                                     <td class="text-sm">
 
-                                        <a href="{{ route('close-date.edit', $closeDate->id) }}" class="me-3"
+                                        <a href="{{ route('special-date.edit', $specialDate->id) }}" class="me-3"
                                             data-bs-toggle="tooltip" data-bs-original-title="Edit">
                                             <i class="fas fa-user-edit text-secondary"></i>
                                         </a>
 
-                                        <a class="delete" data-id="{{ $closeDate->id }}" href="#">
+                                        <a class="delete" data-id="{{ $specialDate->id }}" href="#">
                                             <i class="fas fa-trash text-secondary"></i>
                                         </a>
 
@@ -54,7 +54,7 @@
                         </tbody>
                     </table>
                 </div>
-                {{ $closeDates->withQueryString()->links('components.paginations') }}
+                {{ $specialDates->withQueryString()->links('components.paginations') }}
             </div>
         </div>
     </div>
@@ -65,7 +65,7 @@
         $('body').on('click', '.delete', function() {
             var id = $(this).attr('data-id')
             var atr = $(this);
-            var url = '{{ route('close-date.destroy', ':id') }}';
+            var url = '{{ route('special-date.destroy', ':id') }}';
             Swal.fire({
                 icon: 'warning',
                 showCancelButton: true,
@@ -137,7 +137,7 @@
             var params = {
                 'sr': sr
             };
-            var new_url = '{{ route('close-date.index') }}?' + jQuery.param(params);
+            var new_url = '{{ route('special-date.index') }}?' + jQuery.param(params);
             window.location.href = new_url;
         }
     </script>

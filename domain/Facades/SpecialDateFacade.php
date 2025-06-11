@@ -3,12 +3,12 @@
 namespace domain\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use domain\Services\CloseDateService;
+use domain\Services\SpecialDateService;
 
-class CloseDateFacade extends Facade
+class SpecialDateFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return CloseDateService::class;
+        return SpecialDateService::class;
     }
 }

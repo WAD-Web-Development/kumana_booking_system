@@ -18,5 +18,6 @@ class SpecialDate extends Model
         'day_time',
         'image_path',
         'is_closed',
+        'is_active',
     ];
 }

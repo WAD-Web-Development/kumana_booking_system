@@ -8,12 +8,12 @@
         <div class="card-header bg-white border-0 p-4 pb-1">
             <div class="d-lg-flex">
                 <div>
-                    <h5 class="mb-0 admin-title">New Close Date</h5>
+                    <h5 class="mb-0 admin-title">New Special Date</h5>
                 </div>
             </div>
         </div>
         <div class="card-body mt-2 p-4 pt-1">
-            <form action="{{ route('close-date.store') }}" method="POST" id="close-date-form" enctype="multipart/form-data">
+            <form action="{{ route('special-date.store') }}" method="POST" id="special-date-form" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group col-md-12 mt-2">
                     <label for="title" class="form-label">Title <span style="color: red">*</span></label>
@@ -33,7 +33,7 @@
 
                 <div class="d-flex justify-content-end mt-4">
                     <a href="{{ url()->previous() }}" class="btn btn-light admin-btn-cancel text-white m-0">Cancel</a>
-                    <button type="submit" class="btn admin-btn m-0 ms-2">Create Close Date</button>
+                    <button type="submit" class="btn admin-btn m-0 ms-2">Create Special Date</button>
                 </div>
             </form>
         </div>
@@ -43,5 +43,5 @@
 @endsection
 
 @push('custom_scripts')
-{!! JsValidator::formRequest('App\Http\Requests\StoreCloseDateRequest', '#close-date-form') !!}
+{!! JsValidator::formRequest('App\Http\Requests\StoreSpecialDateRequest', '#special-date-form') !!}
 @endpush

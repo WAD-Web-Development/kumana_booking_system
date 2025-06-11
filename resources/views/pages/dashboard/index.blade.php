@@ -18,9 +18,9 @@
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Close Date</h5>
+                        <h5 class="card-title">Special Date</h5>
                         <p class="card-text">Set specific dates as unavailable on the calendar. Useful for holidays, maintenance, or any planned service blackout.</p>
-                        <a href="{{ route('close-date.index') }}" class="btn btn-primary">Close Date</a>
+                        <a href="{{ route('special-date.index') }}" class="btn btn-primary">Close Date</a>
                     </div>
                 </div>
             </div>
