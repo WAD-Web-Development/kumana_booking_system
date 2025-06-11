@@ -9,7 +9,20 @@ class Package extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'is_active', 'image_path'];
+    protected $fillable = [
+        'title',
+        'description',
+        'note',
+        'is_active',
+        'image_path',
+        'is_special',
+        'start_date',
+        'end_date',
+        'type',
+        'safari_type',
+        'safari_max_people_count',
+        'room_type_id',
+    ];
 
     protected $appends = ['image_url'];
 

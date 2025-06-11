@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->mediumText('description')->nullable();
+            $table->mediumText('note')->nullable();
             $table->tinyInteger('is_active')->default(1);
             $table->string('image_path')->nullable();
             $table->tinyInteger('is_special')->default(0);
@@ -23,10 +24,9 @@ return new class extends Migration
             $table->tinyInteger('type')->comment('1 = Safari, 2 = Room, 3 = Safari & Room');
 
             // Type-specific fields
-            $table->string('safari_type')->nullable(); // Only for Safari / Safari & Room
-            $table->integer('max_people_count')->nullable(); // Used for all types
-            $table->integer('max_room_count')->nullable(); // Only for Room / Safari & Room
-
+            $table->string('safari_type')->nullable();
+            $table->integer('safari_max_people_count')->nullable();
+            $table->unsignedBigInteger('room_type_id')->nullable();
             $table->timestamps();
         });
     }
