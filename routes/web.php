@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\SpecialDateController as ASpecialDateController;
+use App\Http\Controllers\Auth\CustomRegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,8 @@ use App\Http\Controllers\Admin\SpecialDateController as ASpecialDateController;
 
 // User
 Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+
+Route::get('/register', [CustomRegisterController::class, 'show'])->middleware(['guest'])->name('register');
 
 
 // Admin

@@ -154,7 +154,7 @@
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Name</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Enter name" required>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Enter Name" required>
                         @error('name')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -162,7 +162,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter email" required>
+                        <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter Email" required>
                         @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -170,7 +170,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Contact Number</label>
-                        <input type="text" class="form-control @error('contact_no') is-invalid @enderror" name="contact_no" placeholder="Enter contact number" required>
+                        <input type="text" class="form-control @error('contact_no') is-invalid @enderror" name="contact_no" placeholder="Enter Contact Number" required>
                         @error('contact_no')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -178,7 +178,14 @@
 
                     <div class="mb-3">
                         <label class="form-label">Nationality</label>
-                        <input type="text" name="nationality" class="form-control @error('nationality') is-invalid @enderror" placeholder="Enter nationality" required>
+                        <select name="nationality" class="form-control @error('nationality') is-invalid @enderror" required>
+                            <option value=""> Select Nationality </option>
+                            @foreach($nationalities as $nationality)
+                                <option value="{{ $nationality->name }}" {{ old('nationality') == $nationality->name ? 'selected' : '' }}>
+                                    {{ $nationality->name }}
+                                </option>
+                            @endforeach
+                        </select>
                         @error('nationality')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

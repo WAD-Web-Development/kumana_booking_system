@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use domain\Facades\SpecialDateFacade;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSpecialDateRequest;
+use App\Http\Controllers\ParentController;
 
 class SpecialDateController extends ParentController
 {

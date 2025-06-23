@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use domain\Facades\SafariBookingPriceFacade;
+use App\Http\Controllers\ParentController;
 
 class SafariBookingPriceController extends ParentController
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        try {
+
+            $prices = SafariBookingPriceFacade::allWithParamAndPaginate($request->all());
+
+            return view('pages.admin.safari_booking_price.index', compact('prices'));
+        } catch (Throwable $th) {
+            return redirect()->back()->with('error', 'Something went wrong');
+        }
     }
 
     /**
