@@ -4,7 +4,7 @@
 
 <div class="container-fluid admin-container d-flex justify-content-center">
     <!-- Adjust the width of the card -->
-    <div class="card admin-card shadow-lg col-md-6">
+    <div class="card admin-card shadow-lg col-md-6 mb-5">
         <div class="card-header bg-white border-0 p-4 pb-1">
             <div class="d-lg-flex">
                 <div>
@@ -21,14 +21,47 @@
                 </div>
 
                 <div class="form-group col-md-12 mt-2">
-                    <label for="date" class="form-label mt-2">Date <span style="color: red">*</span></label>
-                    <input type="date" class="form-control" id="date" name="date" required>
+                    <label for="date" class="form-label mt-2">Start Date <span style="color: red">*</span></label>
+                    <input type="date" class="form-control" id="start_date" name="start_date" required>
+                </div>
+
+                <div class="form-group col-md-12 mt-2">
+                    <label for="date" class="form-label mt-2">End Date <span style="color: red">*</span></label>
+                    <input type="date" class="form-control" id="end_date" name="end_date" required>
                 </div>
 
                 <div class="form-group col-md-12 mt-2">
                     <label for="description" class="form-label mt-2">Description <span
                         style="color: rgb(163, 163, 163)">(optional)</span></label>
                     <textarea id="description" name="description" class="form-control description" rows="5"></textarea>
+                </div>
+
+                <div class="form-group row col-md-12 mt-4 mx-1">
+                    <div class="form-check col-md-6">
+                        <input type="checkbox" class="form-check-input" id="is_full_day" name="is_full_day" value="1">
+                        <label class="form-check-label" for="is_full_day">Is Full Day</label>
+                    </div>
+
+                    <div class="form-check col-md-6">
+                        <input type="checkbox" class="form-check-input" id="is_closed" name="is_closed" value="1">
+                        <label class="form-check-label" for="is_closed">Is Closed</label>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12 mt-3">
+                    <label class="form-label" for="day_time">Day Time <span
+                            style="color: red">*</span></label>
+                    <select id="day_time" class="form-control form-control-alternative" name="day_time">
+                        <option value="">Select Day Time</option>
+                        <option value="Morning">Morning</option>
+                        <option value="Afternoon">Afternoon</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-12 mt-2">
+                    <label for="image" class="form-label mt-2">Image <span
+                        style="color: rgb(163, 163, 163)">(optional)</span></label>
+                    <input type="file" name="image" class="form-control image">
                 </div>
 
                 <div class="d-flex justify-content-end mt-4">
@@ -43,5 +76,16 @@
 @endsection
 
 @push('custom_scripts')
+    <script>
+        $(document).ready(function() {
+            $('.image').dropify();
+        });
+
+        $('#day_time').select2({
+            placeholder: 'Select Day Time',
+            minimumResultsForSearch: -1,
+        });
+    </script>
+
 {!! JsValidator::formRequest('App\Http\Requests\StoreSpecialDateRequest', '#special-date-form') !!}
 @endpush

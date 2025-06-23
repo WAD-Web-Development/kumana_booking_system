@@ -23,16 +23,26 @@
                     <table class="table table-bordered table-hover table-responsive" id="close-date-list">
                         <thead>
                             <tr>
-                                <th>Date</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
                                 <th>Title</th>
+                                <th>Is Active</th>
                                 <th width="6%">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($specialDates as $specialDate)
                                 <tr id="row{{ $specialDate->id }}">
-                                    <td> {{ $specialDate->date }} </td>
+                                    <td> {{ $specialDate->start_date }} </td>
+                                    <td> {{ $specialDate->end_date }} </td>
                                     <td> {{ $specialDate->title }} </td>
+                                    <td>
+                                        @if ($specialDate->is_active)
+                                            Active
+                                        @else
+                                            Deactive
+                                        @endif
+                                    </td>
                                     <td class="text-sm">
 
                                         <a href="{{ route('special-date.edit', $specialDate->id) }}" class="me-3"
@@ -48,7 +58,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="3" class="text-center">No Data Available</td>
+                                    <td colspan="4" class="text-center">No Data Available</td>
                                 </tr>
                             @endforelse
                         </tbody>

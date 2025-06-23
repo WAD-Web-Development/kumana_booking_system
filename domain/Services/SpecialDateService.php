@@ -56,8 +56,9 @@ class SpecialDateService
             'end_date' => $data['end_date'],
             'description' => $data['description'],
             'is_full_day' => $data['is_full_day'],
-            'image_path' => $data['image_path'],
+            'image_path' => $data['image_path'] ?? null,
             'is_closed' => $data['is_closed'],
+            'day_time' => $data['day_time'],
         ]);
     }
 

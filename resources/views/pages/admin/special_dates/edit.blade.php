@@ -4,7 +4,7 @@
 
 <div class="container-fluid admin-container d-flex justify-content-center">
     <!-- Adjust the width of the card -->
-    <div class="card admin-card shadow-lg col-md-6">
+    <div class="card admin-card shadow-lg col-md-6 mb-5">
         <div class="card-header bg-white border-0 p-4 pb-1">
             <div class="d-lg-flex">
                 <div>
@@ -22,14 +22,53 @@
                 </div>
 
                 <div class="form-group col-md-12 mt-2">
-                    <label for="date" class="form-label mt-2">Date <span style="color: red">*</span></label>
-                    <input type="date" class="form-control" id="date" name="date" value="{{ $specialDate->date }}" required>
+                    <label for="start_date" class="form-label mt-2">Start Date <span style="color: red">*</span></label>
+                    <input type="date" class="form-control" id="start_date" name="start_date"
+                        value="{{ $specialDate->start_date }}" required>
+                </div>
+
+                <div class="form-group col-md-12 mt-2">
+                    <label for="end_date" class="form-label mt-2">End Date <span style="color: red">*</span></label>
+                    <input type="date" class="form-control" id="end_date" name="end_date"
+                        value="{{ $specialDate->end_date }}" required>
                 </div>
 
                 <div class="form-group col-md-12 mt-2">
                     <label for="description" class="form-label mt-2">Description <span
                         style="color: rgb(163, 163, 163)">(optional)</span></label>
                     <textarea id="description" name="description" class="form-control description" rows="5">{{ $specialDate->description }}</textarea>
+                </div>
+
+                <div class="form-group row col-md-12 mt-4 mx-1">
+                    <div class="form-check col-md-6">
+                        <input type="checkbox" class="form-check-input" id="is_full_day" name="is_full_day" value="1" {{ $specialDate->is_full_day ? 'checked' : '' }}>
+                        <label class="form-check-label" for="is_full_day">Is Full Day</label>
+                    </div>
+
+                    <div class="form-check col-md-6">
+                        <input type="checkbox" class="form-check-input" id="is_closed" name="is_closed" value="1" {{ $specialDate->is_closed ? 'checked' : '' }}>
+                        <label class="form-check-label" for="is_closed">Is Closed</label>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-12 mt-3">
+                    <label class="form-label" for="day_time">Day Time <span style="color: red">*</span></label>
+                    <select id="day_time" class="form-control form-control-alternative" name="day_time">
+                        <option value="">Select Day Time</option>
+                        <option value="Morning" {{ $specialDate->day_time == 'Morning' ? 'selected' : '' }}>Morning</option>
+                        <option value="Afternoon" {{ $specialDate->day_time == 'Afternoon' ? 'selected' : '' }}>Afternoon</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-12 mt-2">
+                    <label for="image" class="form-label mt-2">Image <span
+                        style="color: rgb(163, 163, 163)">(optional)</span></label>
+                    <input type="file" name="image" class="form-control image" data-default-file="{{ $specialDate->image_url ?? '' }}">
+
+                    <input type="hidden" name="is_image_removed" id="is_image_removed" value="0">
+                    @if ($errors->has('image'))
+                        <span class="text-danger">{{ $errors->first('image') }}</span>
+                    @endif
                 </div>
 
                 <div class="d-flex justify-content-end mt-4">
@@ -44,5 +83,26 @@
 @endsection
 
 @push('custom_scripts')
+
+    <script>
+        $(document).ready(function() {
+            $('.image').dropify();
+
+            $('.image').on('dropify.afterClear', function(event, element) {
+                $('#is_image_removed').val(1);
+            });
+
+            $('.image').on('change', function() {
+                if ($(this).val() != '') {
+                    $('#is_image_removed').val(0);
+                }
+            });
+        });
+
+        $('#day_time').select2({
+            placeholder: 'Select Day Time',
+            minimumResultsForSearch: -1,
+        });
+    </script>
 {!! JsValidator::formRequest('App\Http\Requests\StoreSpecialDateRequest', '#special-date-edit-form') !!}
 @endpush

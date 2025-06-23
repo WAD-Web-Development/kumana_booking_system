@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use domain\Facades\SpecialDateFacade;
+use domain\Facades\ImageFacade;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreSpecialDateRequest;
+use domain\Facades\SpecialDateFacade;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ParentController;
+use App\Http\Requests\StoreSpecialDateRequest;
 
 class SpecialDateController extends ParentController
 {
@@ -40,9 +42,21 @@ class SpecialDateController extends ParentController
     {
         try {
 
+            $is_full_day = isset($request->is_full_day) ? 1 : 0;
+            $request->merge(['is_full_day' => $is_full_day]);
+
+            $is_closed = isset($request->is_closed) ? 1 : 0;
+            $request->merge(['is_closed' => $is_closed]);
+
+            if ($request->image) {
+                $imagePath = ImageFacade::store($request->image, 'special_date');
+
+                $request->merge(['image_path' => $imagePath]);
+            }
+
             SpecialDateFacade::store($request->all());
 
-            return redirect()->route('special-date.index')->with('success', 'Close Date Added Successfully');
+            return redirect()->route('special-date.index')->with('success', 'Special Date Added Successfully');
         } catch (Throwable $th) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
@@ -79,9 +93,38 @@ class SpecialDateController extends ParentController
     {
         try {
 
+            if ($request->has('is_image_removed') && $request->input('is_image_removed') == 1) {
+
+                $validator = Validator::make($request->all(), [
+                    'image' => 'nullable|mimes:jpeg,png,jpg,gif|max:10240',
+                ]);
+
+                if ($validator->fails()) {
+                    return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+            }
+
+            $is_full_day = isset($request->is_full_day) ? 1 : 0;
+            $request->merge(['is_full_day' => $is_full_day]);
+
+            $is_closed = isset($request->is_closed) ? 1 : 0;
+            $request->merge(['is_closed' => $is_closed]);
+
+            if ($request->image) {
+
+                $dataRow = SpecialDateFacade::get($id);
+                ImageFacade::delete($dataRow->image_path);
+
+                $imagePath = ImageFacade::store($request->image, 'special_date');
+
+                $request->merge(['image_path' => $imagePath]);
+            }
+
             SpecialDateFacade::update($id, $request->all());
 
-            return redirect()->route('special-date.index')->with('success', 'Close Date Updated Successfully');
+            return redirect()->route('special-date.index')->with('success', 'Special Date Updated Successfully');
         } catch (Throwable $th) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
@@ -96,7 +139,7 @@ class SpecialDateController extends ParentController
 
             SpecialDateFacade::destroy($id);
 
-            return json_encode(array('response' => 'success', 'message' => 'Close Date Deleted Successfully!'));
+            return json_encode(array('response' => 'success', 'message' => 'Special Date Deleted Successfully!'));
         } catch (Exception $e) {
             return redirect()->back()->withError($e->getMessage());
         }

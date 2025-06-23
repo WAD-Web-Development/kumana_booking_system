@@ -20,4 +20,13 @@ class SpecialDate extends Model
         'is_closed',
         'is_active',
     ];
+
+    protected $appends = ['image_url'];
+
+    public function getImageUrlAttribute()
+    {
+        if ($this->image_path) {
+            return asset('storage/' . $this->image_path);
+        }
+    }
 }
