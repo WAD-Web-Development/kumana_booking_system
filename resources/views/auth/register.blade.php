@@ -178,7 +178,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Nationality</label>
-                        <select name="nationality" class="form-control @error('nationality') is-invalid @enderror" required>
+                        <select name="nationality" id="nationality" class="form-control @error('nationality') is-invalid @enderror" required>
                             <option value=""> Select Nationality </option>
                             @foreach($nationalities as $nationality)
                                 <option value="{{ $nationality->name }}" {{ old('nationality') == $nationality->name ? 'selected' : '' }}>
@@ -214,3 +214,11 @@
         </div>
     </div>
 @endsection
+
+@push('custom_scripts')
+    <script>
+        $('#nationality').select2({
+            placeholder: 'Select Nationality',
+        });
+    </script>
+@endpush

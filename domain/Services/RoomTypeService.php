@@ -51,7 +51,11 @@ class RoomTypeService
     public function store($data)
     {
         $roomType = $this->roomType->create([
-            // 'title' => $data['title'],
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'room_count' => $data['room_count'],
+            'max_people_count' => $data['max_people_count'],
+            'price' => $data['price'],
         ]);
     }
 
