@@ -42,5 +42,14 @@
                     </div>
                 </div>
             </div>
+            <div class="col-sm-6 mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Safari Booking Prices</h5>
+
+                        <a href="{{ route('safari-booking-price.index') }}" class="btn btn-primary mt-5">Manage Safari Booking Prices</a>
+                    </div>
+                </div>
+            </div>
         </div>
 @endsection

@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use domain\Facades\SafariBookingPriceFacade;
 use App\Http\Controllers\ParentController;
+use domain\Facades\SafariBookingPriceFacade;
+use App\Http\Requests\UpdateSafariBookingPriceRequest;
 
 class SafariBookingPriceController extends ParentController
 {
@@ -53,15 +54,30 @@ class SafariBookingPriceController extends ParentController
      */
     public function edit(string $id)
     {
-        //
+        try {
+
+            $price = SafariBookingPriceFacade::get($id);
+
+            return view('pages.admin.safari_booking_price.edit', compact('price'));
+        } catch (Throwable $th) {
+
+            return redirect()->back()->with('error', 'Something went wrong');
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateSafariBookingPriceRequest $request, string $id)
     {
-        //
+        try {
+
+            SafariBookingPriceFacade::update($id, $request->all());
+
+            return redirect()->route('safari-booking-price.index')->with('success', 'Booking Price Updated Successfully');
+        } catch (Throwable $th) {
+            return redirect()->back()->with('error', 'Something went wrong');
+        }
     }
 
     /**

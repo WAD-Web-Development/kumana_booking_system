@@ -26,9 +26,9 @@ class SafariBookingPriceService
     public function allWithParamAndPaginate($data, $limit = 10)
     {
         if($data && array_key_exists('sr', $data)){
-            return $this->safariBookingPrice->where('title', 'LIKE', '%'.$data['sr'].'%')->orderBy('title')->paginate($limit);
+            return $this->safariBookingPrice->where('visa_type', 'LIKE', '%'.$data['sr'].'%')->orderBy('visa_type')->paginate($limit);
         } else {
-            return $this->safariBookingPrice->orderBy('title')->paginate($limit);
+            return $this->safariBookingPrice->orderBy('visa_type')->paginate($limit);
         }
     }
 
@@ -48,25 +48,9 @@ class SafariBookingPriceService
         return $this->safariBookingPrice->find($id);
     }
 
-    public function store($data)
-    {
-        $safariBookingPrice = $this->safariBookingPrice->create([
-            // 'title' => $data['title'],
-        ]);
-    }
-
     public function update($id, $data)
     {
         $this->get($id)->update($data);
-    }
-
-    public function destroy($id)
-    {
-
-        $dataRow = $this->get($id);
-        if ($dataRow) {
-            $dataRow->delete();
-        }
     }
 
     public function updateSafariBookingPriceStatus($data)
