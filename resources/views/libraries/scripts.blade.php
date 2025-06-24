@@ -20,6 +20,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<script src="{{ asset('js') }}/image-uploader.min.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function () {
         toastr.options = {

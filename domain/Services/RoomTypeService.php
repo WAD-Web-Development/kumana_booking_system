@@ -23,6 +23,11 @@ class RoomTypeService
         return $this->roomType->all();
     }
 
+    public function allActive()
+    {
+        return $this->roomType->where('is_active', 1)->get();
+    }
+
     public function allWithParamAndPaginate($data, $limit = 10)
     {
         if($data && array_key_exists('sr', $data)){

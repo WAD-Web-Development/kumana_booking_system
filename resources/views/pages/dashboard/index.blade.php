@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Packages</h5>
 
-                        <a href="#" class="btn btn-primary mt-5">Manage Packages</a>
+                        <a href="{{ route('package.index') }}" class="btn btn-primary mt-5">Manage Packages</a>
                     </div>
                 </div>
             </div>

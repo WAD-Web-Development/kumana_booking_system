@@ -24,7 +24,7 @@ return new class extends Migration
             $table->tinyInteger('type')->comment('1 = Safari, 2 = Room, 3 = Safari & Room');
 
             // Type-specific fields
-            $table->string('safari_type')->nullable();
+            $table->string('safari_type')->nullable();//half day, full day
             $table->integer('safari_max_people_count')->nullable();
             $table->unsignedBigInteger('room_type_id')->nullable();
             $table->timestamps();

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\SpecialDateController as ASpecialDateController;
 use App\Http\Controllers\Admin\RoomTypeController as ARoomTypeController;
 use App\Http\Controllers\Admin\EmailAttachmentController as AEmailAttachmentController;
 use App\Http\Controllers\Admin\SafariBookingPriceController as ASafariBookingPriceController;
+use App\Http\Controllers\Admin\PackageController as APackageController;
 use App\Http\Controllers\Auth\CustomRegisterController;
 
 /*
@@ -46,6 +47,7 @@ Route::middleware(['admin'])->group(function () {
     Route::resource('room-type', ARoomTypeController::class);
     Route::resource('email-attachment', AEmailAttachmentController::class);
     Route::resource('safari-booking-price', ASafariBookingPriceController::class);
+    Route::resource('package', APackageController::class);
 
 });
 // Admin - end
