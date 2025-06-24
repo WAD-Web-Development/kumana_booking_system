@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\SpecialDateController as ASpecialDateController;
 use App\Http\Controllers\Admin\RoomTypeController as ARoomTypeController;
+use App\Http\Controllers\Admin\EmailAttachmentController as AEmailAttachmentController;
 use App\Http\Controllers\Auth\CustomRegisterController;
 
 /*
@@ -42,6 +43,7 @@ Route::middleware(['admin'])->group(function () {
 
     Route::resource('special-date', ASpecialDateController::class);
     Route::resource('room-type', ARoomTypeController::class);
+    Route::resource('email-attachment', AEmailAttachmentController::class);
 
 });
 // Admin - end

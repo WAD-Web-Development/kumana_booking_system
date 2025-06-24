@@ -42,7 +42,9 @@ class EmailAttachmentService
     public function store($data)
     {
         $emailAttachment = $this->emailAttachment->create([
-            // 'title' => $data['title'],
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'file_path' => $data['file_path'] ?? null,
         ]);
     }
 

@@ -18,7 +18,7 @@
             <div class="col-sm-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Special Date</h5>
+                        <h5 class="card-title">Special Dates</h5>
 
                         <a href="{{ route('special-date.index') }}" class="btn btn-primary mt-5">Manage Dates</a>
                     </div>
@@ -30,6 +30,15 @@
                         <h5 class="card-title">Room Types</h5>
 
                         <a href="{{ route('room-type.index') }}" class="btn btn-primary mt-5">Manage Room Types</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Email Attachments</h5>
+
+                        <a href="{{ route('email-attachment.index') }}" class="btn btn-primary mt-5">Manage Email Attachments</a>
                     </div>
                 </div>
             </div>
