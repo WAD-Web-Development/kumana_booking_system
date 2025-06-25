@@ -24,9 +24,9 @@ class StoreRoomTypeRequest extends FormRequest
         return [
             'title'  => 'required',
             'description'  => 'nullable',
-            'room_count'  => 'required',
-            'max_people_count'  => 'required',
-            'price'  => 'required',
+            'room_count'  => 'required|integer|min:1',
+            'max_people_count'  => 'required|integer|min:1',
+            'price'  => 'required|numeric|min:0',
         ];
     }
 

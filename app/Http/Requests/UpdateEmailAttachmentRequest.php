@@ -24,7 +24,7 @@ class UpdateEmailAttachmentRequest extends FormRequest
         return [
             'title'  => 'required',
             'description'  => 'nullable',
-            'file'  => 'nullable',
+            'file' => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx,xlsx,xls|max:2048', // 2MB max
         ];
     }
 

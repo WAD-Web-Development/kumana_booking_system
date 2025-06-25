@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use domain\Facades\ImageFacade;
+use domain\Facades\FileFacade;
 use App\Http\Controllers\Controller;
 use domain\Facades\EmailAttachmentFacade;
 use App\Http\Controllers\ParentController;
@@ -32,7 +32,12 @@ class EmailAttachmentController extends ParentController
      */
     public function create()
     {
-        return view('pages.admin.email_attachments.create');
+        $attachment = EmailAttachmentFacade::first();
+        if (!$attachment) {
+            return view('pages.admin.email_attachments.create');
+        }else {
+            return redirect()->back()->with('error', 'An attachment already exists. You cannot add another one.');
+        }
     }
 
     /**
@@ -43,7 +48,7 @@ class EmailAttachmentController extends ParentController
         try {
 
             if ($request->file) {
-                $filePath = ImageFacade::store($request->file, 'email_attachment');
+                $filePath = FileFacade::store($request->file, 'email_attachment');
 
                 $request->merge(['file_path' => $filePath]);
             }
@@ -90,9 +95,9 @@ class EmailAttachmentController extends ParentController
             if ($request->file) {
 
                 $dataRow = EmailAttachmentFacade::get($id);
-                ImageFacade::delete($dataRow->file_path);
+                FileFacade::delete($dataRow->file_path);
 
-                $filePath = ImageFacade::store($request->file, 'email_attachment');
+                $filePath = FileFacade::store($request->file, 'email_attachment');
 
                 $request->merge(['file_path' => $filePath]);
             }

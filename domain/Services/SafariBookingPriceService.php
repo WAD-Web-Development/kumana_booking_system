@@ -25,11 +25,19 @@ class SafariBookingPriceService
 
     public function allWithParamAndPaginate($data, $limit = 10)
     {
-        if($data && array_key_exists('sr', $data)){
-            return $this->safariBookingPrice->where('visa_type', 'LIKE', '%'.$data['sr'].'%')->orderBy('visa_type')->paginate($limit);
-        } else {
-            return $this->safariBookingPrice->orderBy('visa_type')->paginate($limit);
+        $query = $this->safariBookingPrice->orderBy('person_count');
+
+        if ($data && array_key_exists('sr', $data)) {
+            $search = $data['sr'];
+
+            $query = $query->where(function ($q) use ($search) {
+                $q->where('visa_type', 'LIKE', '%' . $search . '%')
+                ->orWhere('group_type', 'LIKE', '%' . $search . '%')
+                ->orWhere('person_count', 'LIKE', '%' . $search . '%');
+            });
         }
+
+        return $query->paginate($limit);
     }
 
     public function first()

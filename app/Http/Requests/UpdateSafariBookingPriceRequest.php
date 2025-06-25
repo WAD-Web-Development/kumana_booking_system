@@ -22,8 +22,8 @@ class UpdateSafariBookingPriceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'half_day_price'  => 'required',
-            'full_day_price'  => 'required',
+            'half_day_price'  => 'required|numeric|min:0',
+            'full_day_price'  => 'required|numeric|min:0',
         ];
     }
 

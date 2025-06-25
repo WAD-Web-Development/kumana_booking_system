@@ -28,7 +28,7 @@ class UpdatePackageRequest extends FormRequest
             'type'  => 'required',
             'is_special'  => 'nullable',
             'start_date'  => 'nullable',
-            'end_date'  => 'nullable',
+            'end_date'  => 'nullable|date|after_or_equal:start_date',
             'safari_type'  => 'nullable',
             'safari_max_people_count'  => 'nullable',
             'room_type_id'  => 'nullable',

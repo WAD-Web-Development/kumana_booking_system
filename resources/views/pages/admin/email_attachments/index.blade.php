@@ -6,18 +6,13 @@
             <div class="card-header bg-white border-0 p-4">
                 <div class="d-flex justify-content-between align-items-center">
                     <h5 class="mb-0 admin-title">Email Attachments Management</h5>
-                    <a href="{{ route('email-attachment.create') }}" class="btn admin-btn btn-sm mb-0 px-4">+&nbsp; Add New</a>
+                    @if (!$attachment)
+                        <a href="{{ route('email-attachment.create') }}" class="btn admin-btn btn-sm mb-0 px-4">+&nbsp; Add New</a>
+                    @endif
                 </div>
             </div>
 
             <div class="card-body p-4">
-                {{-- <div class="justify-content-end row mb-3">
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <input type="text" class="form-control admin-search-bar" name="table_search" id="table_search"
-                            value="{{ request()->get('sr') ?? '' }}" data-pre-search="{{ request()->get('sr') }}"
-                            placeholder="Search...">
-                    </div>
-                </div> --}}
 
                 <div class="table-responsive table-wrapper">
                     <table class="table table-bordered table-hover table-responsive" id="email-attachment-list">

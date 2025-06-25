@@ -24,7 +24,7 @@ class StoreSpecialDateRequest extends FormRequest
         return [
             'title'  => 'required',
             'start_date'  => 'required',
-            'end_date'  => 'required',
+            'end_date'  => 'required|date|after_or_equal:start_date',
             'description'  => 'nullable',
             'is_full_day'  => 'nullable',
             'is_closed'  => 'nullable',

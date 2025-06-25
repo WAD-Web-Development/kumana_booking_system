@@ -24,7 +24,7 @@ class StoreEmailAttachmentRequest extends FormRequest
         return [
             'title'  => 'required',
             'description'  => 'nullable',
-            'file'  => 'required',
+            'file' => 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx,xlsx,xls|max:2048', // 2MB max
         ];
     }
 
