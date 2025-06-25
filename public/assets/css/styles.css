@@ -129,3 +129,64 @@ html {
 .select2-container .select2-selection--single .select2-selection__arrow {
     height: 40px !important;
 }
+
+/* --- Kumana Navbar Custom Styles --- */
+.kumana-brand {
+    color: #217346;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+.sri-lanka-label {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+.vertical-divider {
+    border-left: 2px solid #e0bfae;
+    height: 28px;
+    display: inline-block;
+}
+.homepage-link {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+.kumana-user-box {
+    background: #13543a;
+    color: #fff;
+    min-width: 220px;
+    height: 100%;
+    padding: 0 1.5rem;
+    border-radius: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 300px;
+    margin: 0;
+}
+.kumana-user-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+}
+.kumana-user-icon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 0 0 40px;
+}
+.welcome-back {
+    font-size: 0.95rem;
+    opacity: 0.7;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+.user-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: -2px;
+}
+.user-icon {
+    color: #fff;
+}
