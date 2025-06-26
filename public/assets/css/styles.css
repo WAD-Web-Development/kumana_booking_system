@@ -2,7 +2,7 @@ html, body {
     height: 100% !important;
     margin: 0;
     padding: 0;
-    background: #4fac86;
+    background: #ffffff;
 }
 
 .page-wrapper {
@@ -193,4 +193,177 @@ html {
 .navbar-user-icon {
     color: #dadada;
     font-size: 18px;
+}
+
+/* welcome page */
+
+.welcome-slide-label {
+    letter-spacing: 0.2em;
+}
+.welcome-slide-desc {
+    max-width: 32rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+}
+.welcome-slider-overflow {
+    overflow: hidden;
+}
+
+/* Welcome page custom styles */
+.welcome-typebar-title {
+    font-weight: 400px;
+    font-size: 20px;
+}
+.welcome-typebar-btn {
+    width: 100%;
+    height: 70px;
+    border-radius: 6px;
+    font-size: 20px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+    padding: 0 1.5rem;
+    background-color: #fff;
+    color: #155D37;
+    border: 2px solid #E6ECE7;
+}
+.welcome-typebar-btn.active, .welcome-typebar-btn:active {
+    background-color: #0b4d26;
+    color: #fff !important;
+    border: none;
+}
+.welcome-typebar-btn:not(.active) {
+    background-color: #fff;
+    color: #000000;
+    font-weight: 500;
+    border: 1px solid #E6ECE7;
+}
+.welcome-typebar-btn svg {
+    width: 28px;
+    height: 28px;
+}
+.welcome-typebar-btn:not(.active) svg {
+    color: #E05B3C;
+}
+.welcome-typebar-btn.active svg {
+    color: #fff;
+}
+.welcome-card {
+    min-height: 400px;
+    border-radius: 6px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.welcome-card-img {
+    height: 160px;
+    object-fit: cover;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    width: 100%;
+}
+.welcome-card-body {
+    height: 180px;
+}
+.welcome-card-text {
+    font-size: 16px;
+    font-weight: 450;
+}
+.welcome-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    background: #fff;
+    border-top: 1px solid #f0f0f0;
+    height: 60px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.5s;
+}
+.welcome-card-footer .welcome-card-footer-label,
+.welcome-card-footer .welcome-card-footer-price {
+    transition: opacity 0.2s;
+}
+
+.welcome-card:hover .welcome-card-footer-label,
+.welcome-card:hover .welcome-card-footer-price {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.welcome-card:hover .welcome-card-footer {
+    border-top: none;
+}
+
+.welcome-card-btn-float {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 4px;
+    margin: 0 auto;
+    width: calc(100% - 8px);
+    background: #155D37;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0.7rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    cursor: pointer;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.2s, bottom 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+.welcome-card-btn-float span {
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+.welcome-card:hover .welcome-card-btn-float {
+    display: flex;
+    opacity: 1;
+}
+
+.welcome-card-footer .welcome-card-footer-label {
+    color: #888;
+    font-weight: 400;
+}
+.welcome-card-footer .welcome-card-footer-price {
+    color: #155D37;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    font-size: 20px;
+}
+.welcome-card-badge {
+    background: #FF9271;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 16px;
+    padding: 2px 16px;
+    display: inline-block;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+}
+.welcome-card-badge-light {
+    background: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 16px;
+    padding: 2px 16px;
+    display: inline-block;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+}
+.welcome-card-title {
+    font-size: 22px;
+    color: #fff;
+    font-weight: 600;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
 }
