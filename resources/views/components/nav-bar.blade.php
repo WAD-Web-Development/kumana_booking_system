@@ -1,25 +1,31 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light px-5 mb-5">
-  <a class="navbar-brand" href="/">KUMANA</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="d-flex justify-content-between align-items-center px-0 py-0 shadow-sm custom-navbar">
+    <!-- Left Section -->
+    <div class="d-flex align-items-center gap-3">
+        <a href="/" class="text-decoration-none d-flex align-items-baseline">
+            <h4 class="navbar-kumana-title ms-4">Kumana Insights</h4>
+            <span class="navbar-kumana-subtitle ms-2">Sri Lanka</span>
+        </a>
 
-  <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-      <!-- Add more links here if needed -->
+        <div class="vr mx-3 vertical-divider"></div>
+
+        <a href="/" class="navbar-home-link">Go to homepage</a>
     </div>
 
+    <!-- Right Section -->
     @auth
-      <div class="navbar-nav ml-auto d-flex align-items-center">
-        <span class="nav-item nav-link">{{ Auth::user()->name }}</span>
-
-        <form method="POST" action="{{ route('logout') }}">
-          @csrf
-          <button type="submit" class="btn btn-link nav-item nav-link" style="padding: 0;">Logout</button>
-        </form>
-      </div>
+        <div class="navbar-user-box d-flex justify-content-between align-items-center p-2">
+            <div class="mx-2">
+                <div class="navbar-user-welcome">Welcome Back,</div>
+                <div class="navbar-user-name">{{ Auth::user()->name }}</div>
+            </div>
+            <i class="far fa-user navbar-user-icon mx-2"></i>
+        </div>
+    @else
+        <div class="navbar-user-box d-flex justify-content-between align-items-center p-2">
+            <div class="mx-2">
+                <div class="navbar-user-name">Login</div>
+            </div>
+            <i class="far fa-user navbar-user-icon mx-2"></i>
+        </div>
     @endauth
-  </div>
 </nav>

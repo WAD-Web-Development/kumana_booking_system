@@ -129,3 +129,68 @@ html {
 .select2-container .select2-selection--single .select2-selection__arrow {
     height: 40px !important;
 }
+
+
+/* navbar */
+.custom-navbar {
+    background-color: #fff;
+    height: 60px;
+}
+
+.vertical-divider {
+    width: 2px;
+    height: 28px;
+    background-color: #fa9537;
+    display: inline-block;
+    border-radius: 1px;
+}
+
+.navbar-user-box {
+    background-color: #0B4F35;
+    min-width: 250px;
+    justify-content: center;
+    height: 100%;
+}
+
+.navbar-kumana-title {
+    font-weight: 600;
+    color: #0B4F35;
+    margin-bottom: 0;
+}
+
+.navbar-kumana-subtitle {
+    color: #93999e;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.navbar-home-link {
+    color: #212529;
+    text-decoration: none;
+    font-weight: 450;
+    font-size: 16px;
+    transition: color 0.2s;
+    text-decoration: none;
+}
+
+.navbar-home-link:hover {
+    color: #93999e;
+    text-decoration: none;
+}
+
+.navbar-user-welcome {
+    font-size: 14px;
+    font-weight: 500;
+    color: #93999e;
+}
+
+.navbar-user-name {
+    font-size: 18px;
+    font-weight: 400;
+    color: #dadada;
+}
+
+.navbar-user-icon {
+    color: #dadada;
+    font-size: 18px;
+}

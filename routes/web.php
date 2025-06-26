@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Admin\SpecialDateController as ASpecialDateController;
 use App\Http\Controllers\Admin\RoomTypeController as ARoomTypeController;
 use App\Http\Controllers\Admin\EmailAttachmentController as AEmailAttachmentController;
@@ -35,6 +36,8 @@ use App\Http\Controllers\Auth\CustomRegisterController;
 // });
 
 // User
+Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
+
 Route::get('/', [HomeController::class, 'index'])->name('dashboard');
 
 Route::get('/register', [CustomRegisterController::class, 'show'])->middleware(['guest'])->name('register');
