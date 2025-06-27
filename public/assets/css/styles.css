@@ -211,8 +211,22 @@ html {
     margin-bottom: 80px;
 }
 .welcome-slide-label {
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+}
+.welcome-slide-label-container {
     margin-bottom: 50px;
 }
+.line-divider {
+    flex-grow: 1; /* makes the line expand to fill space */
+    height: 2px;
+    background: rgb(255, 255, 255);
+    opacity: 0.8;
+    margin: 0 10px;
+    width: 120px; /* spacing between number and line */
+  }
+
 .welcome-slider-overflow {
     overflow: hidden;
 }
@@ -238,7 +252,7 @@ html {
     border: 2px solid #E6ECE7;
 }
 .welcome-typebar-btn.active, .welcome-typebar-btn:active {
-    background-color: #0b4d26;
+    background-color: #155D37;
     color: #fff !important;
     border: none;
 }
@@ -421,7 +435,7 @@ html {
     max-width: 100%;
 }
 .welcome-filter-pill.active {
-    background-color: #1e4238;
+    background-color: #155D37;
     color: #fff;
     border-color: #1e4238;
 }
