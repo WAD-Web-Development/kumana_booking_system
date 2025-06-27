@@ -9,22 +9,28 @@
                     <div class="carousel-inner h-100">
                         <div class="carousel-item active h-100 position-relative">
                             <img src="{{ asset('assets/img/logo.jpg') }}" class="d-block w-100 h-100 object-fit-cover" alt="Slide 1">
-                            <!-- Overlay content -->
+
                             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-start align-items-start p-4 welcome-overlay">
-                                <div class="mt-4">
-                                    <span class="d-block text-white fw-bold fs-5 welcome-slide-label">01 <span style="opacity:0.5;">──────</span> 04</span>
+                                <div class="mt-auto mx-3">
+                                    <span class="d-block text-white fw-bold fs-5 welcome-slide-label">
+                                        1  4
+                                    </span>
                                 </div>
-                                <div class="mt-auto mb-5">
-                                    <h1 class="display-5 fw-bold text-white" style="line-height: 1.1;">Book Your<br>Kumana Park Experience</h1>
-                                    <p class="text-white fs-5 welcome-slide-desc">
+                                <div class="mx-3">
+                                    <h1 class="welcome-slide-title">
+                                        Book Your<br>Kumana Park Experience
+                                    </h1>
+                                    <p class="welcome-slide-desc">
                                         Kumana National Park in Sri Lanka is renowned for its avifauna, particularly its large flocks of migratory waterfowl and wading birds. The park is 391 kilometres southeast of Colombo on Sri Lanka's southeastern coast. Kumana is contiguous with Yala National Park
                                     </p>
                                 </div>
                             </div>
+
                             <div class="position-absolute top-0 start-0 w-100 h-100 welcome-overlay-bg"></div>
                         </div>
+
                         <div class="carousel-item h-100">
-                            <img src="{{ asset('assets/img/logo.jpg') }}" class="d-block w-100 h-100 object-fit-cover" alt="Slide 2">
+                            <img src="{{ asset('assets/img/image2.jpg') }}" class="d-block w-100 h-100 object-fit-cover" alt="Slide 2">
                         </div>
                         <!-- Add more images as needed -->
                     </div>
@@ -38,6 +44,7 @@
                     </button>
                 </div>
             </div>
+
             <!-- Right: Content -->
             <div class="col-md-8 ps-3 pe-3">
                 <div class="my-4 welcome-typebar-title">View by type</div>

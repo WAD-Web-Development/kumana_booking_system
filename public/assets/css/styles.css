@@ -196,13 +196,22 @@ html {
 }
 
 /* welcome page */
-
-.welcome-slide-label {
-    letter-spacing: 0.2em;
-}
 .welcome-slide-desc {
-    max-width: 32rem;
     text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 120px;
+}
+.welcome-slide-title {
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    font-size: 44px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 80px;
+}
+.welcome-slide-label {
+    margin-bottom: 50px;
 }
 .welcome-slider-overflow {
     overflow: hidden;
