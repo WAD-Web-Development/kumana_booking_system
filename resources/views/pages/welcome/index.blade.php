@@ -41,7 +41,7 @@
             <!-- Right: Content -->
             <div class="col-md-8 ps-3 pe-3">
                 <div class="my-4 welcome-typebar-title">View by type</div>
-                <div class="row welcome-typebar-group flex-wrap gx-1 gy-1">
+                <div class="row welcome-typebar-group flex-wrap gx-1 gy-1 mb-4">
                     <div class="col-12 col-md-6 col-lg-3">
                         <button class="welcome-typebar-btn active w-100">
                             View all
@@ -58,7 +58,7 @@
                     <div class="col-12 col-md-6 col-lg-3">
                         <button class="welcome-typebar-btn w-100">
                             <span>
-                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 16v2M16 16v2"/></svg>
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="12" width="8" height="8" rx="2"/><rect x="14" y="4" width="8" height="16" rx="2"/></svg>
                             </span>
                             Safari Only
                         </button>
@@ -66,15 +66,58 @@
                     <div class="col-12 col-md-6 col-lg-3">
                         <button class="welcome-typebar-btn w-100">
                             <span>
-                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="12" width="8" height="8" rx="2"/><rect x="14" y="4" width="8" height="16" rx="2"/></svg>
                             </span>
                             Stay only
                         </button>
                     </div>
                 </div>
+
+                <div class="d-flex justify-content-between align-items-center pb-2 welcome-header-container">
+                    <h2 class="welcome-header-title">Packages</h2>
+                    <div>
+                        <button
+                            id="filter-open-btn"
+                            class="btn btn-link text-decoration-none welcome-filter-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#filterPanel"
+                            aria-expanded="false"
+                            aria-controls="filterPanel">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16"><path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5"/></svg>
+                            <span>Filter by</span>
+                        </button>
+
+                        <button
+                            id="filter-close-btn"
+                            class="btn btn-link text-decoration-none welcome-filter-button d-none"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#filterPanel"
+                            aria-expanded="false"
+                            aria-controls="filterPanel">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/></svg>
+                            <span>Close</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="collapse" id="filterPanel">
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <button class="welcome-filter-pill">Daytime</button>
+                            <button class="welcome-filter-pill">Night Safari</button>
+                            <button class="welcome-filter-pill active">Full-Day</button>
+                            <button class="welcome-filter-pill">No-Meals</button>
+                        </div>
+                        <div>
+                            <button class="welcome-apply-filters-btn">Filter Results</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Card Grid Section -->
                 <div class="row g-3 mt-2 mb-4">
-                    <!-- Card 1 -->
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="welcome-card position-relative">
                             <div class="position-relative">
@@ -141,7 +184,7 @@
                             </div>
                             <div class="welcome-card-footer px-2 py-3">
                                 <span class="welcome-card-footer-label">Starting at</span>
-                                <span class="welcome-card-footer-price">12000LKR pp</span>
+                                <span class="welcome-card-footer-price">12000LKR/night</span>
                             </div>
                             <button class="welcome-card-btn-float">View Package <span>&rarr;</span></button>
                         </div>
@@ -169,3 +212,26 @@
         </div>
     </div>
 @endsection
+
+@push('custom_scripts')
+    <script>
+        // Wait for the document to be fully loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterPanel = document.getElementById('filterPanel');
+            const openButton = document.getElementById('filter-open-btn');
+            const closeButton = document.getElementById('filter-close-btn');
+
+            // When the panel is about to be shown...
+            filterPanel.addEventListener('show.bs.collapse', function () {
+                openButton.classList.add('d-none');    // Hide the 'Filter by' button
+                closeButton.classList.remove('d-none'); // Show the 'Close' button
+            });
+
+            // When the panel is about to be hidden...
+            filterPanel.addEventListener('hide.bs.collapse', function () {
+                closeButton.classList.add('d-none');   // Hide the 'Close' button
+                openButton.classList.remove('d-none'); // Show the 'Filter by' button
+            });
+        });
+    </script>
+@endpush

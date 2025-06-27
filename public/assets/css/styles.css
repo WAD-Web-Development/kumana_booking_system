@@ -367,3 +367,93 @@ html {
     font-weight: 600;
     text-shadow: 0 2px 8px rgba(0,0,0,0.7);
 }
+
+.welcome-header-container {
+    border-bottom: 2px solid #155D37;
+}
+
+.welcome-header-title {
+    color: #155D37;
+    font-weight: 600;
+    font-size: 22px;
+    margin-bottom: 0;
+}
+
+.welcome-filter-button {
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.welcome-filter-button:focus,
+.welcome-filter-button:focus-visible {
+    box-shadow: none !important;
+}
+
+.welcome-filter-button svg {
+    color: #212529;
+}
+
+.welcome-filter-button:hover {
+    color: #212529;
+}
+
+.welcome-filter-pill {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    padding: 0.3rem 1rem;
+    font-size: 0.9rem;
+    color: #495057;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+.welcome-filter-pill.active {
+    background-color: #1e4238;
+    color: #fff;
+    border-color: #1e4238;
+}
+
+.welcome-apply-filters-btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  #filterPanel > .d-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  #filterPanel > .d-flex > div:first-child {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  #filterPanel > .d-flex > div:last-child {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .welcome-apply-filters-btn {
+    width: auto;
+  }
+}
+
+
