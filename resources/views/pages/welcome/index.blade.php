@@ -52,10 +52,6 @@
 
                             <div class="position-absolute top-0 start-0 w-100 h-100 welcome-overlay-bg"></div>
                         </div>
-
-                        {{-- <div class="carousel-item h-100">
-                            <img src="{{ asset('assets/img/image2.jpg') }}" class="d-block w-100 h-100 object-fit-cover" alt="Slide 2">
-                        </div> --}}
                     </div>
                     {{-- <button class="carousel-control-prev" type="button" data-bs-target="#welcomeCarousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
