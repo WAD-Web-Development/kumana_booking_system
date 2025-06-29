@@ -310,17 +310,14 @@ html {
 .welcome-card-footer .welcome-card-footer-price {
     transition: opacity 0.2s;
 }
-
 .welcome-card:hover .welcome-card-footer-label,
 .welcome-card:hover .welcome-card-footer-price {
     opacity: 0;
     pointer-events: none;
 }
-
 .welcome-card:hover .welcome-card-footer {
     border-top: none;
 }
-
 .welcome-card-btn-float {
     display: none;
     position: absolute;
@@ -359,7 +356,6 @@ html {
     display: flex;
     opacity: 1;
 }
-
 .welcome-card-footer .welcome-card-footer-label {
     color: #888;
     font-weight: 400;
@@ -395,7 +391,6 @@ html {
     font-weight: 600;
     text-shadow: 0 2px 8px rgba(0,0,0,0.7);
 }
-
 .welcome-header-container {
     border-bottom: 2px solid #155D37;
 }
@@ -406,14 +401,12 @@ html {
     font-size: 22px;
     margin-bottom: 0;
 }
-
 .welcome-filter-button {
     color: #6c757d;
     display: flex;
     align-items: center;
     gap: 0.4rem;
 }
-
 .welcome-filter-button:focus,
 .welcome-filter-button:focus-visible {
     box-shadow: none !important;
@@ -426,7 +419,6 @@ html {
 .welcome-filter-button:hover {
     color: #212529;
 }
-
 .welcome-filter-pill {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -444,7 +436,6 @@ html {
     color: #fff;
     border-color: #1e4238;
 }
-
 .welcome-apply-filters-btn {
     background-color: #000;
     color: #fff;
@@ -458,30 +449,75 @@ html {
     text-overflow: ellipsis;
     max-width: 100%;
 }
-
 @media (max-width: 768px) {
   #filterPanel > .d-flex {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
-
   #filterPanel > .d-flex > div:first-child {
     flex-wrap: wrap;
     gap: 0.5rem;
     width: 100%;
     justify-content: flex-start;
   }
-
   #filterPanel > .d-flex > div:last-child {
     width: 100%;
     display: flex;
     justify-content: flex-end;
   }
-
   .welcome-apply-filters-btn {
     width: auto;
   }
+}
+
+/* package page custom styles */
+.package-title {
+    color: #155D37;
+    font-weight: 600;
+    font-size: 24px;
+}
+.package-description-text {
+    font-size: 18px;
+}
+.package-include-item {
+    display: flex;
+    align-items: center;
+    padding: 20px 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    height: 100%;
+}
+.package-include-icon {
+    width: 1.5em;
+    font-size: 1.5em;
+    text-align: center;
+}
+.package-include-text {
+    font-weight: 500;
+    font-size: 18px;
+}
+.package-show-custom-padding {
+    padding-left: 100px !important;
+    padding-right: 100px !important;
+    padding-top: 40px !important;
+    padding-bottom: 20px !important;
+}
+@media (max-width: 768px) {
+    .package-show-custom-padding {
+        padding-left: 75px !important;
+        padding-right: 75px !important;
+        padding-top: 30px !important;
+        padding-bottom: 15px !important;
+    }
+}
+@media (max-width: 576px) {
+    .package-show-custom-padding {
+        padding-left: 50px !important;
+        padding-right: 50px !important;
+        padding-top: 20px !important;
+        padding-bottom: 10px !important;
+    }
 }
 
 

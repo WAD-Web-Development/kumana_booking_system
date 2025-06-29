@@ -57,8 +57,62 @@
             </div>
 
             <!-- Right: Content -->
-            <div class="col-md-8 px-5 py-4">
+            <div class="col-md-8 package-show-custom-padding">
+                <div class="card px-4 py-4">
+                    <div class="card-body">
+                        <h4 class="package-title">Package Description</h4>
+                        <p class="package-description-text mt-3">
+                            Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant, known for their smaller Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant, known for their smaller Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant, known for their smaller Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant, known for their smaller
+                        </p>
 
+                        <h4 class="package-title mt-5">Included</h4>
+
+                        <div class="row mt-4 g-3">
+                            <!-- Item 1: With Meals -->
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="package-include-item">
+                                    <i class="fas fa-utensils package-include-icon me-3"></i>
+                                    <span class="package-include-text">With Meals</span>
+                                </div>
+                            </div>
+                            <!-- Item 2: Pickup and Drop off -->
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="package-include-item">
+                                    <i class="fas fa-car package-include-icon me-3"></i>
+                                    <span class="package-include-text">Pickup and Drop off</span>
+                                </div>
+                            </div>
+                            <!-- Item 3: Accomodation -->
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="package-include-item">
+                                    <i class="fas fa-home package-include-icon me-3"></i>
+                                    <span class="package-include-text">Accomodation</span>
+                                </div>
+                            </div>
+                            <!-- Item 4: Personal Guide -->
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="package-include-item">
+                                    <i class="fas fa-user package-include-icon me-3"></i>
+                                    <span class="package-include-text">Personal Guide</span>
+                                </div>
+                            </div>
+                            <!-- Item 5: Safari -->
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="package-include-item">
+                                    <i class="fas fa-car-side package-include-icon me-3"></i>
+                                    <span class="package-include-text">Safari</span>
+                                </div>
+                            </div>
+                            <!-- Item 6: Sightseeing and History -->
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="package-include-item">
+                                    <i class="fas fa-binoculars package-include-icon me-3"></i>
+                                    <span class="package-include-text">Sightseeing and History</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
