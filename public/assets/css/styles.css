@@ -519,5 +519,42 @@ html {
         padding-bottom: 10px !important;
     }
 }
+.package-sighting-card {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    background-color: #fcfcfc;
+    border: none;
+}
+.package-sighting-card img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+.package-sighting-card .card-img-overlay {
+    margin-top: 110px;
+}
+.package-sighting-card-name-tag {
+    font-size: 18px;
+    font-weight: 450;
+    color: #c9c9c9;
+}
+.package-sighting-card-name {
+    font-size: 22px;
+    font-weight: 500;
+    color: #c9c9c9;
+    margin-bottom: 0;
+}
+.package-sighting-card-location {
+    font-size: 16px;
+    font-weight: 450;
+    color: #c9c9c9;
+}
+.package-sighting-card-location-name {
+    font-size: 18px;
+    font-weight: 450;
+}
+
+
 
 

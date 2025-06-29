@@ -67,7 +67,7 @@
 
                         <h4 class="package-title mt-5">Included</h4>
 
-                        <div class="row mt-4 g-3">
+                        <div class="row mt-4 g-4">
                             <!-- Item 1: With Meals -->
                             <div class="col-sm-6 col-lg-4">
                                 <div class="package-include-item">
@@ -110,6 +110,52 @@
                                     <span class="package-include-text">Sightseeing and History</span>
                                 </div>
                             </div>
+                        </div>
+
+                        <h4 class="package-title mt-5">Possible leopard sightings</h4>
+
+                        <div class="row mt-4 g-3">
+                            <!-- Sighting Card 1 -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card package-sighting-card ">
+                                    <img src="{{ asset('assets/img/image1.jpg') }}" class="card-img-top" alt="...">
+                                    <div class="card-img-overlay px-4 py-3">
+                                        <h4 class="package-sighting-card-name-tag mb-1">Leopard 11</h4>
+                                        <h5 class="package-sighting-card-name">Samantha Bruh</h5>
+                                      </div>
+                                    <div class="card-body package-sighting-card-body px-4 py-3">
+                                        <h6 class="package-sighting-card-location">Location</h6>
+                                        <h5 class="package-sighting-card-location-name">North West Kumana Park</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card package-sighting-card ">
+                                    <img src="{{ asset('assets/img/image2.jpg') }}" class="card-img-top" alt="...">
+                                    <div class="card-img-overlay px-4 py-3">
+                                        <h4 class="package-sighting-card-name-tag mb-1">Leopard 11</h4>
+                                        <h5 class="package-sighting-card-name">Samantha Bruh</h5>
+                                      </div>
+                                    <div class="card-body package-sighting-card-body px-4 py-3">
+                                        <h6 class="package-sighting-card-location">Location</h6>
+                                        <h5 class="package-sighting-card-location-name">North West Kumana Park</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card package-sighting-card ">
+                                    <img src="{{ asset('assets/img/logo.jpg') }}" class="card-img-top" alt="...">
+                                    <div class="card-img-overlay px-4 py-3">
+                                        <h4 class="package-sighting-card-name-tag mb-1">Leopard 11</h4>
+                                        <h5 class="package-sighting-card-name">Samantha Bruh</h5>
+                                      </div>
+                                    <div class="card-body package-sighting-card-body px-4 py-3">
+                                        <h6 class="package-sighting-card-location">Location</h6>
+                                        <h5 class="package-sighting-card-location-name">North West Kumana Park</h5>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
