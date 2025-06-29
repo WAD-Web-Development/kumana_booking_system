@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\RoomTypeController as ARoomTypeController;
 use App\Http\Controllers\Admin\EmailAttachmentController as AEmailAttachmentController;
 use App\Http\Controllers\Admin\SafariBookingPriceController as ASafariBookingPriceController;
 use App\Http\Controllers\Admin\PackageController as APackageController;
+use App\Http\Controllers\PackageController;
 use App\Http\Controllers\Auth\CustomRegisterController;
 
 /*
@@ -42,9 +43,14 @@ Route::get('/', [HomeController::class, 'index'])->name('dashboard');
 
 Route::get('/register', [CustomRegisterController::class, 'show'])->middleware(['guest'])->name('register');
 
+// package
+Route::get('/package', [PackageController::class, 'index'])->name('package.index');
+Route::get('/packages/{id}', [PackageController::class, 'show'])->name('packages.show');
+// package - end
+
 
 // Admin
-Route::middleware(['admin'])->group(function () {
+Route::middleware(['admin'])->prefix('admin')->group(function () {
 
     Route::resource('special-date', ASpecialDateController::class);
     Route::resource('room-type', ARoomTypeController::class);

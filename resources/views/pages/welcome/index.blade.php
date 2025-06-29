@@ -53,14 +53,6 @@
                             <div class="position-absolute top-0 start-0 w-100 h-100 welcome-overlay-bg"></div>
                         </div>
                     </div>
-                    {{-- <button class="carousel-control-prev" type="button" data-bs-target="#welcomeCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#welcomeCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button> --}}
                 </div>
             </div>
 
@@ -158,7 +150,9 @@
                                 <span class="welcome-card-footer-label">Starting at</span>
                                 <span class="welcome-card-footer-price">12000LKR pp</span>
                             </div>
-                            <button class="welcome-card-btn-float">View Package <span>&rarr;</span></button>
+                            <a href="{{ route('packages.show', 1) }}" class="welcome-card-btn-float">
+                                View Package <span>&rarr;</span>
+                            </a>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3">

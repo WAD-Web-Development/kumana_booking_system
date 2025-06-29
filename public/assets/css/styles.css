@@ -345,6 +345,11 @@ html {
     justify-content: space-between;
     align-items: center;
     gap: 1.5rem;
+    text-decoration: none;
+}
+.welcome-card-btn-float:hover {
+    text-decoration: none;
+    color: #fff;
 }
 .welcome-card-btn-float span {
     font-size: 1.5em;
