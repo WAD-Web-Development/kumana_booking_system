@@ -634,6 +634,142 @@ html {
     font-size: 12px;
     vertical-align: middle;
 }
+.package-image-card {
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    background: #fff;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 120px;
+    border: none;
+}
+.package-image-card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+.package-image-card-body {
+    background: #fff;
+}
+.package-image-card-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+.package-image-card-info-row-border {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 450;
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+}
+.package-image-card-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 450;
+    padding: 8px 0;
+}
+.package-image-card-label {
+    color: #b0b0b0;
+    font-weight: 400;
+}
+.package-image-card-value {
+    font-weight: 500;
+}
+.package-image-card-footer {
+    background: #fff;
+}
+.package-image-card-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.package-image-card-label {
+    color: #888;
+    font-weight: 400;
+}
+.package-image-card-price {
+    color: #155D37;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    font-size: 22px;
+}
+.package-image-card-btn {
+    margin-top: 16px;
+    background: #155D37;
+    color: #fff;
+    font-weight: 450;
+    font-size: 18px;
+    border-radius: 6px;
+    padding: 18px 18px;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    transition: background 0.2s;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.package-image-card-btn:hover {
+    background: #155D37;
+    color: #fff;
+}
+.package-image-card-btn-arrow {
+    font-size: 16px;
+    vertical-align: middle;
+}
+.custom-bg {
+    background-image: url('/assets/img/image2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+.package-back-btn-container {
+    padding: 32px 0 0 32px;
+}
+
+.package-back-btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #222;
+    font-size: 1.2rem;
+    font-weight: 400;
+    transition: color 0.2s;
+}
+
+.package-back-btn:hover {
+    color: #222;
+}
+
+.package-back-btn-icon {
+    background: #fff;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    font-size: 16px;
+}
+
+.package-back-btn-text {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+.package-back-btn-text:hover {
+    color: #222;
+}
+
 
 
 

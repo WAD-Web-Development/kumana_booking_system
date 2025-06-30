@@ -4,56 +4,44 @@
     <div class="container-fluid p-0">
         <div class="row g-0">
             <!-- Left: Image Slider -->
-            <div class="col-md-4 min-vh-100 d-flex align-items-center justify-content-center p-0 welcome-slider-overflow">
-                <div id="welcomeCarousel" class="carousel slide w-100 h-100" data-bs-ride="carousel">
-                    <div class="carousel-inner h-100">
-                        <div class="carousel-item active h-100 position-relative">
-                            <img src="{{ asset('assets/img/image1.jpg') }}" class="d-block w-100 h-100 object-fit-cover" alt="Slide 1">
+            <div class="col-md-4 custom-bg">
+                <div class="package-back-btn-container">
+                    <a href="{{ route('package.index') }}" class="package-back-btn">
+                        <span class="package-back-btn-icon">
+                            <i class="fas fa-arrow-left"></i>
+                        </span>
+                        <span class="package-back-btn-text">Back to Packages</span>
+                    </a>
+                </div>
 
-                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-start align-items-start p-4 welcome-overlay">
-                                <div class="mt-auto mx-3 d-flex align-items-center welcome-slide-label-container">
-                                    <span class="welcome-slide-label">01</span>
-                                    <div class="line-divider"></div>
-                                    <span class="welcome-slide-label">04</span>
-                                  </div>
-
-                                <div class="mx-3">
-                                    <h1 class="welcome-slide-title">
-                                        Book Your<br>Kumana Park Experience
-                                    </h1>
-                                    <p class="welcome-slide-desc">
-                                        Kumana National Park in Sri Lanka is renowned for its avifauna, particularly its large flocks of migratory waterfowl and wading birds. The park is 391 kilometres southeast of Colombo on Sri Lanka's southeastern coast. Kumana is contiguous with Yala National Park
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="position-absolute top-0 start-0 w-100 h-100 welcome-overlay-bg"></div>
+                <div class="card package-image-card">
+                    <img src="{{ asset('assets/img/image1.jpg') }}" class="package-image-card-img" alt="image">
+                    <div class="package-image-card-body p-3">
+                        <h5 class="package-image-card-title mb-5">Sunset Experience</h5>
+                        <div class="package-image-card-info-row-border">
+                            <span class="package-image-card-label">Package Type</span>
+                            <span class="package-image-card-value">Stay + Safari</span>
                         </div>
-
-                        <div class="carousel-item h-100 position-relative">
-                            <img src="{{ asset('assets/img/image2.jpg') }}" class="d-block w-100 h-100 object-fit-cover" alt="Slide 2">
-
-                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-start align-items-start p-4 welcome-overlay">
-                                <div class="mt-auto mx-3 d-flex align-items-center welcome-slide-label-container">
-                                    <span class="welcome-slide-label">02</span>
-                                    <div class="line-divider"></div>
-                                    <span class="welcome-slide-label">04</span>
-                                  </div>
-
-                                <div class="mx-3">
-                                    <h1 class="welcome-slide-title">
-                                        Book Your<br>Kumana Park Experience
-                                    </h1>
-                                    <p class="welcome-slide-desc">
-                                        Kumana National Park in Sri Lanka is renowned for its avifauna, particularly its large flocks of migratory waterfowl and wading birds. The park is 391 kilometres southeast of Colombo on Sri Lanka's southeastern coast. Kumana is contiguous with Yala National Park
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="position-absolute top-0 start-0 w-100 h-100 welcome-overlay-bg"></div>
+                        <div class="package-image-card-info-row-border">
+                            <span class="package-image-card-label">Safari Time</span>
+                            <span class="package-image-card-value">
+                                <i class="fas fa-sun"></i> Daytime
+                            </span>
+                        </div>
+                        <div class="package-image-card-info-row">
+                            <span class="package-image-card-label">Day Type</span>
+                            <span class="package-image-card-value">Fullday</span>
                         </div>
                     </div>
+                    <div class="card-footer package-image-card-footer mt-4 p-2">
+                        <div class="package-image-card-price-row mt-2">
+                            <span class="package-image-card-label ps-3">Starting at</span>
+                            <span class="package-image-card-price pe-3">12000LKR pp</span>
+                        </div>
+                        <a href="#" class="package-image-card-btn mt-3">Book Package <i class="fas fa-arrow-right package-image-card-btn-arrow"></i></a>
+                    </div>
                 </div>
+
             </div>
 
             <!-- Right: Content -->
