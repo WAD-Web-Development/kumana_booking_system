@@ -69,45 +69,105 @@
 
                         <div class="row mt-4 g-4">
                             <!-- Item 1: With Meals -->
-                            <div class="col-sm-6 col-lg-4">
+                            <div class="col-12 col-md-12 col-lg-6 col-xl-4">
                                 <div class="package-include-item">
                                     <i class="fas fa-utensils package-include-icon me-3"></i>
                                     <span class="package-include-text">With Meals</span>
                                 </div>
                             </div>
                             <!-- Item 2: Pickup and Drop off -->
-                            <div class="col-sm-6 col-lg-4">
+                            <div class="col-12 col-md-12 col-lg-6 col-xl-4">
                                 <div class="package-include-item">
                                     <i class="fas fa-car package-include-icon me-3"></i>
                                     <span class="package-include-text">Pickup and Drop off</span>
                                 </div>
                             </div>
                             <!-- Item 3: Accomodation -->
-                            <div class="col-sm-6 col-lg-4">
+                            <div class="col-12 col-md-12 col-lg-6 col-xl-4">
                                 <div class="package-include-item">
                                     <i class="fas fa-home package-include-icon me-3"></i>
                                     <span class="package-include-text">Accomodation</span>
                                 </div>
                             </div>
                             <!-- Item 4: Personal Guide -->
-                            <div class="col-sm-6 col-lg-4">
+                            <div class="col-12 col-md-12 col-lg-6 col-xl-4">
                                 <div class="package-include-item">
                                     <i class="fas fa-user package-include-icon me-3"></i>
                                     <span class="package-include-text">Personal Guide</span>
                                 </div>
                             </div>
                             <!-- Item 5: Safari -->
-                            <div class="col-sm-6 col-lg-4">
+                            <div class="col-12 col-md-12 col-lg-6 col-xl-4">
                                 <div class="package-include-item">
                                     <i class="fas fa-car-side package-include-icon me-3"></i>
                                     <span class="package-include-text">Safari</span>
                                 </div>
                             </div>
                             <!-- Item 6: Sightseeing and History -->
-                            <div class="col-sm-6 col-lg-4">
+                            <div class="col-12 col-md-12 col-lg-6 col-xl-4">
                                 <div class="package-include-item">
                                     <i class="fas fa-binoculars package-include-icon me-3"></i>
                                     <span class="package-include-text">Sightseeing and History</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="package-title mt-5">Accommodation</h4>
+
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <div class="d-flex align-items-center p-2 package-accommodation-card">
+                                    <img src="{{ asset('assets/img/image1.jpg') }}" alt="image" class="package-accommodation-image">
+                                    <div class="ms-4">
+                                        <h5 class="package-accommodation-title">Villa North Green</h5>
+                                        <p class="package-accommodation-description">
+                                            Stay close to nature, experience the wild like never before Stay close to nature, experience
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex justify-content-between package-other-information-row">
+                                  <span class="package-other-information-label">Master Bedroom</span>
+                                  <span class="package-other-information-value">x2</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex justify-content-between package-other-information-row">
+                                    <span class="package-other-information-label">Normal Room</span>
+                                    <span class="package-other-information-value">x3</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex justify-content-between package-other-information-row mt-3">
+                                    <span class="package-other-information-label">Bathroom</span>
+                                    <span class="package-other-information-value">x1 Attached x2 Private</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="package-title mt-5">Other Information</h4>
+
+                        <div class="row mt-4">
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex justify-content-between package-other-information-row">
+                                  <span class="package-other-information-label">Entrance</span>
+                                  <span class="package-other-information-value">North West</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex justify-content-between package-other-information-row">
+                                    <span class="package-other-information-label">Hotel Distance</span>
+                                    <span class="package-other-information-value">5 Km from North Entrance</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="d-flex justify-content-between package-other-information-row mt-3">
+                                    <span class="package-other-information-label">Safari Duration</span>
+                                    <span class="package-other-information-value">3-4 Hours</span>
                                 </div>
                             </div>
                         </div>
@@ -156,6 +216,58 @@
                                 </div>
                             </div>
 
+                        </div>
+
+                        <h4 class="package-title mt-5">Itinerary</h4>
+
+                        <ul class="list-unstyled mt-4">
+                            <li class="d-flex justify-content-between align-items-center package-itinerary-row">
+                              <div class="d-flex align-items-center">
+                                <span class="package-itinerary-number me-4">01</span>
+                                <span class="package-itinerary-text">Check in to the Hotel</span>
+                              </div>
+                              <div class="package-itinerary-time">
+                                {{-- <span>9:00am</span> --}}
+                                <span class="ms-3">6:20am</span>
+                              </div>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center package-itinerary-row">
+                              <div class="d-flex align-items-center">
+                                <span class="package-itinerary-number me-4">04</span>
+                                <span class="package-itinerary-text">Breakfast</span>
+                              </div>
+                              <div class="package-itinerary-time">
+                                {{-- <span>9:00am</span> --}}
+                                <span class="ms-3">7:10am</span>
+                              </div>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center package-itinerary-row">
+                              <div class="d-flex align-items-center">
+                                <span class="package-itinerary-number me-4">03</span>
+                                <span class="package-itinerary-text">Break</span>
+                              </div>
+                              <div class="package-itinerary-time">
+                                <span>9:00am</span>
+                                <span class="ms-3">10:10am</span>
+                              </div>
+                            </li>
+                        </ul>
+
+                        <div class="package-contact-banner p-3 p-md-4 d-flex align-items-center">
+                            <div class="me-3 me-md-4 flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#E59880" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.28 1.465l-2.13 2.13a1.08 1.08 0 0 0-.11 1.258c.277.492.64 1.002 1.095 1.457.454.454 1.055.87 1.457 1.095.492.277 1.002.64 1.258.11l2.13-2.13a1.08 1.08 0 0 0 1.465.28l2.308 1.799a1.745 1.745 0 0 1 .163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.363-1.03-.038-2.137.703-2.877z"/>
+                                </svg>
+                            </div>
+
+                            <div>
+                                <h6 class="package-contact-banner-title mb-1">
+                                    <a href="#" class="package-contact-banner-title-link">Got questions ? get in touch now <i class="fas fa-arrow-right package-get-in-touch-arrow"></i>
+                                </h6>
+                                <p class="package-contact-banner-subtext mb-0">
+                                    We will get back to you within 24hours, Please do give us all the details necessary to get back with the right answers
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
