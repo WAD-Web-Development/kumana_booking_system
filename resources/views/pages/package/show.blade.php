@@ -38,7 +38,7 @@
                             <span class="package-image-card-label ps-3">Starting at</span>
                             <span class="package-image-card-price pe-3">12000LKR pp</span>
                         </div>
-                        <a href="#" class="package-image-card-btn mt-3">Book Package <i class="fas fa-arrow-right package-image-card-btn-arrow"></i></a>
+                        <a href="{{ route('booking.create', 1) }}" class="package-image-card-btn mt-3">Book Package <i class="fas fa-arrow-right package-image-card-btn-arrow"></i></a>
                     </div>
                 </div>
 

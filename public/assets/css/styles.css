@@ -729,12 +729,10 @@ html {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-  }
-
+}
 .package-back-btn-container {
     padding: 32px 0 0 32px;
 }
-
 .package-back-btn {
     display: flex;
     align-items: center;
@@ -744,11 +742,9 @@ html {
     font-weight: 400;
     transition: color 0.2s;
 }
-
 .package-back-btn:hover {
     color: #222;
 }
-
 .package-back-btn-icon {
     background: #fff;
     border-radius: 50%;
@@ -835,5 +831,69 @@ html {
     transition: opacity 0.3s;
 }
 
-
+/* booking page custom styles */
+.booking-bg {
+    max-height: 100vh;
+    background: url('/assets/img/image2.jpg') no-repeat center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; /* Optional: for parallax effect */
+}
+.booking-package-details-card {
+    border-radius: 6px;
+    border: none;
+}
+.booking-package-details-card-header {
+    border-top-left-radius: 6px !important;
+    border-top-right-radius: 6px !important;
+    background-color: #fff;
+}
+.booking-package-details-card-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #155D37;
+}
+.booking-package-details-card-back-btn {
+    font-size: 18px;
+    font-weight: 450;
+    color: #155D37;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+}
+.booking-package-details-card-back-btn:hover {
+    color: #155D37;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+}
+.booking-package-details-card-label {
+    font-size: 16px;
+    font-weight: 450;
+    color: #b0b0b0;
+}
+.booking-package-details-card-value {
+    font-size: 20px;
+    font-weight: 500;
+}
+.booking-package-details-card-value-price {
+    font-size: 25px;
+    font-weight: 500;
+    color: #155D37;
+}
+.booking-details-card {
+    border-radius: 6px;
+    border: none;
+}
+.booking-details-card-header {
+    border-top-left-radius: 6px !important;
+    border-top-right-radius: 6px !important;
+    background-color: #fff;
+}
+.booking-details-card-title {
+    font-size: 28px;
+    font-weight: 500;
+    color: #155D37;
+}
 

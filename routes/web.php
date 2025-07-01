@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\SafariBookingPriceController as ASafariBookingPri
 use App\Http\Controllers\Admin\PackageController as APackageController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\Auth\CustomRegisterController;
+use App\Http\Controllers\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,9 @@ Route::get('/package', [PackageController::class, 'index'])->name('package.index
 Route::get('/packages/{id}', [PackageController::class, 'show'])->name('packages.show');
 // package - end
 
+// booking
+Route::get('/booking/{id}', [BookingController::class, 'create'])->name('booking.create');
+// booking - end
 
 // Admin
 Route::middleware(['admin'])->prefix('admin')->group(function () {
