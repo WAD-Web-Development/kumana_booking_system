@@ -775,6 +775,8 @@ html {
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
     cursor: grab;
+    margin-right: -40px !important;
+    position: relative;
 }
 .package-carousel-container:active {
     cursor: grabbing;
@@ -788,7 +790,7 @@ html {
 }
 .package-carousel-item {
     flex: 0 0 auto;
-    width: 55%;
+    width: 50%;
     height: 320px;
     border-radius: 6px;
     overflow: hidden !important;
@@ -801,6 +803,36 @@ html {
     height: 100%;
     object-fit: cover;
     border-radius: 6px;
+}
+.package-show-card-body {
+    padding: 40px !important;
+}
+.drag-to-explore-overlay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #155D37;
+    color: #f3f3f3;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0.95;
+    transition: opacity 0.3s;
+}
+.drag-to-explore-overlay.hide {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
 }
 
 

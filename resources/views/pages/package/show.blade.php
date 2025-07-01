@@ -46,8 +46,8 @@
 
             <!-- Right: Content -->
             <div class="col-md-8 package-show-custom-padding">
-                <div class="card px-4 py-4">
-                    <div class="card-body">
+                <div class="card p-0">
+                    <div class="card-body p-0 package-show-card-body">
                         <h4 class="package-title">Package Description</h4>
                         <p class="package-description-text mt-3">
                             Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant, known for their smaller Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant, known for their smaller Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant, known for their smaller Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant, known for their smaller
@@ -244,6 +244,9 @@
                         <h4 class="package-title mt-5">Photos and Gallery</h4>
 
                         <div class="d-flex flex-nowrap mt-4 package-carousel-container">
+                            <div class="drag-to-explore-overlay hide" id="dragToExploreOverlay">
+                                Drag<br>to Explore
+                            </div>
                             <div class="package-carousel-item me-3">
                                 <img src="{{ asset('assets/img/image1.jpg') }}" class="package-carousel-image" alt="...">
                             </div>
@@ -254,7 +257,6 @@
                                 <img src="{{ asset('assets/img/logo.jpg') }}" class="package-carousel-image" alt="...">
                             </div>
                         </div>
-
 
                         <div class="package-contact-banner p-3 p-md-4 d-flex align-items-center">
                             <div class="me-3 me-md-4 flex-shrink-0">
@@ -315,7 +317,54 @@
     document.querySelectorAll('.package-carousel-image').forEach(img => {
         img.addEventListener('dragstart', e => e.preventDefault());
     });
+
+    // Drag to Explore overlay logic
+    const overlay = document.getElementById('dragToExploreOverlay');
+    const gallery = document.querySelector('.package-carousel-container');
+    let overlayTimeout;
+
+    gallery.addEventListener('mouseenter', () => {
+        overlay.classList.remove('hide');
+        clearTimeout(overlayTimeout);
+        overlayTimeout = setTimeout(() => {
+            overlay.classList.add('hide');
+        }, 3000);
+    });
+
+    gallery.addEventListener('mousemove', () => {
+        // Optional: reset timer if user keeps moving mouse
+        clearTimeout(overlayTimeout);
+        overlayTimeout = setTimeout(() => {
+            overlay.classList.add('hide');
+        }, 3000);
+    });
+
+    gallery.addEventListener('mouseleave', () => {
+        overlay.classList.add('hide');
+        clearTimeout(overlayTimeout);
+    });
+
+    // Optionally, hide overlay on drag start
+    gallery.addEventListener('mousedown', () => {
+        overlay.classList.add('hide');
+        clearTimeout(overlayTimeout);
+    });
+
+    function centerOverlay() {
+        const gallery = document.querySelector('.package-carousel-container');
+        const overlay = document.getElementById('dragToExploreOverlay');
+        // Get the visible width of the gallery
+        const visibleWidth = gallery.clientWidth;
+        // The overlay should be centered in the visible area, so:
+        overlay.style.left = (gallery.scrollLeft + visibleWidth / 2) + 'px';
+    }
+
+    // Center overlay on scroll and on show
+    gallery.addEventListener('scroll', centerOverlay);
+    gallery.addEventListener('mouseenter', centerOverlay);
+    window.addEventListener('resize', centerOverlay);
+
+    // Also call it once on page load
+    centerOverlay();
 </script>
-
-
 @endpush
