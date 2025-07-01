@@ -241,7 +241,20 @@
                             </li>
                         </ul>
 
-                        {{-- <h4 class="package-title mt-5">Photos and Gallery</h4> --}}
+                        <h4 class="package-title mt-5">Photos and Gallery</h4>
+
+                        <div class="d-flex flex-nowrap mt-4 package-carousel-container">
+                            <div class="package-carousel-item me-3">
+                                <img src="{{ asset('assets/img/image1.jpg') }}" class="package-carousel-image" alt="...">
+                            </div>
+                            <div class="package-carousel-item me-3">
+                                <img src="{{ asset('assets/img/image2.jpg') }}" class="package-carousel-image" alt="...">
+                            </div>
+                            <div class="package-carousel-item me-3">
+                                <img src="{{ asset('assets/img/logo.jpg') }}" class="package-carousel-image" alt="...">
+                            </div>
+                        </div>
+
 
                         <div class="package-contact-banner p-3 p-md-4 d-flex align-items-center">
                             <div class="me-3 me-md-4 flex-shrink-0">
@@ -267,5 +280,42 @@
 @endsection
 
 @push('custom_scripts')
+
+<script>
+    const container = document.querySelector('.package-carousel-container');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    container.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+      container.classList.add('active');
+    });
+
+    container.addEventListener('mouseleave', () => {
+      isDown = false;
+      container.classList.remove('active');
+    });
+
+    container.addEventListener('mouseup', () => {
+      isDown = false;
+      container.classList.remove('active');
+    });
+
+    container.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - container.offsetLeft;
+      const walk = (x - startX) * 1.2; // Adjust multiplier for speed
+      container.scrollLeft = scrollLeft - walk;
+    });
+
+    document.querySelectorAll('.package-carousel-image').forEach(img => {
+        img.addEventListener('dragstart', e => e.preventDefault());
+    });
+</script>
+
 
 @endpush
