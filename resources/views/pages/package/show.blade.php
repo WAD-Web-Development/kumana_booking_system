@@ -241,6 +241,8 @@
                             </li>
                         </ul>
 
+                        {{-- <h4 class="package-title mt-5">Photos and Gallery</h4> --}}
+
                         <div class="package-contact-banner p-3 p-md-4 d-flex align-items-center">
                             <div class="me-3 me-md-4 flex-shrink-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#E59880" class="bi bi-telephone-fill" viewBox="0 0 16 16">

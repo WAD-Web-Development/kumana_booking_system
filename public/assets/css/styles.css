@@ -761,7 +761,6 @@ html {
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     font-size: 16px;
 }
-
 .package-back-btn-text {
     font-size: 1.1rem;
     font-weight: 400;
@@ -769,8 +768,6 @@ html {
 .package-back-btn-text:hover {
     color: #222;
 }
-
-
 
 
 
