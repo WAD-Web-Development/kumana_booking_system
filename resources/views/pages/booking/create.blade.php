@@ -43,39 +43,16 @@
                     <div class="card-header px-4 py-4 booking-details-card-header">
                         <h4 class="booking-details-card-title mb-0">Confirm your booking</h4>
                     </div>
-                    <div class="card-body px-4 py-0">
-                        <div class="py-4">
-                            <h5 class="mb-1">Safari</h5>
-                            <div class="text-muted mb-4" style="font-size: 1rem;">Select your preferred date for the safari</div>
-                            <div class="row g-3">
-                                <div class="col-md-6 col-lg-4">
-                                    <label class="form-label">Pick up location</label>
-                                    <select class="form-select">
-                                        <option>Entrance 1</option>
-                                        <option>Entrance 2</option>
-                                    </select>
+                    <div class="card-body px-4 py-4">
+                        <div class="booking-details-card-safari-section mb-5">
+                            <h5 class="booking-details-card-safari-section-title mt-2">Safari</h5>
+                            <p class="booking-details-card-safari-section-description mb-4">Select your preferred date for the safari</p>
+
+                            <div class="row m-0 p-0 input-group mb-3">
+                                <div class="col-8 p-0 input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Pick up location</span>
                                 </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <label class="form-label">Safari Date</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                                        <input type="date" class="form-control" value="2024-06-18">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <label class="form-label">Passenger visa type</label>
-                                    <select class="form-select">
-                                        <option>Travel Visa</option>
-                                        <option>Resident Visa</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <label class="form-label">Number of Passengers</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text"><i class="bi bi-people"></i></span>
-                                        <input type="number" class="form-control" value="2" min="1">
-                                    </div>
-                                </div>
+                                <input type="text" class="col-4 p-0 form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                         </div>
                     </div>

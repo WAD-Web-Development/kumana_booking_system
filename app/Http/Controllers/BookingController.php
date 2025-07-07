@@ -17,4 +17,16 @@ class BookingController extends Controller
             return redirect()->back()->with('error', 'Something went wrong');
         }
     }
+
+    public function confirmation($id)
+    {
+        try {
+            // $package = Package::findOrFail($id);
+
+            // return view('packages.show', compact('package'));
+            return view('pages.booking.confirmation');
+        } catch (Throwable $th) {
+            return redirect()->back()->with('error', 'Something went wrong');
+        }
+    }
 }

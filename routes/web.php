@@ -51,6 +51,7 @@ Route::get('/packages/{id}', [PackageController::class, 'show'])->name('packages
 
 // booking
 Route::get('/booking/{id}', [BookingController::class, 'create'])->name('booking.create');
+Route::get('/booking-confirmation/{id}', [BookingController::class, 'confirmation'])->name('booking.confirmation');
 // booking - end
 
 // Admin
