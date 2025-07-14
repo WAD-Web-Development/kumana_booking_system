@@ -896,15 +896,87 @@ html {
     font-weight: 500;
     color: #155D37;
 }
-.booking-details-card-safari-section-title {
+.booking-details-card-section-title {
     font-size: 22px;
     font-weight: 600;
     color: #155D37;
 }
-.booking-details-card-safari-section-description {
+.booking-details-card-section-description {
     font-size: 17px;
 }
+.booking-details-card-input-row {
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+    /* overflow: hidden; */
+    padding: 0;
+    margin: 0;
+    height: 70px; /* or your desired height */
+    width: 100%;
+}
+.booking-details-card-input-label {
+    border: none;
+    padding: 0;
+    margin: 0px;
+    height: 100%;
+}
+.booking-details-card-input-label-text {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 20px 10px 20px;
+    background-color: #fff;
+    border: none;
+    border-right: 2px solid #dee2e6;
+}
+.booking-details-card-input-value {
+    border: none;
+    padding: 10px 20px 10px 20px;
+    margin: 0px;
+    height: 100%;
+    font-size: 18px;
+    font-weight: 450;
+    color: #000000 !important;
+}
+.booking-details-card-input-value:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+.input-group-text {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
 
+.booking-details-card-btn {
+    background: #155D37;
+    color: #fff;
+    font-weight: 450;
+    font-size: 18px;
+    border-radius: 6px;
+    padding: 18px 18px;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    transition: background 0.2s;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.booking-details-card-btn:hover {
+    background: #155D37;
+    color: #fff;
+}
+
+.booking-details-card-continue-section-description{
+    font-size: 16px;
+    font-weight: 400;
+}
 
 /* booking-confirmation */
 .booking-confirmation-card {
