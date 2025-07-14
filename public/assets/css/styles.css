@@ -978,6 +978,113 @@ html {
     font-weight: 400;
 }
 
+/* booking-summary */
+.booking-summary-details-card {
+    border-radius: 6px;
+    border: none;
+}
+.booking-summary-details-card-header {
+    border-top-left-radius: 6px !important;
+    border-top-right-radius: 6px !important;
+    background-color: #fff;
+}
+.booking-summary-details-card-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #155D37;
+}
+.booking-summary-details-card-back-btn {
+    font-size: 18px;
+    font-weight: 450;
+    color: #155D37;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+}
+.booking-summary-details-card-back-btn:hover {
+    color: #155D37;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+}
+.booking-summary-details-card-label {
+    font-size: 16px;
+    font-weight: 450;
+    color: #b0b0b0;
+}
+.booking-summary-details-card-value {
+    font-size: 20px;
+    font-weight: 500;
+}
+.booking-summary-details-card-label-price {
+    font-size: 16px;
+    font-weight: 450;
+    color: #36a56a;
+}
+.booking-summary-details-card-value-price {
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+}
+.booking-summary-details-card-total-price-section {
+    background-color: #155D37;
+}
+.booking-summary-details-card-btn {
+    background: #155D37;
+    color: #fff;
+    font-weight: 450;
+    font-size: 18px;
+    border-radius: 6px;
+    padding: 18px 18px;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    transition: background 0.2s;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.booking-summary-details-card-btn:hover {
+    background: #155D37;
+    color: #fff;
+}
+.booking-summary-details-card-confirm-section-description{
+    font-size: 16px;
+    font-weight: 400;
+}
+.booking-summary-details-card-body {
+    background-color: #f8f9fa;
+}
+.booking-summary-details-card-row {
+    background-color: #fff;
+}
+.booking-summary-details-card-section-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+.booking-summary-details-card-btn-arrow {
+    font-size: 16px;
+    vertical-align: middle;
+}
+.booking-summary-details-card-notes {
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 550;
+    color: #000000;
+}
+.booking-summary-details-card-notes::placeholder {
+    font-size: 17px;
+    font-weight: 550;
+    color: #000000;
+}
+.booking-summary-details-card-notes:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
 /* booking-confirmation */
 .booking-confirmation-card {
     border-radius: 6px;

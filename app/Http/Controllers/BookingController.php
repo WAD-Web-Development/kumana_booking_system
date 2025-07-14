@@ -18,6 +18,18 @@ class BookingController extends Controller
         }
     }
 
+    public function summary($id)
+    {
+        try {
+            // $package = Package::findOrFail($id);
+
+            // return view('packages.show', compact('package'));
+            return view('pages.booking.summary');
+        } catch (Throwable $th) {
+            return redirect()->back()->with('error', 'Something went wrong');
+        }
+    }
+
     public function confirmation($id)
     {
         try {

@@ -9,9 +9,9 @@
                         <h5 class="booking-package-details-card-title mb-0">Selected Package Details</h5>
                         <a href="{{ route('package.index') }}" class="booking-package-details-card-back-btn">Go back to package details</a>
                     </div>
-                    <div class="card-body px-4 py-0">
+                    <div class="card-body px-0 py-0">
                         <div class="row g-0">
-                            <div class="col border-end py-4">
+                            <div class="col border-end py-4 px-4">
                                 <div class="booking-package-details-card-label mb-1">Name</div>
                                 <div class="booking-package-details-card-value">Sunset Experience</div>
                             </div>
@@ -184,7 +184,7 @@
                                 </p>
                             </div>
                             <div class="col-4 text-end">
-                                <a href="{{ route('booking.create', 1) }}" class="booking-details-card-btn">Continue</a>
+                                <a href="{{ route('booking.summary', 1) }}" class="booking-details-card-btn">Continue</a>
                             </div>
                         </div>
                     </div>
