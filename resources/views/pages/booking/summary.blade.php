@@ -109,7 +109,7 @@
                                 </p>
                             </div>
                             <div class="col-4 text-end">
-                                <a href="{{ route('booking.summary', 1) }}" class="booking-summary-details-card-btn">Confirm Booking <i class="fas fa-arrow-right booking-summary-details-card-btn-arrow"></i></a>
+                                <a href="{{ route('booking.confirmation', 1) }}" class="booking-summary-details-card-btn">Confirm Booking <i class="fas fa-arrow-right booking-summary-details-card-btn-arrow"></i></a>
                             </div>
                         </div>
                     </div>
