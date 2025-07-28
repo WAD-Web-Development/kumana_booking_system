@@ -53,6 +53,8 @@ Route::get('/packages/{id}', [PackageController::class, 'show'])->name('packages
 Route::get('/booking/{id}', [BookingController::class, 'create'])->name('booking.create');
 Route::get('/booking-summary/{id}', [BookingController::class, 'summary'])->name('booking.summary');
 Route::get('/booking-confirmation/{id}', [BookingController::class, 'confirmation'])->name('booking.confirmation');
+Route::get('/my-bookings', [BookingController::class, 'myBookings'])->name('booking.myBookings');
+Route::get('/my-booking-details/{id}', [BookingController::class, 'myBookingDetails'])->name('booking.myBookingDetails');
 // booking - end
 
 // Admin

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Throwable;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -37,6 +38,27 @@ class BookingController extends Controller
 
             // return view('packages.show', compact('package'));
             return view('pages.booking.confirmation');
+        } catch (Throwable $th) {
+            return redirect()->back()->with('error', 'Something went wrong');
+        }
+    }
+
+    public function myBookings()
+    {
+        try {
+            return view('pages.booking.my_bookings');
+        } catch (Throwable $th) {
+            return redirect()->back()->with('error', 'Something went wrong');
+        }
+    }
+
+    public function myBookingDetails($id)
+    {
+        try {
+            // $package = Package::findOrFail($id);
+
+            // return view('packages.show', compact('package'));
+            return view('pages.booking.details');
         } catch (Throwable $th) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
