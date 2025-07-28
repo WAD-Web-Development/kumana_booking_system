@@ -1328,6 +1328,9 @@ html {
     font-weight: 600;
     color: #155D37;
 }
+.your-booking-details-card-back-btn {
+    text-decoration: none;
+}
 .your-booking-details-card-back-btn-title {
     font-size: 22px;
     font-weight: 600;
