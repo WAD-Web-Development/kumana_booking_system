@@ -30,11 +30,14 @@
         </div>
     </div>
     <div class="card-footer side-bar-card-footer border-1 px-0 py-0">
-        <a href="#" class="d-flex align-items-center px-4 py-3 side-bar-logout-link">
-            <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="side-bar-link-logout-icon me-3">
-                <path d="M2.83325 13.4427H4.24992V14.8594H12.7499V3.52604H4.24992V4.94271H2.83325V2.81771C2.83325 2.42651 3.15039 2.10938 3.54159 2.10938H13.4583C13.8495 2.10938 14.1666 2.42651 14.1666 2.81771V15.5677C14.1666 15.9589 13.8495 16.276 13.4583 16.276H3.54159C3.15039 16.276 2.83325 15.9589 2.83325 15.5677V13.4427ZM4.24992 8.48438H9.20825V9.90104H4.24992V12.026L0.708252 9.19271L4.24992 6.35938V8.48438Z" fill="#E65555"/>
-            </svg>
-            <span class="side-bar-link-logout-text">Log Out</span>
-        </a>
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="d-flex align-items-center px-4 py-3 side-bar-logout-link" style="border: none; background: none; width: 100%; text-align: left;">
+                <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="side-bar-link-logout-icon me-3">
+                    <path d="M2.83325 13.4427H4.24992V14.8594H12.7499V3.52604H4.24992V4.94271H2.83325V2.81771C2.83325 2.42651 3.15039 2.10938 3.54159 2.10938H13.4583C13.8495 2.10938 14.1666 2.42651 14.1666 2.81771V15.5677C14.1666 15.9589 13.8495 16.276 13.4583 16.276H3.54159C3.15039 16.276 2.83325 15.9589 2.83325 15.5677V13.4427ZM4.24992 8.48438H9.20825V9.90104H4.24992V12.026L0.708252 9.19271L4.24992 6.35938V8.48438Z" fill="#E65555"/>
+                </svg>
+                <span class="side-bar-link-logout-text">Log Out</span>
+            </button>
+        </form>
     </div>
 </div>
