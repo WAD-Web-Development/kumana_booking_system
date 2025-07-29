@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PackageController as APackageController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\Auth\CustomRegisterController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,10 @@ Route::get('/booking-confirmation/{id}', [BookingController::class, 'confirmatio
 Route::get('/my-bookings', [BookingController::class, 'myBookings'])->name('booking.myBookings');
 Route::get('/my-booking-details/{id}', [BookingController::class, 'myBookingDetails'])->name('booking.myBookingDetails');
 // booking - end
+
+// profile
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+// profile - end
 
 // Admin
 Route::middleware(['admin'])->prefix('admin')->group(function () {

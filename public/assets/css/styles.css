@@ -1420,3 +1420,87 @@ html {
     box-shadow: none !important;
     outline: none !important;
 }
+
+/* profile */
+.profile-details-card {
+    border-radius: 6px;
+    border: none;
+    min-height: 100vh;
+}
+.profile-details-card-header {
+    border-top-left-radius: 6px !important;
+    border-top-right-radius: 6px !important;
+    background-color: #fff;
+}
+.profile-details-card-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #155D37;
+}
+.profile-details-card-back-btn {
+    font-size: 18px;
+    font-weight: 450;
+    color: #155D37;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+}
+.profile-details-card-back-btn:hover {
+    color: #155D37;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+}
+.profile-details-card-body {
+    background-color: #f8f9fa;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.profile-details-card-section-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+.profile-details-card-item {
+    border-radius: 5px;
+    border: 0.5px solid #d1d1d1;
+    background-color: #ffffff;
+}
+.profile-details-card-item-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: #bababa;
+}
+.profile-details-card-item-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+.profile-details-card-security-item {
+    border-radius: 5px;
+    border: 0.5px solid #d1d1d1;
+    background-color: #ffffff;
+}
+.profile-details-card-change-password-btn {
+    font-size: 14px;
+    font-weight: 400;
+    color: #155D37;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+}
+.profile-details-card-change-password-btn:hover {
+    color: #155D37;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1.5px;
+}
+.profile-details-card-security-item-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+.profile-details-card-security-item-value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #bababa;
+}

@@ -1,4 +1,4 @@
-@extends('layouts.app-dashboard', ['activePage' => 'my_bookings', 'activeSection' => 'my_bookings'])
+@extends('layouts.app-dashboard', ['activePage' => 'my_bookings', 'activeSection' => 'my_bookings_details'])
 
 @section('content')
     <div class="container-fluid m-0 p-0">
@@ -6,13 +6,6 @@
             <div class="col-12">
                 <div class="card your-booking-details-card">
                     <div class="card-header px-4 py-3 d-flex align-items-center justify-content-between position-relative your-booking-details-card-header">
-                        <!-- Back button -->
-                        {{-- <div class="d-flex align-items-center your-booking-details-card-back-btn">
-                            <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3.457 7.04928L7.36552 10.9578L6.33505 11.9883L0.66741 6.32062L6.33505 0.653053L7.36552 1.68352L3.457 5.59197L12.3259 5.59197L12.3259 7.04928L3.457 7.04928Z" fill="#0D4B2D"/>
-                            </svg>
-                            <h5 class="mb-0 ms-3 your-booking-details-card-back-btn-title">Back</h5>
-                        </div> --}}
 
                         <a href="{{ route('booking.myBookings') }}" class="d-flex align-items-center your-booking-details-card-back-btn">
                             <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +14,6 @@
                             <h5 class="mb-0 ms-3 your-booking-details-card-back-btn-title">Back</h5>
                         </a>
 
-                        <!-- Centered Booking ID -->
                         <div class="position-absolute start-50 translate-middle-x text-center your-booking-details-card-booking-id-section">
                             <h5 class="mb-0 your-booking-details-card-booking-id">#465436</h5>
                         </div>
