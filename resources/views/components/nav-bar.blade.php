@@ -23,7 +23,7 @@
     @else
         <div class="navbar-user-box d-flex justify-content-between align-items-center p-2">
             <div class="mx-2">
-                <div class="navbar-user-name">Login</div>
+                <div class="navbar-login-btn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</div>
             </div>
             <i class="far fa-user navbar-user-icon mx-2"></i>
         </div>

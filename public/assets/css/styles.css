@@ -190,6 +190,13 @@ html {
     color: #dadada;
 }
 
+.navbar-login-btn {
+    font-size: 18px;
+    font-weight: 400;
+    color: #dadada;
+    cursor: pointer;
+}
+
 .navbar-user-icon {
     color: #dadada;
     font-size: 18px;
@@ -1503,4 +1510,68 @@ html {
     font-size: 14px;
     font-weight: 500;
     color: #bababa;
+}
+
+/* Login modal */
+.login-modal-content{
+    border-radius: 10px;
+    max-width: 395px;
+}
+.login-modal-title{
+    font-size: 24px;
+    font-weight: 400;
+    color: #0D4B2D;
+}
+.login-modal-description{
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+}
+.login-modal-form-floating{
+    border-radius: 5px;
+    border: 0.25px solid #dddddd;
+    background-color: #ffffff;
+}
+.login-modal-form-floating .form-control{
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+.login-modal-form-floating-label{
+    /* font-size: 12px;
+    font-weight: 400;
+    color: #8A8A8A; */
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+.login-modal-form-floating-input{
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+.login-modal-btn{
+    font-size: 14px;
+    font-weight: 400;
+    color: #ffffff;
+    background-color: #0D4B2D;
+    border-radius: 4px;
+    border: none;
+    width: 100%;
+}
+.login-modal-footer{
+    background-color: #000000;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    justify-content: flex-start !important;
+}
+.login-modal-footer-label{
+    font-size: 14px;
+    font-weight: 400;
+    color: #ffffff;
+}
+.login-modal-footer-label-link{
+    font-size: 14px;
+    font-weight: 400;
+    color: #ffffff;
 }

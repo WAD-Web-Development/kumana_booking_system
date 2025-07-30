@@ -231,6 +231,7 @@
             </div>
         </div>
     </div>
+    @include('components.login-registration-modal')
 @endsection
 
 @push('custom_scripts')
