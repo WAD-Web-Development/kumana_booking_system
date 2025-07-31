@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content login-modal-content">
 
-        <div id="login-section">
+        <div id="login-section" class="login-registration-fade-slide-transition show">
             <div class="modal-body login-modal-body px-3 pt-3 pb-4">
 
                 <h5 class="modal-title login-modal-title mb-3" id="loginModalLabel">Sign in</h5>
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-        <div id="register-section" style="display: none;">
+        <div id="register-section" style="display: none;" class="login-registration-fade-slide-transition">
             <div class="modal-body register-modal-body px-3 pt-3 pb-4">
 
                 <h5 class="modal-title register-modal-title mb-3" id="registerModalLabel">Create an account</h5>
@@ -81,7 +81,6 @@
                             <option value="American">American</option>
                             <option value="British">British</option>
                             <option value="Australian">Australian</option>
-                            <!-- Add more as needed -->
                         </select>
                         <label class="register-modal-form-floating-label" for="nationality">Nationality</label>
                     </div>
@@ -130,7 +129,7 @@
     </div>
   </div>
 
-  <script>
+  {{-- <script>
     const showRegister = document.getElementById('show-register');
     const showLogin = document.getElementById('show-login');
     const loginSection = document.getElementById('login-section');
@@ -146,6 +145,36 @@
     showLogin.addEventListener('click', function () {
       registerSection.style.display = 'none';
       loginSection.style.display = 'block';
+      showLogin.style.display = 'none';
+      showRegister.style.display = 'inline-flex';
+    });
+  </script> --}}
+
+  <script>
+    const showRegister = document.getElementById('show-register');
+    const showLogin = document.getElementById('show-login');
+    const loginSection = document.getElementById('login-section');
+    const registerSection = document.getElementById('register-section');
+
+    function switchSection(hideEl, showEl) {
+      hideEl.classList.remove('show');
+      setTimeout(() => {
+        hideEl.style.display = 'none';
+        showEl.style.display = 'block';
+        setTimeout(() => {
+          showEl.classList.add('show');
+        }, 10); // allow DOM to paint before applying class
+      }, 400); // match transition time
+    }
+
+    showRegister.addEventListener('click', function () {
+      switchSection(loginSection, registerSection);
+      showRegister.style.display = 'none';
+      showLogin.style.display = 'inline-flex';
+    });
+
+    showLogin.addEventListener('click', function () {
+      switchSection(registerSection, loginSection);
       showLogin.style.display = 'none';
       showRegister.style.display = 'inline-flex';
     });

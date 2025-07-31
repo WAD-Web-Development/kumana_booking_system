@@ -1711,4 +1711,13 @@ html {
     color: #000000;
     text-decoration: underline;
 }
+.login-registration-fade-slide-transition {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.login-registration-fade-slide-transition.show {
+    opacity: 1;
+    transform: translateY(0);
+}
 
