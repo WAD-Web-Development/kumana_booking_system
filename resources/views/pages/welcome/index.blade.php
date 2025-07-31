@@ -1,7 +1,7 @@
 @extends('layouts.app', ['activePage' => 'dashboard', 'activeSection' => 'dashboard'])
 
 @section('content')
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0 page-content-wrapper">
         <div class="row g-0">
             <!-- Left: Image Slider -->
             <div class="col-md-4 min-vh-100 d-flex align-items-center justify-content-center p-0 welcome-slider-overflow">
@@ -230,6 +230,7 @@
                 </div>
             </div>
         </div>
+        <div class="blur-overlay"></div>
     </div>
     @include('components.login-registration-modal')
 @endsection
@@ -255,4 +256,18 @@
             });
         });
     </script>
+
+    <script>
+        const loginModal = document.getElementById('loginModal');
+        const blurOverlay = document.querySelector('.blur-overlay');
+
+        loginModal.addEventListener('show.bs.modal', () => {
+            blurOverlay.style.display = 'block';
+        });
+
+        loginModal.addEventListener('hidden.bs.modal', () => {
+            blurOverlay.style.display = 'none';
+        });
+    </script>
+
 @endpush
