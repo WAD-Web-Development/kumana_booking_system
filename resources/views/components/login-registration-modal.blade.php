@@ -24,6 +24,14 @@
                         <label class="login-modal-form-floating-label" for="password">Password</label>
                     </div>
 
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="form-check d-flex align-items-center gap-2 mb-0">
+                            <input class="form-check-input rounded-circle login-modal-checkbox" type="checkbox" value="1" id="remember" name="remember">
+                            <label class="form-check-label login-modal-checkbox-label mb-0" for="remember">Remember me</label>
+                        </div>
+                        <a href="{{ route('password.request') }}" class="login-modal-forgot-password-link">Forgot Password</a>
+                    </div>
+
                     <button type="submit" class="login-modal-btn px-3 py-3 d-flex justify-content-between align-items-center">
                         <span>Login</span>
                         <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +101,12 @@
                         <label class="login-modal-form-floating-label" for="confirm_password">Retype your Password</label>
                     </div>
 
-
+                    <div class="text-center mb-3">
+                        <span class="register-modal-privacy-policy-label">
+                            By creating an account you agree to our
+                            <a href="#" class="register-modal-privacy-policy-link">privacy policy</a>
+                        </span>
+                    </div>
 
                     <button type="submit" class="register-modal-btn px-3 py-3 d-flex justify-content-between align-items-center">
                         <span>Create account</span>
