@@ -14,17 +14,35 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
 
-                    <div class="form-floating login-modal-form-floating mb-3">
+                    <input type="hidden" name="form_type" value="login">
+
+                    <div class="form-floating login-modal-form-floating">
                         <input type="email" class="form-control login-modal-form-floating-input" id="email" name="email" placeholder="Email address" required>
                         <label class="login-modal-form-floating-label" for="email">Email address</label>
                     </div>
+                    @error('email')
+                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                            </svg>
+                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                        </div>
+                    @enderror
 
-                    <div class="form-floating login-modal-form-floating mb-3">
+                    <div class="form-floating login-modal-form-floating mt-3">
                         <input type="password" class="form-control login-modal-form-floating-input" id="password" name="password" placeholder="Password" required>
                         <label class="login-modal-form-floating-label" for="password">Password</label>
                     </div>
+                    @error('password')
+                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                            </svg>
+                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                        </div>
+                    @enderror
 
-                    <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
                         <div class="form-check d-flex align-items-center gap-2 mb-0">
                             <input class="form-check-input rounded-circle login-modal-checkbox" type="checkbox" value="1" id="remember" name="remember">
                             <label class="form-check-label login-modal-checkbox-label mb-0" for="remember">Remember me</label>
@@ -60,45 +78,95 @@
                     Sign in or create your account to place bookings and receive notifications and updates
                 </p>
 
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('register') }}">
                     @csrf
 
-                    <div class="form-floating register-modal-form-floating mb-3">
-                        <input type="email" class="form-control register-modal-form-floating-input" id="email" name="email" placeholder="Email address" required>
-                        <label class="register-modal-form-floating-label" for="email">Email address</label>
-                    </div>
+                    <input type="hidden" name="form_type" value="register">
 
-                    <div class="form-floating register-modal-form-floating mb-3">
+                    <div class="form-floating register-modal-form-floating">
+                        <input type="email" class="form-control register-modal-form-floating-input" id="register-email" name="register_email" placeholder="Email address" required>
+                        <label class="register-modal-form-floating-label" for="register-email">Email address</label>
+                    </div>
+                    @error('register_email')
+                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                            </svg>
+                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                        </div>
+                    @enderror
+
+                    <div class="form-floating register-modal-form-floating mt-3">
                         <input type="text" class="form-control register-modal-form-floating-input" id="name" name="name" placeholder="Name" required>
                         <label class="register-modal-form-floating-label" for="name">Your Name</label>
                     </div>
+                    @error('name')
+                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                            </svg>
+                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                        </div>
+                    @enderror
 
-                    <div class="form-floating register-modal-form-floating mb-3">
+                    <div class="form-floating register-modal-form-floating mt-3">
                         <select class="form-select register-modal-form-floating-input" id="nationality" name="nationality" required>
-                            <option value="" selected disabled>Select your nationality</option>
-                            <option value="Sri Lankan">Sri Lankan</option>
-                            <option value="Indian">Indian</option>
-                            <option value="American">American</option>
-                            <option value="British">British</option>
-                            <option value="Australian">Australian</option>
+                            <option value="">Select Nationality </option>
+                            @foreach($nationalities as $nationality)
+                                <option value="{{ $nationality->name }}" {{ old('nationality') == $nationality->name ? 'selected' : '' }}>
+                                    {{ $nationality->name }}
+                                </option>
+                            @endforeach
                         </select>
                         <label class="register-modal-form-floating-label" for="nationality">Nationality</label>
                     </div>
+                    @error('nationality')
+                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                            </svg>
+                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                        </div>
+                    @enderror
 
-                    <div class="form-floating register-modal-form-floating mb-3">
-                        <input type="text" class="form-control register-modal-form-floating-input" id="contact_details" name="contact_details" placeholder="Contact details" required>
+                    <div class="form-floating register-modal-form-floating mt-3">
+                        <input type="text" class="form-control register-modal-form-floating-input" id="contact_no" name="contact_no" placeholder="Contact details" required>
                         <label class="register-modal-form-floating-label" for="contact_details">Contact details</label>
                     </div>
+                    @error('contact_no')
+                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                            </svg>
+                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                        </div>
+                    @enderror
 
-                    <div class="form-floating login-modal-form-floating mb-3">
-                        <input type="password" class="form-control login-modal-form-floating-input" id="password" name="password" placeholder="Password" required>
-                        <label class="login-modal-form-floating-label" for="password">Password</label>
+                    <div class="form-floating login-modal-form-floating mt-3">
+                        <input type="password" class="form-control login-modal-form-floating-input" id="register-password" name="register_password" placeholder="Password" required>
+                        <label class="login-modal-form-floating-label" for="register-password">Password</label>
                     </div>
+                    @error('register_password')
+                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                            </svg>
+                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                        </div>
+                    @enderror
 
-                    <div class="form-floating login-modal-form-floating mb-3">
-                        <input type="password" class="form-control login-modal-form-floating-input" id="confirm_password" name="confirm_password" placeholder="Confirm password" required>
-                        <label class="login-modal-form-floating-label" for="confirm_password">Retype your Password</label>
+                    <div class="form-floating login-modal-form-floating mt-3">
+                        <input type="password" class="form-control login-modal-form-floating-input" id="password_confirmation" name="password_confirmation" placeholder="Confirm password" required>
+                        <label class="login-modal-form-floating-label" for="password_confirmation">Retype your Password</label>
                     </div>
+                    @error('password_confirmation')
+                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                            </svg>
+                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                        </div>
+                    @enderror
 
                     <div class="text-center mb-3">
                         <span class="register-modal-privacy-policy-label">
@@ -129,54 +197,72 @@
     </div>
   </div>
 
-  {{-- <script>
-    const showRegister = document.getElementById('show-register');
-    const showLogin = document.getElementById('show-login');
-    const loginSection = document.getElementById('login-section');
-    const registerSection = document.getElementById('register-section');
+    <script>
+        $('#nationality').select2({
+            placeholder: 'Select Nationality',
+        });
+    </script>
 
-    showRegister.addEventListener('click', function () {
-      loginSection.style.display = 'none';
-      registerSection.style.display = 'block';
-      showRegister.style.display = 'none';
-      showLogin.style.display = 'inline-flex';
-    });
+    @if ($errors->any())
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
 
-    showLogin.addEventListener('click', function () {
-      registerSection.style.display = 'none';
-      loginSection.style.display = 'block';
-      showLogin.style.display = 'none';
-      showRegister.style.display = 'inline-flex';
-    });
-  </script> --}}
+            const loginSection = document.getElementById('login-section');
+            const registerSection = document.getElementById('register-section');
+            const showRegister = document.getElementById('show-register');
+            const showLogin = document.getElementById('show-login');
 
-  <script>
-    const showRegister = document.getElementById('show-register');
-    const showLogin = document.getElementById('show-login');
-    const loginSection = document.getElementById('login-section');
-    const registerSection = document.getElementById('register-section');
+            @if (old('form_type') === 'register')
+                loginSection.classList.remove('show');
+                loginSection.style.display = 'none';
+                registerSection.style.display = 'block';
+                setTimeout(() => registerSection.classList.add('show'), 10);
 
-    function switchSection(hideEl, showEl) {
-      hideEl.classList.remove('show');
-      setTimeout(() => {
-        hideEl.style.display = 'none';
-        showEl.style.display = 'block';
+                showLogin.style.display = 'inline-flex';
+                showRegister.style.display = 'none';
+            @else
+                registerSection.classList.remove('show');
+                registerSection.style.display = 'none';
+                loginSection.style.display = 'block';
+                setTimeout(() => loginSection.classList.add('show'), 10);
+
+                showRegister.style.display = 'inline-flex';
+                showLogin.style.display = 'none';
+            @endif
+        });
+    </script>
+    @endif
+
+
+    <script>
+        const showRegister = document.getElementById('show-register');
+        const showLogin = document.getElementById('show-login');
+        const loginSection = document.getElementById('login-section');
+        const registerSection = document.getElementById('register-section');
+
+        function switchSection(hideEl, showEl) {
+        hideEl.classList.remove('show');
         setTimeout(() => {
-          showEl.classList.add('show');
-        }, 10); // allow DOM to paint before applying class
-      }, 400); // match transition time
-    }
+            hideEl.style.display = 'none';
+            showEl.style.display = 'block';
+            setTimeout(() => {
+            showEl.classList.add('show');
+            }, 10); // allow DOM to paint before applying class
+        }, 400); // match transition time
+        }
 
-    showRegister.addEventListener('click', function () {
-      switchSection(loginSection, registerSection);
-      showRegister.style.display = 'none';
-      showLogin.style.display = 'inline-flex';
-    });
+        showRegister.addEventListener('click', function () {
+        switchSection(loginSection, registerSection);
+        showRegister.style.display = 'none';
+        showLogin.style.display = 'inline-flex';
+        });
 
-    showLogin.addEventListener('click', function () {
-      switchSection(registerSection, loginSection);
-      showLogin.style.display = 'none';
-      showRegister.style.display = 'inline-flex';
-    });
-  </script>
+        showLogin.addEventListener('click', function () {
+        switchSection(registerSection, loginSection);
+        showLogin.style.display = 'none';
+        showRegister.style.display = 'inline-flex';
+        });
+    </script>
 

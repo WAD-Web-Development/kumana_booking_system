@@ -1722,4 +1722,14 @@ html {
     opacity: 1;
     transform: translateY(0);
 }
+.invalid-feedback {
+    background-color: #E65555;
+    border: 0.5px solid #A63535;
+    border-radius: 5px;
+}
+.invalid-feedback-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+}
 
