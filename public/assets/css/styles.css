@@ -23,7 +23,7 @@ html {
     scroll-behavior: smooth;
 }
 
-.light-background {
+/* .light-background {
     background: var(--Colors-Crystal-Lining-200, rgba(225, 236, 250, 1)) !important;
 }
 
@@ -81,7 +81,7 @@ html {
 .alert-danger {
     border-radius: 8px;
     padding: 10px;
-}
+} */
 
 .dropify-message p {
     font-size: 16px !important; /* Adjust the font size */
@@ -133,8 +133,9 @@ html {
 
 /* navbar */
 .custom-navbar {
-    background-color: #fff;
-    height: 60px;
+    background-color: #FBFBFB;
+    height: 45.13px;
+    box-shadow: 0px 4px 24px 0px #0000000D;
 }
 
 .vertical-divider {
@@ -1705,11 +1706,12 @@ html {
     text-decoration-thickness: auto; /* '0%' is invalid, use 'auto' or pixel value */
     text-decoration-skip-ink: auto;
     text-decoration-skip: auto; /* For older browsers */
-    text-decoration-offset: 0px; /* CSS spec allows px, not % */
+    text-underline-offset: 0px; /* CSS spec allows px, not % */
 }
 .register-modal-privacy-policy-link:hover {
     color: #000000;
     text-decoration: underline;
+    text-underline-offset: 0px;
 }
 .login-registration-fade-slide-transition {
     opacity: 0;

@@ -1,4 +1,4 @@
-<nav class="d-flex justify-content-between align-items-center px-0 py-0 shadow-sm custom-navbar">
+<nav class="d-flex justify-content-between align-items-center px-0 py-0 custom-navbar">
     <!-- Left Section -->
     <div class="d-flex align-items-center gap-3">
         <a href="/" class="text-decoration-none d-flex align-items-baseline">
