@@ -83,9 +83,20 @@ html {
     padding: 10px;
 } */
 
+.dropify-wrapper {
+    border-radius: 5px !important;
+    border: 0.5px solid #DDDDDD !important;
+    overflow: hidden;
+}
+.dropify-wrapper .dropify-preview {
+    border-radius: 5px !important;
+    border: 0.5px solid #DDDDDD !important;
+    overflow: hidden;
+}
 .dropify-message p {
-    font-size: 16px !important; /* Adjust the font size */
-    color: #a3a3a3 !important; /* Adjust the color if needed */
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #8A8A8A !important;
 }
 
 /* Change background and text color of selected items */
@@ -1736,6 +1747,7 @@ html {
 }
 
 /* admin-management */
+/* index */
 .admin-management-page-card {
     border-radius: 5px;
     border: 0.25px solid #dddddd;
@@ -1757,6 +1769,20 @@ html {
     font-weight: 500;
     color: #243B2E;
 }
+.admin-management-page-card-new-btn {
+    font-size: 14px;
+    font-weight: 400;
+    color: #0D4B2D;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+}
+.admin-management-page-card-new-btn:hover {
+    color: #0D4B2D;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+}
 .admin-management-table thead th {
     font-size: 17px;
     font-weight: 500;
@@ -1768,3 +1794,91 @@ html {
     color: #243B2E;
 }
 
+/* create */
+.admin-management-page-card-input-row {
+    border-radius: 5px;
+    border: 0.5px solid #DDDDDD;
+    padding: 0;
+    margin: 0;
+    height: 54.89px;
+    width: 100%;
+}
+.admin-management-page-card-input-label {
+    border: none;
+    padding: 0;
+    margin: 0px;
+    height: 100%;
+}
+.admin-management-page-card-input-label-text {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px 10px 20px;
+    background-color: #FFFFFF;
+    border: none;
+    border-right: 2px solid #DDDDDD;
+}
+.admin-management-page-card-input-value {
+    border: none;
+    padding: 10px 20px 10px 20px;
+    margin: 0px;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8A8A8A !important;
+}
+.admin-management-page-card-input-value:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+.admin-management-page-card-description {
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    border: 0.5px solid #DDDDDD;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8A8A8A;
+}
+.admin-management-page-card-description::placeholder {
+    font-size: 14px;
+    font-weight: 500;
+    color: #8A8A8A;
+}
+.admin-management-page-card-description:focus {
+    box-shadow: none !important;
+    outline: none !important;
+    color: #8A8A8A !important;
+    border: 0.5px solid #DDDDDD !important;
+}
+.admin-management-page-card-check-input-col{
+    background-color: #FFFFFF;
+}
+.admin-management-page-card-check-input:focus{
+    box-shadow: none !important;
+    outline: none !important;
+    border: 0.5px solid #DDDDDD !important;
+}
+.admin-management-page-card-submit-btn {
+    background: #0D4B2D;
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 14px;
+    border-radius: 4px;
+    /* padding: 18px 18px; */
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    transition: background 0.2s;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 45.9px;
+}
+
+.admin-management-page-card-submit-btn:hover {
+    background: #155D37;
+    color: #fff;
+}
+.hidden-input-section  {
+    display: none !important;
+}

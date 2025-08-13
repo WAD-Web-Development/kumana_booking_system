@@ -1,91 +1,126 @@
-@extends('layouts.app', ['activePage' => 'special_date', 'activeSection' => 'special_date'])
+@extends('layouts.app-dashboard', ['activePage' => 'special_date', 'activeSection' => 'special_date'])
 
 @section('content')
-
-<div class="container-fluid admin-container d-flex justify-content-center">
-    <!-- Adjust the width of the card -->
-    <div class="card admin-card shadow-lg col-md-6 mb-5">
-        <div class="card-header bg-white border-0 p-4 pb-1">
-            <div class="d-lg-flex">
-                <div>
-                    <h5 class="mb-0 admin-title">New Special Date</h5>
+    <div class="container-fluid m-0 p-0">
+        <div class="row m-0 p-0">
+            <div class="col-12">
+                <div class="card admin-management-page-card">
+                    <div class="card-header px-4 py-3 d-flex justify-content-between align-items-center admin-management-page-card-header">
+                        <h5 class="admin-management-page-card-title mb-0">Create Special Date</h5>
+                    </div>
+                    <div class="card-body admin-management-page-card-body px-4 py-4">
+                        <form action="{{ route('special-date.store') }}" method="POST" id="special-date-form" enctype="multipart/form-data">
+                        @csrf
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6 d-flex align-items-stretch">
+                                    <div class="row input-group mb-3 admin-management-page-card-input-row">
+                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text">Title</span>
+                                        </div>
+                                        <input type="text" class="col-4 form-control admin-management-page-card-input-value" aria-label="title" id="title" name="title" placeholder="Enter title">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6 d-flex align-items-stretch">
+                                    <div class="row input-group mb-3 admin-management-page-card-input-row">
+                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text">Start Date</span>
+                                        </div>
+                                        <input type="date" class="col-4 form-control admin-management-page-card-input-value" aria-label="start_date" id="start_date" name="start_date" placeholder="Enter start date">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 d-flex align-items-stretch">
+                                    <div class="row input-group mb-3 admin-management-page-card-input-row">
+                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text">End Date</span>
+                                        </div>
+                                        <input type="date" class="col-4 form-control admin-management-page-card-input-value" aria-label="end_date" id="end_date" name="end_date" placeholder="Enter end date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6 d-flex align-items-stretch">
+                                    <div class="row input-group mb-3 admin-management-page-card-input-row">
+                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text">Is Full Day</span>
+                                        </div>
+                                        <div class="col-4 d-flex align-items-center justify-content-center admin-management-page-card-check-input-col">
+                                            <input type="checkbox" class="form-check-input admin-management-page-card-check-input" aria-label="is_full_day" id="is_full_day" name="is_full_day" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 d-flex align-items-stretch day-time-section" style="display: none">
+                                    <div class="row input-group mb-3 admin-management-page-card-input-row">
+                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text">Which half of the day</span>
+                                        </div>
+                                        <select id="day_time" class="col-4 form-select admin-management-page-card-input-value" name="day_time">
+                                            <option value="">Select day time</option>
+                                            <option value="Morning">Morning</option>
+                                            <option value="Afternoon">Afternoon</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6 d-flex align-items-stretch">
+                                    <div class="row input-group mb-3 admin-management-page-card-input-row">
+                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text">Is Closed</span>
+                                        </div>
+                                        <div class="col-4 d-flex align-items-center justify-content-center admin-management-page-card-check-input-col">
+                                            <input type="checkbox" class="form-check-input admin-management-page-card-check-input" aria-label="is_closed" id="is_closed" name="is_closed" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <textarea id="description" name="description" class="form-control admin-management-page-card-description px-4 py-3" rows="8" placeholder="Enter description"></textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <input type="file" name="image" class="form-control image">
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button type="submit" class="admin-management-page-card-submit-btn px-3">Create Special Date</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="card-body mt-2 p-4 pt-1">
-            <form action="{{ route('special-date.store') }}" method="POST" id="special-date-form" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group col-md-12 mt-2">
-                    <label for="title" class="form-label">Title <span style="color: red">*</span></label>
-                    <input type="text" class="form-control" id="title" name="title" required>
-                </div>
-
-                <div class="form-group col-md-12 mt-2">
-                    <label for="date" class="form-label mt-2">Start Date <span style="color: red">*</span></label>
-                    <input type="date" class="form-control" id="start_date" name="start_date" required>
-                </div>
-
-                <div class="form-group col-md-12 mt-2">
-                    <label for="date" class="form-label mt-2">End Date <span style="color: red">*</span></label>
-                    <input type="date" class="form-control" id="end_date" name="end_date" required>
-                </div>
-
-                <div class="form-group col-md-12 mt-2">
-                    <label for="description" class="form-label mt-2">Description <span
-                        style="color: rgb(163, 163, 163)">(optional)</span></label>
-                    <textarea id="description" name="description" class="form-control description" rows="5"></textarea>
-                </div>
-
-                <div class="form-group row col-md-12 mt-4 mx-1">
-                    <div class="form-check col-md-6">
-                        <input type="checkbox" class="form-check-input" id="is_full_day" name="is_full_day" value="1">
-                        <label class="form-check-label" for="is_full_day">Is Full Day</label>
-                    </div>
-
-                    <div class="form-check col-md-6">
-                        <input type="checkbox" class="form-check-input" id="is_closed" name="is_closed" value="1">
-                        <label class="form-check-label" for="is_closed">Is Closed</label>
-                    </div>
-                </div>
-
-                <div class="form-group col-md-12 mt-3">
-                    <label class="form-label" for="day_time">Day Time <span
-                            style="color: red">*</span></label>
-                    <select id="day_time" class="form-control form-control-alternative" name="day_time">
-                        <option value="">Select Day Time</option>
-                        <option value="Morning">Morning</option>
-                        <option value="Afternoon">Afternoon</option>
-                    </select>
-                </div>
-
-                <div class="form-group col-md-12 mt-2">
-                    <label for="image" class="form-label mt-2">Image <span
-                        style="color: rgb(163, 163, 163)">(optional)</span></label>
-                    <input type="file" name="image" class="form-control image">
-                </div>
-
-                <div class="d-flex justify-content-end mt-4">
-                    <a href="{{ url()->previous() }}" class="btn btn-light admin-btn-cancel text-white m-0">Cancel</a>
-                    <button type="submit" class="btn admin-btn m-0 ms-2">Create Special Date</button>
-                </div>
-            </form>
-        </div>
     </div>
-</div>
-
 @endsection
 
 @push('custom_scripts')
     <script>
         $(document).ready(function() {
+
             $('.image').dropify();
-        });
 
-        $('#day_time').select2({
-            placeholder: 'Select Day Time',
-            minimumResultsForSearch: -1,
+            function toggleDayTime() {
+                if ($('#is_full_day').prop('checked')) {
+                    $('.day-time-section').addClass('hidden-input-section');
+                } else {
+                    $('.day-time-section').removeClass('hidden-input-section');
+                }
+            }
+
+            toggleDayTime(); // run on page load
+
+            $('#is_full_day').change(function() {
+                toggleDayTime();
+            });
         });
+        // $('#day_time').select2({
+        //     placeholder: 'Select Day Time',
+        //     minimumResultsForSearch: -1,
+        // });
     </script>
-
-{!! JsValidator::formRequest('App\Http\Requests\StoreSpecialDateRequest', '#special-date-form') !!}
 @endpush

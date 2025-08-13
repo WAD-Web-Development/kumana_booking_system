@@ -7,6 +7,7 @@
                 <div class="card admin-management-page-card">
                     <div class="card-header px-4 py-3 d-flex justify-content-between align-items-center admin-management-page-card-header">
                         <h5 class="admin-management-page-card-title mb-0">Special Dates</h5>
+                        <a href="{{ route('special-date.create') }}" class="admin-management-page-card-new-btn">Add New</a>
                     </div>
                     <div class="card-body admin-management-page-card-body px-4 py-4">
                         <div class="table-responsive table-wrapper">
