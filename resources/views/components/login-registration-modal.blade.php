@@ -168,7 +168,7 @@
                         </div>
                     @enderror
 
-                    <div class="text-center mb-3">
+                    <div class="text-center mt-4 mb-3">
                         <span class="register-modal-privacy-policy-label">
                             By creating an account you agree to our
                             <a href="#" class="register-modal-privacy-policy-link">privacy policy</a>

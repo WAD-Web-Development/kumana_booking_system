@@ -1169,6 +1169,8 @@ html {
     background-position: center;
     padding: 3% 8%;
 }
+
+/* your-booking */
 .your-booking-details-card {
     border-radius: 6px;
     border: none;
@@ -1731,5 +1733,38 @@ html {
     font-size: 14px;
     font-weight: 500;
     color: #ffffff;
+}
+
+/* admin-management */
+.admin-management-page-card {
+    border-radius: 5px;
+    border: 0.25px solid #dddddd;
+    background-color: #ffffff;
+    min-height: 100vh;
+}
+.admin-management-page-card-body {
+    background-color: #FBFBFB;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.admin-management-page-card-header {
+    border-top-left-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+    background-color: #ffffff;
+}
+.admin-management-page-card-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #243B2E;
+}
+.admin-management-table thead th {
+    font-size: 17px;
+    font-weight: 500;
+    color: #243B2E;
+}
+.admin-management-table tbody td {
+    font-size: 17px;
+    font-weight: 400;
+    color: #243B2E;
 }
 

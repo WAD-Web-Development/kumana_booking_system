@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'dashboard', 'activeSection' => 'dashboard'])
+@extends('layouts.app', ['activePage' => 'special_date', 'activeSection' => 'special_date'])
 
 @section('content')
 
