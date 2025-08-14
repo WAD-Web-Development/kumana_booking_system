@@ -44,6 +44,12 @@
                     </svg>
                     <span class="side-bar-link-text">Email Attachment</span>
                 </a>
+                <a href="{{ route('safari-booking-price.index') }}" class="d-flex align-items-center px-4 py-3 side-bar-link @if ($activePage == 'safari_booking_price') active @endif">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" class="side-bar-link-icon me-3">
+                        <path d="M15.3027 13.4701H4.67773C4.28654 13.4701 3.9694 13.7872 3.9694 14.1784C3.9694 14.5696 4.28654 14.8867 4.67773 14.8867H15.3027V16.3034H4.67773C3.50413 16.3034 2.55273 15.352 2.55273 14.1784V3.55339C2.55273 2.77098 3.187 2.13672 3.9694 2.13672H15.3027V13.4701ZM3.9694 12.0888C4.08384 12.0656 4.20228 12.0534 4.32357 12.0534H13.8861V3.55339H3.9694V12.0888ZM11.7611 7.09505H6.0944V5.67839H11.7611V7.09505Z" fill="currentColor"/>
+                    </svg>
+                    <span class="side-bar-link-text">Safari Booking Price</span>
+                </a>
             @endrole
         </div>
         <div class="mt-auto">
