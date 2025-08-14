@@ -104,9 +104,13 @@ class SpecialDateController extends ParentController
                         ->withErrors($validator)
                         ->withInput();
                 }
+
+                $dataRow = SpecialDateFacade::get($id);
+                ImageFacade::delete($dataRow->image_path);
+                $request->merge(['image_path' => null]);
             }
 
-            $is_full_day = isset($request->is_full_day) ? 1 : 0;
+            $is_full_day = isset($request->is_half_day) ? 0 : 1;
             $request->merge(['is_full_day' => $is_full_day]);
 
             $is_closed = isset($request->is_closed) ? 1 : 0;
@@ -114,8 +118,10 @@ class SpecialDateController extends ParentController
 
             if ($request->image) {
 
-                $dataRow = SpecialDateFacade::get($id);
-                ImageFacade::delete($dataRow->image_path);
+                if ($request->has('is_image_removed') && $request->input('is_image_removed') != 1) {
+                    $dataRow = SpecialDateFacade::get($id);
+                    ImageFacade::delete($dataRow->image_path);
+                }
 
                 $imagePath = ImageFacade::store($request->image, 'special_date');
 
