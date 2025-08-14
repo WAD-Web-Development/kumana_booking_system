@@ -1,51 +1,52 @@
-@extends('layouts.app', ['activePage' => 'dashboard', 'activeSection' => 'dashboard'])
+@extends('layouts.app-dashboard', ['activePage' => 'email_attachment', 'activeSection' => 'email_attachment'])
 
 @section('content')
-    <div class="container-fluid admin-container d-flex justify-content-center">
-        <div class="card admin-card w-100 shadow-lg">
-            <div class="card-header bg-white border-0 p-4">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0 admin-title">Email Attachments Management</h5>
-                    @if (!$attachment)
-                        <a href="{{ route('email-attachment.create') }}" class="btn admin-btn btn-sm mb-0 px-4">+&nbsp; Add New</a>
-                    @endif
-                </div>
-            </div>
+    <div class="container-fluid m-0 p-0">
+        <div class="row m-0 p-0">
+            <div class="col-12">
+                <div class="card admin-management-page-card">
+                    <div class="card-header px-4 py-3 d-flex justify-content-between align-items-center admin-management-page-card-header">
+                        <h5 class="admin-management-page-card-title mb-0">Email Attachments</h5>
+                        @if (!$attachment)
+                            <a href="{{ route('email-attachment.create') }}" class="admin-management-page-card-new-btn">Add New</a>
+                        @endif
+                    </div>
+                    <div class="card-body admin-management-page-card-body px-4 py-4">
 
-            <div class="card-body p-4">
+                        <div class="table-responsive table-wrapper">
+                            <table class="table table-bordered table-hover table-responsive admin-management-table" id="email-attachment-list">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th width="10%">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if ($attachment)
+                                        <tr id="row{{ $attachment->id }}">
+                                            <td> {{ $attachment->title }} </td>
+                                            <td class="text-sm">
 
-                <div class="table-responsive table-wrapper">
-                    <table class="table table-bordered table-hover table-responsive" id="email-attachment-list">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th width="6%">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if ($attachment)
-                                <tr id="row{{ $attachment->id }}">
-                                    <td> {{ $attachment->title }} </td>
-                                    <td class="text-sm">
+                                                <a href="{{ route('email-attachment.edit', $attachment->id) }}" class="me-3"
+                                                    data-bs-toggle="tooltip" data-bs-original-title="Edit">
+                                                    <i class="fas fa-user-edit text-secondary"></i>
+                                                </a>
 
-                                        <a href="{{ route('email-attachment.edit', $attachment->id) }}" class="me-3"
-                                            data-bs-toggle="tooltip" data-bs-original-title="Edit">
-                                            <i class="fas fa-user-edit text-secondary"></i>
-                                        </a>
+                                                <a class="delete" data-id="{{ $attachment->id }}" href="#">
+                                                    <i class="fas fa-trash text-secondary"></i>
+                                                </a>
 
-                                        <a class="delete" data-id="{{ $attachment->id }}" href="#">
-                                            <i class="fas fa-trash text-secondary"></i>
-                                        </a>
-
-                                    </td>
-                                </tr>
-                            @else
-                                <tr>
-                                    <td colspan="5" class="text-center">No Data Available</td>
-                                </tr>
-                            @endif
-                        </tbody>
-                    </table>
+                                            </td>
+                                        </tr>
+                                    @else
+                                        <tr>
+                                            <td colspan="5" class="text-center">No Data Available</td>
+                                        </tr>
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,7 +69,8 @@
                 text: "You won't be able to revert this!",
                 customClass: {
                     popup: 'custom-swal-popup',
-                }
+                },
+                confirmButtonColor: '#0D4B2D',
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
@@ -109,28 +111,5 @@
                 }
             });
         });
-
-        // $('body').on('focusout', '#table_search', function() {
-        //     if ($(this).val() != $(this).attr('data-pre-search')) {
-        //         serachTable();
-        //     }
-        // });
-
-        // $('body').on('keypress', '#table_search', function(e) {
-        //     if (e.which == 13) {
-        //         if ($(this).val() != $(this).attr('data-pre-search')) {
-        //             serachTable();
-        //         }
-        //     }
-        // });
-
-        // function serachTable() {
-        //     var sr = $('#table_search').val();
-        //     var params = {
-        //         'sr': sr
-        //     };
-        //     var new_url = '{{ route('email-attachment.index') }}?' + jQuery.param(params);
-        //     window.location.href = new_url;
-        // }
     </script>
 @endpush
