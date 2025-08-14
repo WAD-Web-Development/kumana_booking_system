@@ -42,7 +42,7 @@ class SpecialDateController extends ParentController
     {
         try {
 
-            $is_full_day = isset($request->is_full_day) ? 1 : 0;
+            $is_full_day = isset($request->is_half_day) ? 0 : 1;
             $request->merge(['is_full_day' => $is_full_day]);
 
             $is_closed = isset($request->is_closed) ? 1 : 0;

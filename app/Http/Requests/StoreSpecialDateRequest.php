@@ -26,10 +26,10 @@ class StoreSpecialDateRequest extends FormRequest
             'start_date'  => 'required',
             'end_date'  => 'required|date|after_or_equal:start_date',
             'description'  => 'nullable',
-            'is_full_day'  => 'nullable',
+            'is_half_day'  => 'nullable',
             'is_closed'  => 'nullable',
             'image' => 'nullable|mimes:jpeg,png,jpg,gif|max:10240',
-            'day_time' => 'required_unless:is_full_day,1',
+            'day_time' => 'required_if:is_half_day,1',
         ];
     }
 

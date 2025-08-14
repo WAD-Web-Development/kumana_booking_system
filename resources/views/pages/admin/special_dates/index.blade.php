@@ -64,4 +64,62 @@
 @endsection
 
 @push('custom_scripts')
+    <script>
+        $('body').on('click', '.delete', function() {
+            var id = $(this).attr('data-id')
+            var atr = $(this);
+            var url = '{{ route('special-date.destroy', ':id') }}';
+            Swal.fire({
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                reverseButtons: true,
+                title: 'Are You Sure!',
+                text: "You won't be able to revert this!",
+                customClass: {
+                    popup: 'custom-swal-popup',
+                },
+                confirmButtonColor: '#0D4B2D',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: url.replace(':id', id),
+                        method: "DELETE",
+                        dataType: "json",
+                        data: {
+                            id: id,
+                            '_token': '{{ csrf_token() }}'
+                        },
+                        beforeSend: function() {
+                            Swal.showLoading();
+                        },
+                        success: function(data) {
+                            if (data.response == "success") {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success!',
+                                    text: data.message,
+                                    timer: 3000,
+                                    showConfirmButton: false,
+                                    customClass: {
+                                        popup: 'custom-swal-popup',
+                                    }
+                                });
+                                $("#row" + id).remove();
+                            } else if (data.response == "error") {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error!',
+                                    text: data.message,
+                                    timer: 3000,
+                                    showConfirmButton: false
+                                });
+                            }
+                        }
+                    })
+                }
+            });
+        });
+    </script>
 @endpush

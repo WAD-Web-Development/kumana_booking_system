@@ -12,7 +12,7 @@
                         <form action="{{ route('special-date.store') }}" method="POST" id="special-date-form" enctype="multipart/form-data">
                         @csrf
                             <div class="row g-3">
-                                <div class="col-12 col-md-6 d-flex align-items-stretch">
+                                <div class="col-12 d-flex align-items-stretch">
                                     <div class="row input-group mb-3 admin-management-page-card-input-row">
                                         <div class="col-8 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Title</span>
@@ -43,14 +43,26 @@
                                 <div class="col-12 col-md-6 d-flex align-items-stretch">
                                     <div class="row input-group mb-3 admin-management-page-card-input-row">
                                         <div class="col-8 input-group-prepend admin-management-page-card-input-label">
-                                            <span class="input-group-text admin-management-page-card-input-label-text">Is Full Day</span>
+                                            <span class="input-group-text admin-management-page-card-input-label-text">Is Half Day</span>
                                         </div>
                                         <div class="col-4 d-flex align-items-center justify-content-center admin-management-page-card-check-input-col">
-                                            <input type="checkbox" class="form-check-input admin-management-page-card-check-input" aria-label="is_full_day" id="is_full_day" name="is_full_day" value="1">
+                                            <input type="checkbox" class="form-check-input admin-management-page-card-check-input" aria-label="is_half_day" id="is_half_day" name="is_half_day" value="1">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-6 d-flex align-items-stretch day-time-section" style="display: none">
+                                <div class="col-12 col-md-6 d-flex align-items-stretch">
+                                    <div class="row input-group mb-3 admin-management-page-card-input-row">
+                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text">Is Closed</span>
+                                        </div>
+                                        <div class="col-4 d-flex align-items-center justify-content-center admin-management-page-card-check-input-col">
+                                            <input type="checkbox" class="form-check-input admin-management-page-card-check-input" aria-label="is_closed" id="is_closed" name="is_closed" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-3 day-time-section hidden-input-section">
+                                <div class="col-12 col-md-6 d-flex align-items-stretch">
                                     <div class="row input-group mb-3 admin-management-page-card-input-row">
                                         <div class="col-8 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Which half of the day</span>
@@ -60,18 +72,6 @@
                                             <option value="Morning">Morning</option>
                                             <option value="Afternoon">Afternoon</option>
                                         </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col-12 col-md-6 d-flex align-items-stretch">
-                                    <div class="row input-group mb-3 admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
-                                            <span class="input-group-text admin-management-page-card-input-label-text">Is Closed</span>
-                                        </div>
-                                        <div class="col-4 d-flex align-items-center justify-content-center admin-management-page-card-check-input-col">
-                                            <input type="checkbox" class="form-check-input admin-management-page-card-check-input" aria-label="is_closed" id="is_closed" name="is_closed" value="1">
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -105,16 +105,16 @@
             $('.image').dropify();
 
             function toggleDayTime() {
-                if ($('#is_full_day').prop('checked')) {
-                    $('.day-time-section').addClass('hidden-input-section');
-                } else {
+                if ($('#is_half_day').prop('checked')) {
                     $('.day-time-section').removeClass('hidden-input-section');
+                } else {
+                    $('.day-time-section').addClass('hidden-input-section');
                 }
             }
 
             toggleDayTime(); // run on page load
 
-            $('#is_full_day').change(function() {
+            $('#is_half_day').change(function() {
                 toggleDayTime();
             });
         });
