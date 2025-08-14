@@ -1,58 +1,112 @@
-@extends('layouts.app', ['activePage' => 'dashboard', 'activeSection' => 'dashboard'])
+@extends('layouts.app-dashboard', ['activePage' => 'room_type', 'activeSection' => 'room_type'])
 
 @section('content')
-
-<div class="container-fluid admin-container d-flex justify-content-center">
-    <!-- Adjust the width of the card -->
-    <div class="card admin-card shadow-lg col-md-6 mb-5">
-        <div class="card-header bg-white border-0 p-4 pb-1">
-            <div class="d-lg-flex">
-                <div>
-                    <h5 class="mb-0 admin-title">Edit Room Type</h5>
+    <div class="container-fluid m-0 p-0">
+        <div class="row m-0 p-0">
+            <div class="col-12">
+                <div class="card admin-management-page-card">
+                    <div class="card-header px-4 py-3 d-flex justify-content-between align-items-center admin-management-page-card-header">
+                        <h5 class="admin-management-page-card-title mb-0">Create Room Type</h5>
+                    </div>
+                    <div class="card-body admin-management-page-card-body px-4 py-4">
+                        <form action="{{ route('room-type.update', $roomType->id) }}" method="POST" id="room-type-edit-form" enctype="multipart/form-data">
+                        @method('PUT')
+                        @csrf
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <div class="row input-group admin-management-page-card-input-row">
+                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text">Title</span>
+                                        </div>
+                                        <input type="text" class="col-4 form-control admin-management-page-card-input-value" aria-label="title" id="title" name="title" placeholder="Enter title" value="{{ $roomType->title }}">
+                                    </div>
+                                    @error('title')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="row input-group admin-management-page-card-input-row">
+                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text">Room Count</span>
+                                        </div>
+                                        <input type="number" class="col-4 form-control admin-management-page-card-input-value" aria-label="room_count" id="room_count" name="room_count"  min="1" placeholder="Enter count" value="{{ $roomType->room_count }}">
+                                    </div>
+                                    @error('room_count')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row gx-3 mt-3">
+                                <div class="col-12 col-md-6">
+                                    <div class="row input-group admin-management-page-card-input-row">
+                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text">Max People Count</span>
+                                        </div>
+                                        <input type="number" class="col-4 form-control admin-management-page-card-input-value" aria-label="max_people_count" id="max_people_count" name="max_people_count" min="1" placeholder="Enter count" value="{{ $roomType->max_people_count }}">
+                                    </div>
+                                    @error('max_people_count')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="row input-group admin-management-page-card-input-row">
+                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text">Price (LKR)</span>
+                                        </div>
+                                        <input type="number" class="col-4 form-control admin-management-page-card-input-value" aria-label="price" id="price" name="price" step="0.01" min="0" placeholder="Enter price" value="{{ $roomType->price }}">
+                                    </div>
+                                    @error('price')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <textarea id="description" name="description" class="form-control admin-management-page-card-description px-4 py-3" rows="8" placeholder="Enter description">{{ $roomType->description }}</textarea>
+                                    @error('description')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-12 d-flex justify-content-end">
+                                    <button type="submit" class="admin-management-page-card-submit-btn px-3">Update Room Type</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="card-body mt-2 p-4 pt-1">
-            <form action="{{ route('room-type.update', $roomType->id) }}" method="POST" id="room-type-edit-form" enctype="multipart/form-data">
-                @method('PUT')
-                @csrf
-                <div class="form-group col-md-12 mt-2">
-                    <label for="title" class="form-label">Title <span style="color: red">*</span></label>
-                    <input type="text" class="form-control" id="title" name="title" value="{{ $roomType->title }}" required>
-                </div>
-
-                <div class="form-group col-md-12 mt-2">
-                    <label for="room_count" class="form-label">Room Count <span style="color: red">*</span></label>
-                    <input type="number" class="form-control" id="room_count" name="room_count" min="1" value="{{ $roomType->room_count }}" required>
-                </div>
-
-                <div class="form-group col-md-12 mt-2">
-                    <label for="max_people_count" class="form-label">Max People Count <span style="color: red">*</span></label>
-                    <input type="number" class="form-control" id="max_people_count" name="max_people_count" min="1" value="{{ $roomType->max_people_count }}" required>
-                </div>
-
-                <div class="form-group col-md-12 mt-2">
-                    <label for="price" class="form-label">Price (LKR) <span style="color: red">*</span></label>
-                    <input type="number" step="0.01" class="form-control" id="price" name="price" min="0" value="{{ $roomType->price }}" required>
-                </div>
-
-                <div class="form-group col-md-12 mt-2">
-                    <label for="description" class="form-label mt-2">Description <span
-                        style="color: rgb(163, 163, 163)">(optional)</span></label>
-                    <textarea id="description" name="description" class="form-control description" rows="5">{{ $roomType->description }}</textarea>
-                </div>
-
-                <div class="d-flex justify-content-end mt-4">
-                    <a href="{{ url()->previous() }}" class="btn btn-light admin-btn-cancel text-white m-0">Cancel</a>
-                    <button type="submit" class="btn admin-btn m-0 ms-2">Update Room Type</button>
-                </div>
-            </form>
-        </div>
     </div>
-</div>
-
 @endsection
 
 @push('custom_scripts')
-{!! JsValidator::formRequest('App\Http\Requests\StoreRoomTypeRequest', '#room-type-edit-form') !!}
+    <script>
+    </script>
 @endpush
