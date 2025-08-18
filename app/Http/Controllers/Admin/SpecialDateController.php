@@ -150,4 +150,15 @@ class SpecialDateController extends ParentController
             return redirect()->back()->withError($e->getMessage());
         }
     }
+
+    public function updateSpecialDateStatus(Request $request)
+    {
+
+        SpecialDateFacade::updateSpecialDateStatus($request->all());
+
+        return response()->json([
+            'status' => 'success',
+            'message' =>  '',
+        ]);
+    }
 }

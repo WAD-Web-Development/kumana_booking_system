@@ -28,11 +28,13 @@
                                             <td> {{ $roomType->room_count }} </td>
                                             <td> {{ $roomType->price }} </td>
                                             <td>
-                                                @if ($roomType->is_active)
-                                                    Active
-                                                @else
-                                                    Deactive
-                                                @endif
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input admin-management-page-checkbox" type="checkbox"
+                                                        id="isActiveStatus_{{ $roomType->id }}"
+                                                        name="isActiveStatus_{{ $roomType->id }}"
+                                                        onclick="changeActiveStatus({{ $roomType->id }})"
+                                                        @if ($roomType->is_active == 1) checked @endif>
+                                                </div>
                                             </td>
                                             <td class="text-sm">
 
@@ -121,5 +123,69 @@
                 }
             });
         });
+
+        function changeActiveStatus(id) {
+
+            var status = 0;
+
+            if ($('#isActiveStatus_' + id).is(":checked")) {
+                status = 1;
+            } else {
+                status = 0;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('update.room.type.status') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    id: id,
+                    status: status,
+                },
+                success: function(response) {
+                    if (response.status == 'success') {
+                        Swal.hideLoading();
+                        Swal.fire({
+                            toast: true,
+                            position: 'bottom-end',
+                            title: "Success!",
+                            icon: "success",
+                            allowEscapeKey: false,
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                    } else {
+                        Swal.hideLoading();
+                        Swal.fire({
+                            toast: true,
+                            position: 'bottom-end',
+                            title: "Error!",
+                            icon: "error",
+                            html: "Something went wrong!",
+                            allowEscapeKey: false,
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                    }
+                },
+                error: function(request, status, error) {
+                    Swal.hideLoading();
+                    Swal.fire({
+                        toast: true,
+                        position: 'bottom-end',
+                        title: "Success!",
+                        icon: "Error",
+                        html: "Something went wrong!",
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+
+                },
+            });
+        }
     </script>
 @endpush

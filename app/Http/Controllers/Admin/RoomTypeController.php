@@ -101,4 +101,15 @@ class RoomTypeController extends ParentController
             return redirect()->back()->withError($e->getMessage());
         }
     }
+
+    public function updateRoomTypeStatus(Request $request)
+    {
+
+        RoomTypeFacade::updateRoomTypeStatus($request->all());
+
+        return response()->json([
+            'status' => 'success',
+            'message' =>  '',
+        ]);
+    }
 }

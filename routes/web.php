@@ -65,6 +65,9 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index
 // Admin
 Route::middleware(['admin'])->prefix('admin')->group(function () {
 
+    Route::post('status-change-special-date', [ASpecialDateController::class, 'updateSpecialDateStatus'])->name('update.special.date.status');
+    Route::post('status-change-room-type', [ARoomTypeController::class, 'updateRoomTypeStatus'])->name('update.room.type.status');
+
     Route::resource('special-date', ASpecialDateController::class);
     Route::resource('room-type', ARoomTypeController::class);
     Route::resource('email-attachment', AEmailAttachmentController::class);

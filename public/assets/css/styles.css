@@ -1874,7 +1874,6 @@ html {
     align-items: center;
     height: 45.9px;
 }
-
 .admin-management-page-card-submit-btn:hover {
     background: #155D37;
     color: #fff;
@@ -1882,3 +1881,18 @@ html {
 .hidden-input-section  {
     display: none !important;
 }
+.admin-management-page-checkbox {
+    background-color: #ccc;
+    border-color: #aaa;
+    width: 42px !important;
+    height: 22px !important;
+}
+.admin-management-page-checkbox:checked {
+    background-color: #0D4B2D;
+    border-color: #0D4B2D;
+}
+.admin-management-page-checkbox:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
