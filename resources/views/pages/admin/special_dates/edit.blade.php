@@ -153,7 +153,7 @@
                             </div>
                             <div class="row mt-4">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="admin-management-page-card-submit-btn px-3">Create Special Date</button>
+                                    <button type="submit" class="admin-management-page-card-submit-btn px-3">Update Special Date</button>
                                 </div>
                             </div>
                         </form>
