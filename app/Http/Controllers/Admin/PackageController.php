@@ -172,4 +172,15 @@ class PackageController extends ParentController
             return redirect()->back()->withError($e->getMessage());
         }
     }
+
+    public function updatePackageStatus(Request $request)
+    {
+
+        PackageFacade::updatePackageStatus($request->all());
+
+        return response()->json([
+            'status' => 'success',
+            'message' =>  '',
+        ]);
+    }
 }

@@ -1895,4 +1895,10 @@ html {
     outline: none !important;
     box-shadow: none !important;
 }
+.image-uploader .upload-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #8A8A8A !important;
+}
+
 
