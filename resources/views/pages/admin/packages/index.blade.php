@@ -32,7 +32,7 @@
                                     @forelse ($packages as $package)
                                         <tr id="row{{ $package->id }}">
                                             <td> {{ $package->title }} </td>
-                                            <td>{{ $types[$package->type] ?? 'N/A' }}</td>
+                                            <td>{{ $package->type_name}}</td>
                                             <td> {{ $package->safari_type }} </td>
                                             <td>
                                                 <div class="form-check form-switch">

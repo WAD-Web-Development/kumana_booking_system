@@ -24,7 +24,13 @@ class Package extends Model
         'room_type_id',
     ];
 
-    protected $appends = ['image_url'];
+    const TYPES = [
+        1 => 'Safari',
+        2 => 'Stay',
+        3 => 'Stay + Safari',
+    ];
+
+    protected $appends = ['image_url','type_name'];
 
     public function images()
     {
@@ -36,5 +42,10 @@ class Package extends Model
         if ($this->image_path) {
             return asset('storage/' . $this->image_path);
         }
+    }
+
+    public function getTypeNameAttribute()
+    {
+        return self::TYPES[$this->type] ?? 'Unknown';
     }
 }

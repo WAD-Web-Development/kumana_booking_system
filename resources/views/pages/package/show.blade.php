@@ -15,30 +15,32 @@
                 </div>
 
                 <div class="card package-image-card">
-                    <img src="{{ asset('assets/img/image1.jpg') }}" class="package-image-card-img" alt="image">
+                    <img src="{{ $package->image_url }}" class="package-image-card-img" alt="image">
                     <div class="package-image-card-body p-3">
-                        <h5 class="package-image-card-title mb-5">Sunset Experience</h5>
+                        <h5 class="package-image-card-title mb-5">{{$package->title}}</h5>
                         <div class="package-image-card-info-row-border">
                             <span class="package-image-card-label">Package Type</span>
-                            <span class="package-image-card-value">Stay + Safari</span>
+                            <span class="package-image-card-value">{{$package->type_name}}</span>
                         </div>
-                        <div class="package-image-card-info-row-border">
+                        {{-- <div class="package-image-card-info-row-border">
                             <span class="package-image-card-label">Safari Time</span>
                             <span class="package-image-card-value">
                                 <i class="fas fa-sun"></i> Daytime
                             </span>
-                        </div>
-                        <div class="package-image-card-info-row">
-                            <span class="package-image-card-label">Day Type</span>
-                            <span class="package-image-card-value">Fullday</span>
-                        </div>
+                        </div> --}}
+                        @if ($package->safari_type)
+                            <div class="package-image-card-info-row">
+                                <span class="package-image-card-label">Day Type</span>
+                                <span class="package-image-card-value">{{$package->safari_type}}</span>
+                            </div>
+                        @endif
                     </div>
                     <div class="card-footer package-image-card-footer mt-4 p-2">
                         <div class="package-image-card-price-row mt-2">
                             <span class="package-image-card-label ps-3">Starting at</span>
                             <span class="package-image-card-price pe-3">12000LKR pp</span>
                         </div>
-                        <a href="{{ route('booking.create', 1) }}" class="package-image-card-btn mt-3">Book Package <i class="fas fa-arrow-right package-image-card-btn-arrow"></i></a>
+                        <a href="{{ route('booking.create', $package->id) }}" class="package-image-card-btn mt-3">Book Package <i class="fas fa-arrow-right package-image-card-btn-arrow"></i></a>
                     </div>
                 </div>
 
@@ -50,7 +52,7 @@
                     <div class="card-body p-0 package-show-card-body">
                         <h4 class="package-title">Package Description</h4>
                         <p class="package-description-text mt-3">
-                            Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant, known for their smaller Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant, known for their smaller Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant, known for their smaller Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant, known for their smaller
+                            {{$package->description}}
                         </p>
 
                         <h4 class="package-title mt-5">Included</h4>
@@ -100,6 +102,7 @@
                             </div>
                         </div>
 
+                        @if ($package->type != 1)
                         <h4 class="package-title mt-5">Accommodation</h4>
 
                         <div class="row mt-4">
@@ -136,6 +139,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
 
                         <h4 class="package-title mt-5">Other Information</h4>
 
@@ -244,18 +248,16 @@
                         <h4 class="package-title mt-5">Photos and Gallery</h4>
 
                         <div class="d-flex flex-nowrap mt-4 package-carousel-container">
-                            <div class="drag-to-explore-overlay hide" id="dragToExploreOverlay">
-                                Drag<br>to Explore
-                            </div>
-                            <div class="package-carousel-item me-3">
-                                <img src="{{ asset('assets/img/image1.jpg') }}" class="package-carousel-image" alt="...">
-                            </div>
-                            <div class="package-carousel-item me-3">
-                                <img src="{{ asset('assets/img/image2.jpg') }}" class="package-carousel-image" alt="...">
-                            </div>
-                            <div class="package-carousel-item me-3">
-                                <img src="{{ asset('assets/img/logo.jpg') }}" class="package-carousel-image" alt="...">
-                            </div>
+                            @if($package->images->count() > 1)
+                                <div class="drag-to-explore-overlay hide" id="dragToExploreOverlay">
+                                    Drag<br>to Explore
+                                </div>
+                            @endif
+                            @foreach ($package->images as $image)
+                                <div class="package-carousel-item me-3">
+                                    <img src="{{ $image->image_url }}" class="package-carousel-image" alt="...">
+                                </div>
+                            @endforeach
                         </div>
 
                         <div class="package-contact-banner p-3 p-md-4 d-flex align-items-center">

@@ -4,15 +4,8 @@
             <div class="welcome-card position-relative">
                 <div class="position-relative">
                     <img src="{{ $package->image_url }}" class="welcome-card-img" alt="...">
-                    @php
-                        $types = [
-                            1 => 'Safari',
-                            2 => 'Stay',
-                            3 => 'Stay + Safari',
-                        ];
-                    @endphp
                     <span class="welcome-card-badge position-absolute top-0 start-0 m-2">
-                        {{$types[$package->type]}}
+                        {{$package->type_name}}
                     </span>
                     @if ($package->safari_type)
                        <span class="welcome-card-badge-light position-absolute top-0 end-0 m-2">{{$package->safari_type}}</span>
