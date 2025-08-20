@@ -18,9 +18,15 @@ class WelcomeController extends Controller
 
     public function searchPackages(Request $request)
     {
-        $query = $request->input('query');
+        $type = $request->input('type', 'all');
 
-        $packages = PackageFacade::activeAll();
+        $query = PackageFacade::activeAll();
+
+        if ($type !== 'all') {
+            $query = $query->where('type', $type);
+        }
+
+        $packages = $query;
 
         $html = view('pages.welcome.partials.package-cards', compact('packages'))->render();
 

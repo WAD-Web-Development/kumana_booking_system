@@ -61,12 +61,12 @@
                 <div class="my-4 welcome-typebar-title">View by type</div>
                 <div class="row welcome-typebar-group flex-wrap gx-1 gy-1 mb-4">
                     <div class="col-12 col-md-6 col-lg-3">
-                        <button class="welcome-typebar-btn active w-100">
+                        <button class="welcome-typebar-btn active w-100" data-type="all">
                             View all
                         </button>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3">
-                        <button class="welcome-typebar-btn w-100">
+                        <button class="welcome-typebar-btn w-100" data-type="3">
                             <span>
                                 <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="12" width="8" height="8" rx="2"/><rect x="14" y="4" width="8" height="16" rx="2"/></svg>
                             </span>
@@ -74,7 +74,7 @@
                         </button>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3">
-                        <button class="welcome-typebar-btn w-100">
+                        <button class="welcome-typebar-btn w-100" data-type="1">
                             <span>
                                 <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="12" width="8" height="8" rx="2"/><rect x="14" y="4" width="8" height="16" rx="2"/></svg>
                             </span>
@@ -82,7 +82,7 @@
                         </button>
                     </div>
                     <div class="col-12 col-md-6 col-lg-3">
-                        <button class="welcome-typebar-btn w-100">
+                        <button class="welcome-typebar-btn w-100" data-type="2">
                             <span>
                                 <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="12" width="8" height="8" rx="2"/><rect x="14" y="4" width="8" height="16" rx="2"/></svg>
                             </span>
@@ -134,99 +134,7 @@
                     </div>
                 </div>
 
-                <!-- Card Grid Section -->
                 <div class="row g-3 mt-2 mb-4" id="packageContainer">
-                    {{-- <div class="col-12 col-md-6 col-lg-3">
-                        <div class="welcome-card position-relative">
-                            <div class="position-relative">
-                                <img src="{{ asset('assets/img/logo.jpg') }}" class="welcome-card-img" alt="...">
-                                <span class="welcome-card-badge position-absolute top-0 start-0 m-2">Stay</span>
-                                <span class="welcome-card-title position-absolute bottom-0 start-0 mx-2 mb-3">Night with Nature</span>
-                            </div>
-                            <div class="welcome-card-body m-0 p-0">
-                                <p class="welcome-card-text px-2 py-3">Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant. known for their smaller</p>
-                            </div>
-                            <div class="welcome-card-footer px-2 py-3">
-                                <span class="welcome-card-footer-label">Starting at</span>
-                                <span class="welcome-card-footer-price">12000LKR pp</span>
-                            </div>
-                            <a href="{{ route('packages.show', 1) }}" class="welcome-card-btn-float">
-                                View Package <span>&rarr;</span>
-                            </a>
-                        </div>
-                    </div> --}}
-                    {{-- <div class="col-12 col-md-6 col-lg-3">
-                        <div class="welcome-card position-relative">
-                            <div class="position-relative">
-                                <img src="{{ asset('assets/img/logo.jpg') }}" class="welcome-card-img" alt="...">
-                                <span class="welcome-card-badge position-absolute top-0 start-0 m-2">Safari</span>
-                                <span class="welcome-card-badge-light position-absolute top-0 end-0 m-2">Half Day</span>
-                                <span class="welcome-card-title position-absolute bottom-0 start-0 mx-2 mb-3">Night with Nature</span>
-                            </div>
-                            <div class="welcome-card-body m-0 p-0">
-                                <p class="welcome-card-text px-2 py-3">Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant. known for their smaller</p>
-                            </div>
-                            <div class="welcome-card-footer px-2 py-3">
-                                <span class="welcome-card-footer-label">Starting at</span>
-                                <span class="welcome-card-footer-price">12000LKR pp</span>
-                            </div>
-                            <button class="welcome-card-btn-float">View Package <span>&rarr;</span></button>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="welcome-card position-relative">
-                            <div class="position-relative">
-                                <img src="{{ asset('assets/img/logo.jpg') }}" class="welcome-card-img" alt="...">
-                                <span class="welcome-card-badge position-absolute top-0 start-0 m-2">Safari</span>
-                                <span class="welcome-card-badge-light position-absolute top-0 end-0 m-2">Half Day</span>
-                                <span class="welcome-card-title position-absolute bottom-0 start-0 mx-2 mb-3">Night with Nature</span>
-                            </div>
-                            <div class="welcome-card-body m-0 p-0">
-                                <p class="welcome-card-text px-2 py-3">Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant. known for their smaller</p>
-                            </div>
-                            <div class="welcome-card-footer px-2 py-3">
-                                <span class="welcome-card-footer-label">Starting at</span>
-                                <span class="welcome-card-footer-price">12000LKR pp</span>
-                            </div>
-                            <button class="welcome-card-btn-float">View Package <span>&rarr;</span></button>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="welcome-card position-relative">
-                            <div class="position-relative">
-                                <img src="{{ asset('assets/img/logo.jpg') }}" class="welcome-card-img" alt="...">
-                                <span class="welcome-card-badge position-absolute top-0 start-0 m-2">Safari</span>
-                                <span class="welcome-card-badge-light position-absolute top-0 end-0 m-2">Half Day</span>
-                                <span class="welcome-card-title position-absolute bottom-0 start-0 mx-2 mb-3">Night with Nature</span>
-                            </div>
-                            <div class="welcome-card-body m-0 p-0">
-                                <p class="welcome-card-text px-2 py-3">Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant. known for their smaller</p>
-                            </div>
-                            <div class="welcome-card-footer px-2 py-3">
-                                <span class="welcome-card-footer-label">Starting at</span>
-                                <span class="welcome-card-footer-price">12000LKR/night</span>
-                            </div>
-                            <button class="welcome-card-btn-float">View Package <span>&rarr;</span></button>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3">
-                        <div class="welcome-card position-relative">
-                            <div class="position-relative">
-                                <img src="{{ asset('assets/img/logo.jpg') }}" class="welcome-card-img" alt="...">
-                                <span class="welcome-card-badge position-absolute top-0 start-0 m-2">Safari</span>
-                                <span class="welcome-card-badge-light position-absolute top-0 end-0 m-2">Half Day</span>
-                                <span class="welcome-card-title position-absolute bottom-0 start-0 mx-2 mb-3">Night with Nature</span>
-                            </div>
-                            <div class="welcome-card-body m-0 p-0">
-                                <p class="welcome-card-text px-2 py-3">Sri Lankan elephants in Kumana National Park are a majestic and important part of the park's ecosystem. These elephants are a subspecies of the Asian elephant. known for their smaller</p>
-                            </div>
-                            <div class="welcome-card-footer px-2 py-3">
-                                <span class="welcome-card-footer-label">Starting at</span>
-                                <span class="welcome-card-footer-price">12000LKR pp</span>
-                            </div>
-                            <button class="welcome-card-btn-float">View Package <span>&rarr;</span></button>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -273,17 +181,23 @@
     <script>
         $(document).ready(function() {
             searchPackages();
+
+            $(document).on('click', '.welcome-typebar-btn', function() {
+
+                $('.welcome-typebar-btn').removeClass('active');
+                $(this).addClass('active');
+
+                let type = $(this).data('type');
+                searchPackages(type);
+            });
         });
 
-        function searchPackages(page = 1) {
-            var query = $('#searchPackage').val();
-
+        function searchPackages(type = 'all') {
             $.ajax({
                 url: '{{ route('packages.search') }}',
                 method: 'GET',
                 data: {
-                    query: query,
-                    page: page
+                    type: type
                 },
                 success: function(response) {
                     $('#packageContainer').html(response.html);

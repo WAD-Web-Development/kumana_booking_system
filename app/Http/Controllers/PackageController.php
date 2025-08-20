@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Throwable;
+use domain\Facades\PackageFacade;
 
 class PackageController extends Controller
 {
@@ -16,10 +17,9 @@ class PackageController extends Controller
     {
         try {
 
-            // $package = Package::findOrFail($id);
+            $package = PackageFacade::get($id);
 
-            // return view('packages.show', compact('package'));
-            return view('pages.package.show');
+            return view('pages.package.show', compact('package'));
         } catch (Throwable $th) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
