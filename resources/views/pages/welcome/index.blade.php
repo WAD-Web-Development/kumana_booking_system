@@ -135,8 +135,8 @@
                 </div>
 
                 <!-- Card Grid Section -->
-                <div class="row g-3 mt-2 mb-4">
-                    <div class="col-12 col-md-6 col-lg-3">
+                <div class="row g-3 mt-2 mb-4" id="packageContainer">
+                    {{-- <div class="col-12 col-md-6 col-lg-3">
                         <div class="welcome-card position-relative">
                             <div class="position-relative">
                                 <img src="{{ asset('assets/img/logo.jpg') }}" class="welcome-card-img" alt="...">
@@ -154,8 +154,8 @@
                                 View Package <span>&rarr;</span>
                             </a>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3">
+                    </div> --}}
+                    {{-- <div class="col-12 col-md-6 col-lg-3">
                         <div class="welcome-card position-relative">
                             <div class="position-relative">
                                 <img src="{{ asset('assets/img/logo.jpg') }}" class="welcome-card-img" alt="...">
@@ -226,7 +226,7 @@
                             </div>
                             <button class="welcome-card-btn-float">View Package <span>&rarr;</span></button>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -268,6 +268,31 @@
         loginModal.addEventListener('hidden.bs.modal', () => {
             blurOverlay.style.display = 'none';
         });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            searchPackages();
+        });
+
+        function searchPackages(page = 1) {
+            var query = $('#searchPackage').val();
+
+            $.ajax({
+                url: '{{ route('packages.search') }}',
+                method: 'GET',
+                data: {
+                    query: query,
+                    page: page
+                },
+                success: function(response) {
+                    $('#packageContainer').html(response.html);
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX error:", status, error);
+                }
+            });
+        }
     </script>
 
 @endpush

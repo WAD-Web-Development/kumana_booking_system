@@ -38,6 +38,11 @@ class PackageService
         }
     }
 
+    public function activeAll()
+    {
+        return $this->package->where('is_active', 1)->get();
+    }
+
     public function first()
     {
         return $this->package->first();

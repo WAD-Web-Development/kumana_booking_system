@@ -40,6 +40,7 @@ use App\Http\Controllers\ProfileController;
 
 // User
 Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
+Route::get('/search-packages', [WelcomeController::class, 'searchPackages'])->name('packages.search');
 
 Route::get('/', [HomeController::class, 'index'])->name('dashboard');
 
