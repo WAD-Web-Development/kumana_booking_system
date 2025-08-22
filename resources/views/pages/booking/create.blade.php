@@ -13,15 +13,15 @@
                         <div class="row g-0">
                             <div class="col border-end py-4 px-4">
                                 <div class="booking-package-details-card-label mb-1">Name</div>
-                                <div class="booking-package-details-card-value">Sunset Experience</div>
+                                <div class="booking-package-details-card-value">{{$package->title}}</div>
                             </div>
                             <div class="col border-end py-4 px-4">
                                 <div class="booking-package-details-card-label mb-1">Package</div>
-                                <div class="booking-package-details-card-value">Stay + Safari</div>
+                                <div class="booking-package-details-card-value">{{$package->type_name}}</div>
                             </div>
                             <div class="col border-end py-4 px-4">
                                 <div class="booking-package-details-card-label mb-1">Type</div>
-                                <div class="booking-package-details-card-value">Full Day</div>
+                                <div class="booking-package-details-card-value">{{ $package->safari_type ?? '-' }}</div>
                             </div>
                             <div class="col border-end py-4 px-4">
                                 <div class="booking-package-details-card-label mb-1">Time</div>

@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use Throwable;
 use Illuminate\Http\Request;
+use domain\Facades\PackageFacade;
 
 class BookingController extends Controller
 {
     public function create($id)
     {
         try {
-            // $package = Package::findOrFail($id);
 
-            // return view('packages.show', compact('package'));
-            return view('pages.booking.create');
+            $package = PackageFacade::get($id);
+
+            return view('pages.booking.create', compact('package'));
         } catch (Throwable $th) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
