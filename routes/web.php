@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\RoomTypeController as ARoomTypeController;
 use App\Http\Controllers\Admin\EmailAttachmentController as AEmailAttachmentController;
 use App\Http\Controllers\Admin\SafariBookingPriceController as ASafariBookingPriceController;
 use App\Http\Controllers\Admin\PackageController as APackageController;
+use App\Http\Controllers\Admin\WelcomeSliderController as AWelcomeSliderController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\Auth\CustomRegisterController;
 use App\Http\Controllers\BookingController;
@@ -69,12 +70,14 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::post('status-change-special-date', [ASpecialDateController::class, 'updateSpecialDateStatus'])->name('update.special.date.status');
     Route::post('status-change-room-type', [ARoomTypeController::class, 'updateRoomTypeStatus'])->name('update.room.type.status');
     Route::post('status-change-package', [APackageController::class, 'updatePackageStatus'])->name('update.package.status');
+    Route::post('status-change-welcome-slider', [AWelcomeSliderController::class, 'updateWelcomeSliderStatus'])->name('update.welcome-slider.status');
 
     Route::resource('special-date', ASpecialDateController::class);
     Route::resource('room-type', ARoomTypeController::class);
     Route::resource('email-attachment', AEmailAttachmentController::class);
     Route::resource('safari-booking-price', ASafariBookingPriceController::class);
     Route::resource('package', APackageController::class);
+    Route::resource('welcome-slider', AWelcomeSliderController::class);
 
 });
 // Admin - end
