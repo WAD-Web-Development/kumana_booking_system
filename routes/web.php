@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\EmailAttachmentController as AEmailAttachmentCont
 use App\Http\Controllers\Admin\SafariBookingPriceController as ASafariBookingPriceController;
 use App\Http\Controllers\Admin\PackageController as APackageController;
 use App\Http\Controllers\Admin\WelcomeSliderController as AWelcomeSliderController;
+use App\Http\Controllers\Admin\IncludedController as AIncludedController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\Auth\CustomRegisterController;
 use App\Http\Controllers\BookingController;
@@ -77,6 +78,7 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::resource('email-attachment', AEmailAttachmentController::class);
     Route::resource('safari-booking-price', ASafariBookingPriceController::class);
     Route::resource('package', APackageController::class);
+    Route::resource('include', AIncludedController::class);
     Route::resource('welcome-slider', AWelcomeSliderController::class);
 
 });
