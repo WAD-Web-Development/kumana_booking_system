@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use domain\Facades\NationalityFacade;
 use domain\Facades\PackageFacade;
+use domain\Facades\WelcomeSliderFacade;
 
 class WelcomeController extends Controller
 {
@@ -12,8 +13,9 @@ class WelcomeController extends Controller
     {
         $nationalities = NationalityFacade::all();
         $packages = PackageFacade::activeAll();
+        $welcomeSliders = WelcomeSliderFacade::activeAll();
 
-        return view('pages.welcome.index', compact('nationalities','packages'));
+        return view('pages.welcome.index', compact('nationalities','packages','welcomeSliders'));
     }
 
     public function searchPackages(Request $request)

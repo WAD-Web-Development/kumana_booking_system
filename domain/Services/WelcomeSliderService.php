@@ -26,6 +26,11 @@ class WelcomeSliderService
         return $this->welcomeSlider->all();
     }
 
+    public function activeAll()
+    {
+        return $this->welcomeSlider->where('is_active', 1)->get();
+    }
+
     public function allWithParamAndPaginate($data, $limit = 10)
     {
         if($data && array_key_exists('sr', $data)){
