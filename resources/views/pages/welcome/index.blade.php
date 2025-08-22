@@ -14,7 +14,7 @@
                     <div class="carousel-inner h-100">
                         @foreach ($welcomeSliders as $index => $welcomeSlider)
                             <div class="carousel-item {{ $index == 0 ? 'active' : '' }} h-100 position-relative">
-                                <img src="{{ $welcomeSlider->image_url }}" class="d-block w-100 h-100 object-fit-cover" alt="Slide {{ $index + 1 }}">
+                                <img src="{{ $welcomeSlider->image_url }}" class="d-block w-100 h-100 object-fit-cover welcome-slider-img" alt="Slide {{ $index + 1 }}">
 
                                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-start align-items-start p-4 welcome-overlay">
                                     <div class="mt-auto mx-3 d-flex align-items-center welcome-slide-label-container">

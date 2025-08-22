@@ -9,6 +9,7 @@ use App\Http\Controllers\ParentController;
 use domain\Facades\WelcomeSliderFacade;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreWelcomeSliderRequest;
+use App\Http\Requests\UpdateWelcomeSliderRequest;
 
 class WelcomeSliderController extends ParentController
 {
@@ -83,14 +84,14 @@ class WelcomeSliderController extends ParentController
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreWelcomeSliderRequest $request, string $id)
+    public function update(UpdateWelcomeSliderRequest $request, string $id)
     {
         try {
 
             if ($request->has('is_image_removed') && $request->input('is_image_removed') == 1) {
 
                 $validator = Validator::make($request->all(), [
-                    'image' => 'nullable|mimes:jpeg,png,jpg,gif|max:10240',
+                    'image' => 'required|mimes:jpeg,png,jpg,gif|max:10240',
                 ]);
 
                 if ($validator->fails()) {

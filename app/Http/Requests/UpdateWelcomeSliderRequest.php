@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreWelcomeSliderRequest extends FormRequest
+class UpdateWelcomeSliderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class StoreWelcomeSliderRequest extends FormRequest
         return [
             'title'  => 'required',
             'description'  => 'nullable',
-            'image' => 'required|mimes:jpeg,png,jpg,gif|max:10240|dimensions:ratio=9/16',
+            'image' => 'nullable|mimes:jpeg,png,jpg,gif|max:10240|dimensions:ratio=9/16',
         ];
     }
 
