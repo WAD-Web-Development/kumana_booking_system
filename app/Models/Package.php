@@ -22,6 +22,10 @@ class Package extends Model
         'safari_type',
         'safari_max_people_count',
         'room_type_id',
+        'entrance',
+        'safari_duration',
+        'animal_sighting',
+        'hotel_distance',
     ];
 
     const TYPES = [

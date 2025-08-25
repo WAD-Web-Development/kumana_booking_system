@@ -17,10 +17,10 @@
                         {{ Str::limit($package->description, 200) }}
                     </p>
                 </div>
-                <div class="welcome-card-footer px-2 py-3">
+                {{-- <div class="welcome-card-footer px-2 py-3">
                     <span class="welcome-card-footer-label">Starting at</span>
                     <span class="welcome-card-footer-price">12000LKR pp</span>
-                </div>
+                </div> --}}
                 <a href="{{ route('packages.show', $package->id) }}" class="welcome-card-btn-float">
                     View Package <span>&rarr;</span>
                 </a>

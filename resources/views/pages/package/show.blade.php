@@ -35,13 +35,13 @@
                             </div>
                         @endif
                     </div>
-                    <div class="card-footer package-image-card-footer mt-4 p-2">
-                        <div class="package-image-card-price-row mt-2">
+                    {{-- <div class="card-footer package-image-card-footer mt-4 p-2"> --}}
+                        {{-- <div class="package-image-card-price-row mt-2">
                             <span class="package-image-card-label ps-3">Starting at</span>
                             <span class="package-image-card-price pe-3">12000LKR pp</span>
-                        </div>
-                        <a href="{{ route('booking.create', $package->id) }}" class="package-image-card-btn mt-3">Book Package <i class="fas fa-arrow-right package-image-card-btn-arrow"></i></a>
-                    </div>
+                        </div> --}}
+                        <a href="{{ route('booking.create', $package->id) }}" class="package-image-card-btn mt-5 mb-2 mx-2">Book Package <i class="fas fa-arrow-right package-image-card-btn-arrow"></i></a>
+                    {{-- </div> --}}
                 </div>
 
             </div>

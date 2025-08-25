@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use domain\Facades\ImageFacade;
 use domain\Facades\PackageFacade;
 use domain\Facades\RoomTypeFacade;
+use domain\Facades\SightingFacade;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ParentController;
@@ -37,9 +38,11 @@ class PackageController extends ParentController
         try {
 
             $roomTypes = RoomTypeFacade::allActive();
+            $sightings = SightingFacade::all();
+            $durations = PackageFacade::durations();
             $imagesArray = [];
 
-            return view('pages.admin.packages.create', compact('roomTypes','imagesArray'));
+            return view('pages.admin.packages.create', compact('roomTypes','imagesArray','sightings','durations'));
         } catch (Throwable $th) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
@@ -72,6 +75,22 @@ class PackageController extends ParentController
                 $request->merge(['image_paths' => $imagePaths]);
             }
 
+            if ($request->animal_sighting) {
+                $sightings = $request->input('animal_sighting', []);
+            } else {
+                $sightings = [];
+            }
+
+            $sightingsArray = array_unique($sightings);
+
+            $request->merge(['animal_sighting' => implode(',', $sightingsArray)]);
+
+            foreach ($sightingsArray as $sighting) {
+                if (!SightingFacade::sightingExists($sighting)) {
+                    SightingFacade::store($sighting);
+                }
+            }
+
             PackageFacade::store($request->all());
 
             return redirect()->route('package.index')->with('success', 'Package Added Successfully');
@@ -97,9 +116,12 @@ class PackageController extends ParentController
 
             $package = PackageFacade::get($id);
             $roomTypes = RoomTypeFacade::allActive();
+            $sightings = SightingFacade::all();
+            $existingSightings = explode(',', $package->animal_sighting);
+            $durations = PackageFacade::durations();
             $imagesArray = $package->images->toArray();
 
-            return view('pages.admin.packages.edit', compact('package', 'roomTypes', 'imagesArray'));
+            return view('pages.admin.packages.edit', compact('package', 'roomTypes', 'imagesArray','sightings','durations','existingSightings'));
         } catch (Throwable $th) {
 
             return redirect()->back()->with('error', 'Something went wrong');
@@ -148,6 +170,22 @@ class PackageController extends ParentController
                 }
 
                 $request->merge(['image_paths' => $imagePaths]);
+            }
+
+            if ($request->animal_sighting) {
+                $sightings = $request->input('animal_sighting', []);
+            } else {
+                $sightings = [];
+            }
+
+            $sightingsArray = array_unique($sightings);
+
+            $request->merge(['animal_sighting' => implode(',', $sightingsArray)]);
+
+            foreach ($sightingsArray as $sighting) {
+                if (!SightingFacade::sightingExists($sighting)) {
+                    SightingFacade::store($sighting);
+                }
             }
 
             PackageFacade::update($id, $request->all());

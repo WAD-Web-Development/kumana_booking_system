@@ -142,6 +142,80 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="row gx-3 mt-3 safari-other-section-1 hidden-input-section">
+                                <div class="col-12 col-md-6">
+                                    <div class="row input-group admin-management-page-card-input-row">
+                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text">Entrance</span>
+                                        </div>
+                                        <input type="text" class="col-4 form-control admin-management-page-card-input-value" aria-label="entrance" id="entrance" name="entrance" placeholder="Enter entrance">
+                                    </div>
+                                    @error('entrance')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="row input-group admin-management-page-card-input-row">
+                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text">Safari Duration</span>
+                                        </div>
+                                        <select id="safari_duration" class="col-4 form-select admin-management-page-card-input-value" name="safari_duration">
+                                            <option value="">Select duration</option>
+                                            @foreach ($durations as $duration)
+                                                <option value="{{ $duration }}">{{ $duration }} hours</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @error('safari_duration')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row gx-3 mt-3 safari-other-section-2 hidden-input-section">
+                                <div class="col-12 col-md-6">
+                                    <div class="row input-group admin-management-page-card-input-row">
+                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text">Animal Sighting</span>
+                                        </div>
+                                        <select id="animal_sighting" class="col-4 form-select admin-management-page-card-input-value" name="animal_sighting[]" multiple="multiple">
+                                            <option value="">Select Sighting</option>
+                                            @foreach ($sightings as $sighting)
+                                                <option value="{{ $sighting->name }}">{{ $sighting->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        {{-- <div class="col-4">
+                                            <select id="animal_sighting"
+                                                    class="form-select admin-management-page-card-input-value"
+                                                    name="animal_sighting[]"
+                                                    multiple="multiple"
+                                                    style="width: 100%;">
+                                                <option value="">Select Sighting</option>
+                                                @foreach ($sightings as $sighting)
+                                                    <option value="{{ $sighting->id }}">{{ $sighting->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div> --}}
+                                    </div>
+                                    @error('animal_sighting')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
                             <div class="row gx-3 mt-3 room-section hidden-input-section">
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
@@ -156,6 +230,22 @@
                                         </select>
                                     </div>
                                     @error('room_type_id')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="col-12 col-md-6 room-other-section hidden-input-section">
+                                    <div class="row input-group admin-management-page-card-input-row">
+                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text">Hotel Distance</span>
+                                        </div>
+                                        <input type="number" step="any" class="col-4 form-control admin-management-page-card-input-value" aria-label="hotel_distance" id="hotel_distance" name="hotel_distance" placeholder="Enter distance">
+                                    </div>
+                                    @error('hotel_distance')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
                                             <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
@@ -250,15 +340,23 @@
                 let type = document.getElementById("type").value;
 
                 $('.safari-section').addClass('hidden-input-section');
+                $('.safari-other-section-1').addClass('hidden-input-section');
+                $('.safari-other-section-2').addClass('hidden-input-section');
                 $('.room-section').addClass('hidden-input-section');
+                $('.room-other-section').addClass('hidden-input-section');
 
                 if (type == "1") {
                     $('.safari-section').removeClass('hidden-input-section');
+                    $('.safari-other-section-1').removeClass('hidden-input-section');
+                    $('.safari-other-section-2').removeClass('hidden-input-section');
                 } else if (type == "2") {
                     $('.room-section').removeClass('hidden-input-section');
                 } else if (type == "3") {
                     $('.safari-section').removeClass('hidden-input-section');
+                    $('.safari-other-section-1').removeClass('hidden-input-section');
+                    $('.safari-other-section-2').removeClass('hidden-input-section');
                     $('.room-section').removeClass('hidden-input-section');
+                    $('.room-other-section').removeClass('hidden-input-section');
                 }
             }
 
@@ -300,5 +398,21 @@
             imagesInputName: 'package_images',
             preloadedInputName: 'available_images'
         });
+
+        function adjustSelect2Height() {
+            setTimeout(() => {
+                let count = $('#animal_sighting').next('.select2-container').find('.select2-selection__choice').length;
+                let newHeight = 40 + count * 8; // Base height + increase per keyword
+                $('#animal_sighting').next('.select2-container').find('.select2-selection--multiple').css('min-height', newHeight + 'px');
+            }, 10);
+        }
+
+        $('#animal_sighting').select2({
+            tags: true,
+            tokenSeparators: [','],
+            placeholder: 'Add keywords',
+        }).on('select2:select select2:unselect', adjustSelect2Height);
+
+        $(document).ready(adjustSelect2Height);
     </script>
 @endpush

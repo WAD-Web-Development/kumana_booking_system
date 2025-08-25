@@ -73,6 +73,10 @@ class PackageService
             'safari_max_people_count' => $data['safari_max_people_count'],
             'room_type_id' => $data['room_type_id'],
             'image_path' => $data['image_path'] ?? null,
+            'entrance' => $data['entrance'],
+            'safari_duration' => $data['safari_duration'],
+            'hotel_distance' => $data['hotel_distance'],
+            'animal_sighting' => $data['animal_sighting'],
         ]);
 
         if (isset($data['image_paths']) && is_array($data['image_paths'])) {
@@ -142,5 +146,16 @@ class PackageService
             $image->delete();
             $this->imageService->delete($image->image_path);
         }
+    }
+
+    public function durations()
+    {
+        $durations = [];
+
+        for ($i = 1; $i <= 11; $i++) {
+            $durations[] = $i . '-' . ($i + 1);
+        }
+
+        return $durations;
     }
 }
