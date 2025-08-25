@@ -46,6 +46,23 @@ class PackageService
         return $this->package->where('is_active', 1)->get();
     }
 
+    public function filterPackages($type = 'all', $includes = [])
+    {
+        $query = $this->package->where('is_active', 1);
+
+        if ($type !== 'all') {
+            $query->where('type', $type);
+        }
+
+        if (!empty($includes)) {
+            $query->whereHas('includes', function ($q) use ($includes) {
+                $q->whereIn('title', $includes);
+            });
+        }
+
+        return $query->get();
+    }
+
     public function first()
     {
         return $this->package->first();

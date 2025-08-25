@@ -109,10 +109,12 @@
                 <div class="collapse" id="filterPanel">
                     <div class="d-flex justify-content-between align-items-center mt-3">
                         <div class="d-flex align-items-center gap-2">
-                            <button class="welcome-filter-pill">Daytime</button>
-                            <button class="welcome-filter-pill">Night Safari</button>
-                            <button class="welcome-filter-pill active">Full-Day</button>
-                            <button class="welcome-filter-pill">No-Meals</button>
+                            @foreach($includes as $include)
+                                <button class="welcome-filter-pill"
+                                        data-include="{{ $include->title }}">
+                                    {{ $include->title }}
+                                </button>
+                            @endforeach
                         </div>
                         <div>
                             <button class="welcome-apply-filters-btn">Filter Results</button>
@@ -174,16 +176,46 @@
                 $(this).addClass('active');
 
                 let type = $(this).data('type');
-                searchPackages(type);
+                let includes = getSelectedIncludes();
+                searchPackages(type, includes);
             });
+
+            $(document).on('click', '.welcome-filter-pill', function() {
+                $(this).toggleClass('active');
+            });
+
+            $(document).on('click', '.welcome-apply-filters-btn', function() {
+                let includes = getSelectedIncludes();
+                let type = $('.welcome-typebar-btn.active').data('type') || 'all';
+                searchPackages(type, includes);
+            });
+
+            function getSelectedIncludes() {
+                let includes = [];
+                $('.welcome-filter-pill.active').each(function() {
+                    includes.push($(this).data('include'));
+                });
+                return includes;
+            }
+
+            document.getElementById("filter-close-btn").addEventListener("click", function () {
+                document.querySelectorAll(".welcome-filter-pill.active").forEach(el =>
+                    el.classList.remove("active")
+                );
+
+                let type = $('.welcome-typebar-btn.active').data('type') || 'all';
+                searchPackages(type, []);
+            });
+
         });
 
-        function searchPackages(type = 'all') {
+        function searchPackages(type = 'all', includes = []) {
             $.ajax({
                 url: '{{ route('packages.search') }}',
                 method: 'GET',
                 data: {
-                    type: type
+                    type: type,
+                    includes: includes
                 },
                 success: function(response) {
                     $('#packageContainer').html(response.html);
