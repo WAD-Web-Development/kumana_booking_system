@@ -7,6 +7,7 @@ use domain\Facades\ImageFacade;
 use domain\Facades\PackageFacade;
 use domain\Facades\RoomTypeFacade;
 use domain\Facades\SightingFacade;
+use domain\Facades\IncludedFacade;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\ParentController;
@@ -39,10 +40,11 @@ class PackageController extends ParentController
 
             $roomTypes = RoomTypeFacade::allActive();
             $sightings = SightingFacade::all();
+            $includes = IncludedFacade::all();
             $durations = PackageFacade::durations();
             $imagesArray = [];
 
-            return view('pages.admin.packages.create', compact('roomTypes','imagesArray','sightings','durations'));
+            return view('pages.admin.packages.create', compact('roomTypes','imagesArray','sightings','durations','includes'));
         } catch (Throwable $th) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
@@ -120,8 +122,10 @@ class PackageController extends ParentController
             $existingSightings = explode(',', $package->animal_sighting);
             $durations = PackageFacade::durations();
             $imagesArray = $package->images->toArray();
+            $includes = IncludedFacade::all();
+            $packageIncludeArray = $package->includes->pluck('id')->toArray();
 
-            return view('pages.admin.packages.edit', compact('package', 'roomTypes', 'imagesArray','sightings','durations','existingSightings'));
+            return view('pages.admin.packages.edit', compact('package', 'roomTypes', 'imagesArray','sightings','durations','existingSightings','includes','packageIncludeArray'));
         } catch (Throwable $th) {
 
             return redirect()->back()->with('error', 'Something went wrong');

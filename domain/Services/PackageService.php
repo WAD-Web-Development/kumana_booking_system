@@ -4,6 +4,7 @@ namespace domain\Services;
 
 use App\Models\Package;
 use App\Models\PackageImage;
+use App\Models\PackageIncluded;
 use domain\Services\ImageService;
 
 class PackageService
@@ -11,12 +12,14 @@ class PackageService
     protected $package;
     protected $packageImage;
     protected $imageService;
+    protected $packageIncluded;
 
     public function __construct()
     {
         $this->package = new Package();
         $this->packageImage = new PackageImage();
         $this->imageService = new ImageService();
+        $this->packageIncluded = new PackageIncluded();
     }
 
     /**
@@ -87,6 +90,10 @@ class PackageService
                 ]);
             }
         }
+
+        if (!empty($data['included']) && is_array($data['included'])) {
+            $package->includes()->sync($data['included']);
+        }
     }
 
     public function update($id, $data)
@@ -97,7 +104,8 @@ class PackageService
             $this->deleteRemovedImages($id);
         }
 
-        $this->get($id)->update($data);
+        $package = $this->get($id);
+        $package->update($data);
 
         if (isset($data['image_paths']) && is_array($data['image_paths'])) {
             foreach ($data['image_paths'] as $image_path) {
@@ -106,6 +114,12 @@ class PackageService
                     'image_path' => $image_path ?? null,
                 ]);
             }
+        }
+
+        if (!empty($data['included']) && is_array($data['included'])) {
+            $package->includes()->sync($data['included']);
+        } else {
+            $package->includes()->detach();
         }
     }
 

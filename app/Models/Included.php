@@ -23,4 +23,9 @@ class Included extends Model
             return asset('storage/' . $this->image_path);
         }
     }
+
+    public function packages()
+    {
+        return $this->belongsToMany(Package::class, 'package_includeds');
+    }
 }

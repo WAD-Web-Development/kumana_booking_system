@@ -52,4 +52,9 @@ class Package extends Model
     {
         return self::TYPES[$this->type] ?? 'Unknown';
     }
+
+    public function includes()
+    {
+        return $this->belongsToMany(Included::class, 'package_includeds')->withTimestamps();
+    }
 }
