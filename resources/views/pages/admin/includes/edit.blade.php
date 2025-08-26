@@ -15,10 +15,10 @@
                             <div class="row gx-3">
                                 <div class="col-12">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Title</span>
                                         </div>
-                                        <input type="text" class="col-4 form-control admin-management-page-card-input-value" aria-label="title" id="title" name="title" placeholder="Enter title"  value="{{ $include->title }}">
+                                        <input type="text" class="col-8 form-control admin-management-page-card-input-value" aria-label="title" id="title" name="title" placeholder="Enter title"  value="{{ $include->title }}">
                                     </div>
                                     @error('title')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
