@@ -32,6 +32,7 @@ class User extends Authenticatable
         'contact_no',
         'nationality',
         'is_active',
+        'profile_photo_path',
     ];
 
     /**
@@ -62,5 +63,15 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'image_url',
     ];
+
+    public function getImageUrlAttribute()
+    {
+        if ($this->profile_photo_path) {
+            return asset('storage/' . $this->profile_photo_path);
+        }else{
+            return null;
+        }
+    }
 }

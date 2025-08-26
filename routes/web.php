@@ -63,6 +63,8 @@ Route::get('/my-booking-details/{id}', [BookingController::class, 'myBookingDeta
 
 // profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 // profile - end
 
 // Admin

@@ -7,7 +7,7 @@
                 <div class="card profile-details-card">
                     <div class="card-header px-4 py-3 d-flex justify-content-between align-items-center profile-details-card-header">
                         <h5 class="profile-details-card-title mb-0">Profile</h5>
-                        <a href="{{ route('booking.create', 1) }}" class="profile-details-card-back-btn">Edit Details</a>
+                        <a href="{{ route('profile.edit') }}" class="profile-details-card-back-btn">Edit Details</a>
                     </div>
                     <div class="card-body profile-details-card-body px-4 py-4">
 

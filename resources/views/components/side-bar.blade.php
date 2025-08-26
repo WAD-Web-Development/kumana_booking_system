@@ -1,9 +1,16 @@
 <div class="card side-bar-card">
     <div class="card-header px-3 py-4 border-0">
         <div class="d-flex align-items-center">
-            <div class="rounded-circle d-flex align-items-center justify-content-center me-4 side-bar-card-user-icon">
-                {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
-            </div>
+            @if(Auth::user()->image_url)
+                <img src="{{ Auth::user()->image_url }}"
+                    alt="Profile Image"
+                    class="rounded-circle me-4 side-bar-card-user-icon"
+                    style="object-fit: cover; width: 50px; height: 50px;">
+            @else
+                <div class="rounded-circle d-flex align-items-center justify-content-center me-4 side-bar-card-user-icon">
+                    {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
+                </div>
+            @endif
             <div>
                 <div class="side-bar-card-user-name">{{ Auth::user()->name }}</div>
                 <div class="side-bar-card-user-since">Since {{ date('Y', strtotime(Auth::user()->created_at)) }}</div>
