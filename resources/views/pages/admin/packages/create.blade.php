@@ -14,10 +14,10 @@
                             <div class="row gx-3">
                                 <div class="col-12">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Title</span>
                                         </div>
-                                        <input type="text" class="col-4 form-control admin-management-page-card-input-value" aria-label="title" id="title" name="title" placeholder="Enter title">
+                                        <input type="text" class="col-8 form-control admin-management-page-card-input-value" aria-label="title" id="title" name="title" placeholder="Enter title">
                                     </div>
                                     @error('title')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -32,15 +32,17 @@
                             <div class="row gx-3 mt-3">
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
-                                            <span class="input-group-text admin-management-page-card-input-label-text">Type</span>
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text-select-2">Type</span>
                                         </div>
-                                        <select id="type" class="col-4 form-select admin-management-page-card-input-value" name="type">
-                                            <option value="">Select type</option>
-                                            <option value="1">Safari</option>
-                                            <option value="2">Room</option>
-                                            <option value="3">Safari & Room</option>
-                                        </select>
+                                        <div class="col-8 m-0 p-0">
+                                            <select id="type" class="form-select admin-management-page-card-input-value" name="type">
+                                                <option value="">Select type</option>
+                                                <option value="1">Safari</option>
+                                                <option value="2">Room</option>
+                                                <option value="3">Safari & Room</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     @error('type')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -53,10 +55,10 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Is Special</span>
                                         </div>
-                                        <div class="col-4 d-flex align-items-center justify-content-center admin-management-page-card-check-input-col">
+                                        <div class="col-8 d-flex align-items-center justify-content-center admin-management-page-card-check-input-col">
                                             <input type="checkbox" class="form-check-input admin-management-page-card-check-input" aria-label="is_special" id="is_special" name="is_special" value="1">
                                         </div>
                                     </div>
@@ -73,10 +75,10 @@
                             <div class="row gx-3 mt-3 date-section hidden-input-section">
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Start Date</span>
                                         </div>
-                                        <input type="date" class="col-4 form-control admin-management-page-card-input-value" aria-label="start_date" id="start_date" name="start_date" placeholder="Enter start date">
+                                        <input type="date" class="col-8 form-control admin-management-page-card-input-value" aria-label="start_date" id="start_date" name="start_date" placeholder="Enter start date">
                                     </div>
                                     @error('start_date')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -89,10 +91,10 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">End Date</span>
                                         </div>
-                                        <input type="date" class="col-4 form-control admin-management-page-card-input-value" aria-label="end_date" id="end_date" name="end_date" placeholder="Enter end date">
+                                        <input type="date" class="col-8 form-control admin-management-page-card-input-value" aria-label="end_date" id="end_date" name="end_date" placeholder="Enter end date">
                                     </div>
                                     @error('end_date')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -105,12 +107,12 @@
                                 </div>
                             </div>
                             <div class="row gx-3 mt-3">
-                                <div class="col-12 col-md-6">
+                                <div class="col-12">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Included</span>
                                         </div>
-                                        <div class="col-4 m-0 p-0">
+                                        <div class="col-8 m-0 p-0">
                                             <select id="included"
                                                     class="form-select admin-management-page-card-input-value"
                                                     name="included[]"
@@ -136,14 +138,16 @@
                             <div class="row gx-3 mt-3 safari-section hidden-input-section">
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
-                                            <span class="input-group-text admin-management-page-card-input-label-text">Safari Type</span>
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text-select-2">Safari Type</span>
                                         </div>
-                                        <select id="safari_type" class="col-4 form-select admin-management-page-card-input-value" name="safari_type">
-                                            <option value="">Select Type</option>
-                                            <option value="Half Day">Half Day</option>
-                                            <option value="Full Day">Full Day</option>
-                                        </select>
+                                        <div class="col-8 m-0 p-0">
+                                            <select id="safari_type" class="form-select admin-management-page-card-input-value" name="safari_type">
+                                                <option value="">Select Type</option>
+                                                <option value="Half Day">Half Day</option>
+                                                <option value="Full Day">Full Day</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     @error('safari_type')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -156,10 +160,10 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Safari Max People Count</span>
                                         </div>
-                                        <input type="number" class="col-4 form-control admin-management-page-card-input-value" aria-label="safari_max_people_count" id="safari_max_people_count" name="safari_max_people_count" placeholder="Enter count">
+                                        <input type="number" class="col-8 form-control admin-management-page-card-input-value" aria-label="safari_max_people_count" id="safari_max_people_count" name="safari_max_people_count" placeholder="Enter count">
                                     </div>
                                     @error('safari_max_people_count')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -174,10 +178,10 @@
                             <div class="row gx-3 mt-3 safari-other-section-1 hidden-input-section">
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Entrance</span>
                                         </div>
-                                        <input type="text" class="col-4 form-control admin-management-page-card-input-value" aria-label="entrance" id="entrance" name="entrance" placeholder="Enter entrance">
+                                        <input type="text" class="col-8 form-control admin-management-page-card-input-value" aria-label="entrance" id="entrance" name="entrance" placeholder="Enter entrance">
                                     </div>
                                     @error('entrance')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -190,15 +194,17 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
-                                            <span class="input-group-text admin-management-page-card-input-label-text">Safari Duration</span>
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text-select-2">Safari Duration</span>
                                         </div>
-                                        <select id="safari_duration" class="col-4 form-select admin-management-page-card-input-value" name="safari_duration">
-                                            <option value="">Select duration</option>
-                                            @foreach ($durations as $duration)
-                                                <option value="{{ $duration }}">{{ $duration }} hours</option>
-                                            @endforeach
-                                        </select>
+                                        <div class="col-8 m-0 p-0">
+                                            <select id="safari_duration" class="form-select admin-management-page-card-input-value" name="safari_duration">
+                                                <option value="">Select duration</option>
+                                                @foreach ($durations as $duration)
+                                                    <option value="{{ $duration }}">{{ $duration }} hours</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
                                     @error('safari_duration')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -211,18 +217,12 @@
                                 </div>
                             </div>
                             <div class="row gx-3 mt-3 safari-other-section-2 hidden-input-section">
-                                <div class="col-12 col-md-6">
+                                <div class="col-12">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Animal Sighting</span>
                                         </div>
-                                        {{-- <select id="animal_sighting" class="col-4 form-select admin-management-page-card-input-value" name="animal_sighting[]" multiple="multiple">
-                                            <option value="">Select Sighting</option>
-                                            @foreach ($sightings as $sighting)
-                                                <option value="{{ $sighting->name }}">{{ $sighting->name }}</option>
-                                            @endforeach
-                                        </select> --}}
-                                        <div class="col-4 m-0 p-0">
+                                        <div class="col-8 m-0 p-0">
                                             <select id="animal_sighting"
                                                     class="form-select admin-management-page-card-input-value"
                                                     name="animal_sighting[]"
@@ -248,15 +248,17 @@
                             <div class="row gx-3 mt-3 room-section hidden-input-section">
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
-                                            <span class="input-group-text admin-management-page-card-input-label-text">Room Type</span>
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text-select-2">Room Type</span>
                                         </div>
-                                        <select id="room_type_id" class="col-4 form-select admin-management-page-card-input-value" name="room_type_id">
-                                            <option value="">Select Type</option>
-                                            @foreach ($roomTypes as $type)
-                                                <option value="{{ $type->id }}">{{ $type->title }}</option>
-                                            @endforeach
-                                        </select>
+                                        <div class="col-8 m-0 p-0">
+                                            <select id="room_type_id" class="form-select admin-management-page-card-input-value" name="room_type_id">
+                                                <option value="">Select Type</option>
+                                                @foreach ($roomTypes as $type)
+                                                    <option value="{{ $type->id }}">{{ $type->title }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
                                     @error('room_type_id')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -269,10 +271,10 @@
                                 </div>
                                 <div class="col-12 col-md-6 room-other-section hidden-input-section">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Hotel Distance</span>
                                         </div>
-                                        <input type="number" step="any" class="col-4 form-control admin-management-page-card-input-value" aria-label="hotel_distance" id="hotel_distance" name="hotel_distance" placeholder="Enter distance">
+                                        <input type="number" step="any" class="col-8 form-control admin-management-page-card-input-value" aria-label="hotel_distance" id="hotel_distance" name="hotel_distance" placeholder="Enter distance">
                                     </div>
                                     @error('hotel_distance')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -390,7 +392,7 @@
             }
 
 
-            toggleSpecial(); // run on page load
+            toggleSpecial();
 
             $('#is_special').change(function() {
                 toggleSpecial();
@@ -428,21 +430,33 @@
             preloadedInputName: 'available_images'
         });
 
-        function adjustSelect2Height() {
-            setTimeout(() => {
-                let count = $('#animal_sighting').next('.select2-container').find('.select2-selection__choice').length;
-                let newHeight = 40 + count * 8; // Base height + increase per keyword
-                $('#animal_sighting').next('.select2-container').find('.select2-selection--multiple').css('min-height', newHeight + 'px');
-            }, 10);
-        }
+        $('#type').select2({
+            placeholder: 'Select type',
+            width: '100%',
+            minimumResultsForSearch: -1,
+        });
+        $('#safari_type').select2({
+            placeholder: 'Select safari type',
+            width: '100%',
+            minimumResultsForSearch: -1,
+        });
+        $('#safari_duration').select2({
+            placeholder: 'Select duration',
+            width: '100%',
+            minimumResultsForSearch: -1,
+        });
+        $('#room_type_id').select2({
+            placeholder: 'Select room type',
+            width: '100%',
+            minimumResultsForSearch: -1,
+        });
 
         $('#animal_sighting').select2({
+            placeholder: 'Select sighting',
             tags: true,
             tokenSeparators: [','],
-            placeholder: 'Add keywords',
-        }).on('select2:select select2:unselect', adjustSelect2Height);
-
-        $(document).ready(adjustSelect2Height);
+            width: '100%'
+        });
 
         $('#included').select2({
             placeholder: 'Select includes',

@@ -33,7 +33,7 @@
                                         <tr id="row{{ $package->id }}">
                                             <td> {{ $package->title }} </td>
                                             <td>{{ $package->type_name}}</td>
-                                            <td> {{ $package->safari_type }} </td>
+                                            <td> {{ $package->safari_type ?? '---' }} </td>
                                             <td>
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input admin-management-page-checkbox" type="checkbox"
