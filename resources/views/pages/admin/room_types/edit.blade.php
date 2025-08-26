@@ -15,10 +15,10 @@
                             <div class="row g-3">
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Title</span>
                                         </div>
-                                        <input type="text" class="col-4 form-control admin-management-page-card-input-value" aria-label="title" id="title" name="title" placeholder="Enter title" value="{{ $roomType->title }}">
+                                        <input type="text" class="col-8 form-control admin-management-page-card-input-value" aria-label="title" id="title" name="title" placeholder="Enter title" value="{{ $roomType->title }}">
                                     </div>
                                     @error('title')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -31,10 +31,10 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Room Count</span>
                                         </div>
-                                        <input type="number" class="col-4 form-control admin-management-page-card-input-value" aria-label="room_count" id="room_count" name="room_count"  min="1" placeholder="Enter count" value="{{ $roomType->room_count }}">
+                                        <input type="number" class="col-8 form-control admin-management-page-card-input-value" aria-label="room_count" id="room_count" name="room_count"  min="1" placeholder="Enter count" value="{{ $roomType->room_count }}">
                                     </div>
                                     @error('room_count')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -49,10 +49,10 @@
                             <div class="row gx-3 mt-3">
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Max People Count</span>
                                         </div>
-                                        <input type="number" class="col-4 form-control admin-management-page-card-input-value" aria-label="max_people_count" id="max_people_count" name="max_people_count" min="1" placeholder="Enter count" value="{{ $roomType->max_people_count }}">
+                                        <input type="number" class="col-8 form-control admin-management-page-card-input-value" aria-label="max_people_count" id="max_people_count" name="max_people_count" min="1" placeholder="Enter count" value="{{ $roomType->max_people_count }}">
                                     </div>
                                     @error('max_people_count')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -65,10 +65,10 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Price (LKR)</span>
                                         </div>
-                                        <input type="number" class="col-4 form-control admin-management-page-card-input-value" aria-label="price" id="price" name="price" step="0.01" min="0" placeholder="Enter price" value="{{ $roomType->price }}">
+                                        <input type="number" class="col-8 form-control admin-management-page-card-input-value" aria-label="price" id="price" name="price" step="0.01" min="0" placeholder="Enter price" value="{{ $roomType->price }}">
                                     </div>
                                     @error('price')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
