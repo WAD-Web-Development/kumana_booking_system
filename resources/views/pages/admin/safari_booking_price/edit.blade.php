@@ -15,10 +15,10 @@
                             <div class="row g-3">
                                 <div class="col-12">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Visa Type</span>
                                         </div>
-                                        <input type="text" class="col-4 form-control admin-management-page-card-input-value" aria-label="visa_type" id="visa_type" name="visa_type" placeholder="Enter visa type" value="{{ $price->visa_type }}" disabled>
+                                        <input type="text" class="col-8 form-control admin-management-page-card-input-value" aria-label="visa_type" id="visa_type" name="visa_type" placeholder="Enter visa type" value="{{ $price->visa_type }}" disabled>
                                     </div>
                                     @error('visa_type')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -33,10 +33,10 @@
                             <div class="row gx-3 mt-3">
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Group Type</span>
                                         </div>
-                                        <input type="text" class="col-4 form-control admin-management-page-card-input-value" aria-label="group_type" id="group_type" name="group_type" placeholder="Enter group type" value="{{ $price->group_type }}" disabled>
+                                        <input type="text" class="col-8 form-control admin-management-page-card-input-value" aria-label="group_type" id="group_type" name="group_type" placeholder="Enter group type" value="{{ $price->group_type }}" disabled>
                                     </div>
                                     @error('group_type')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -49,10 +49,10 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Person Count</span>
                                         </div>
-                                        <input type="number" class="col-4 form-control admin-management-page-card-input-value" aria-label="person_count" id="person_count" name="person_count" placeholder="Enter person count" value="{{ $price->person_count }}" disabled>
+                                        <input type="number" class="col-8 form-control admin-management-page-card-input-value" aria-label="person_count" id="person_count" name="person_count" placeholder="Enter person count" value="{{ $price->person_count }}" disabled>
                                     </div>
                                     @error('person_count')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -67,10 +67,10 @@
                             <div class="row gx-3 mt-3">
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Half Day Price (LKR)</span>
                                         </div>
-                                        <input type="number" class="col-4 form-control admin-management-page-card-input-value" aria-label="half_day_price" id="half_day_price" name="half_day_price" placeholder="Enter half day price" value="{{ $price->half_day_price }}">
+                                        <input type="number" class="col-8 form-control admin-management-page-card-input-value" aria-label="half_day_price" id="half_day_price" name="half_day_price" placeholder="Enter half day price" value="{{ $price->half_day_price }}">
                                     </div>
                                     @error('half_day_price')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -83,10 +83,10 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Full Day Price (LKR)</span>
                                         </div>
-                                        <input type="number" class="col-4 form-control admin-management-page-card-input-value" aria-label="full_day_price" id="full_day_price" name="full_day_price" placeholder="Enter full day price" value="{{ $price->full_day_price }}">
+                                        <input type="number" class="col-8 form-control admin-management-page-card-input-value" aria-label="full_day_price" id="full_day_price" name="full_day_price" placeholder="Enter full day price" value="{{ $price->full_day_price }}">
                                     </div>
                                     @error('full_day_price')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
