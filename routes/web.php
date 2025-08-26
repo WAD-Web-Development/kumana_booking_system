@@ -65,6 +65,8 @@ Route::get('/my-booking-details/{id}', [BookingController::class, 'myBookingDeta
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+Route::get('/profile/password/change', [ProfileController::class, 'changePassword'])->name('profile.password.change');
+Route::post('/profile/password/update', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
 // profile - end
 
 // Admin

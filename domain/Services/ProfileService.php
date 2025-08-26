@@ -5,6 +5,7 @@ namespace domain\Services;
 use App\Models\User;
 use domain\Services\ImageService;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileService
 {
@@ -38,6 +39,13 @@ class ProfileService
             'nationality' => $data['nationality'],
             'contact_no' => $data['contact_no'],
             'profile_photo_path' => $data['profile_photo_path'] ?? $this->authUser->profile_photo_path,
+        ]);
+    }
+
+    public function updatePassword($data)
+    {
+        $this->authUser->update([
+            'password' => Hash::make($data['new_password']),
         ]);
     }
 }

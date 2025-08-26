@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreIncludedRequest;
 use App\Http\Requests\UpdateIncludedRequest;
 
-class IncludedController extends Controller
+class IncludedController extends ParentController
 {
     /**
      * Display a listing of the resource.

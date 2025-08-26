@@ -52,7 +52,7 @@
                                 <span class="profile-details-card-security-item-value">**********</span>
                             </div>
                             <div class="col-3 d-flex justify-content-center align-items-center border-start p-3">
-                                <a href="{{ route('booking.create', 1) }}" class="profile-details-card-change-password-btn">Change Password</a>
+                                <a href="{{ route('profile.password.change') }}" class="profile-details-card-change-password-btn">Change Password</a>
                             </div>
                         </div>
 

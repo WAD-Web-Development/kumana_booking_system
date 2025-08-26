@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use domain\Facades\ImageFacade;
 use domain\Facades\ProfileFacade;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use domain\Facades\NationalityFacade;
+use App\Http\Controllers\ParentController;
 use App\Http\Requests\UpdateProfileRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 
-class ProfileController extends Controller
+class ProfileController extends ParentController
 {
     public function index()
     {
@@ -45,6 +49,35 @@ class ProfileController extends Controller
             ProfileFacade::update($request->all());
 
             return redirect()->route('profile.index')->with('success', 'Profile Updated Successfully');
+        } catch (Throwable $th) {
+            return redirect()->back()->with('error', 'Something went wrong');
+        }
+    }
+
+    public function changePassword()
+    {
+        return view('pages.profile.change-password');
+    }
+
+    public function updatePassword(UpdatePasswordRequest $request)
+    {
+        try {
+
+            $user = ProfileFacade::authUser();
+
+            if (!Hash::check($request->current_password, $user->password)) {
+                return back()->withErrors(['current_password' => 'Current password is incorrect']);
+            }
+
+            ProfileFacade::updatePassword($request->all());
+
+            Auth::logout();
+
+            // Invalidate session
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            return redirect()->route('welcome')->with('success', 'Password updated successfully. Please login again.');
         } catch (Throwable $th) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
