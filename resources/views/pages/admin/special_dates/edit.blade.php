@@ -15,10 +15,10 @@
                             <div class="row g-3">
                                 <div class="col-12">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Title</span>
                                         </div>
-                                        <input type="text" class="col-4 form-control admin-management-page-card-input-value" aria-label="title" id="title" name="title" placeholder="Enter title" value="{{ $specialDate->title }}">
+                                        <input type="text" class="col-8 form-control admin-management-page-card-input-value" aria-label="title" id="title" name="title" placeholder="Enter title" value="{{ $specialDate->title }}">
                                     </div>
                                     @error('title')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -33,10 +33,10 @@
                             <div class="row gx-3 mt-3">
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Start Date</span>
                                         </div>
-                                        <input type="date" class="col-4 form-control admin-management-page-card-input-value" aria-label="start_date" id="start_date" name="start_date" placeholder="Enter start date" value="{{ $specialDate->start_date }}">
+                                        <input type="date" class="col-8 form-control admin-management-page-card-input-value" aria-label="start_date" id="start_date" name="start_date" placeholder="Enter start date" value="{{ $specialDate->start_date }}">
                                     </div>
                                     @error('start_date')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -49,10 +49,10 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">End Date</span>
                                         </div>
-                                        <input type="date" class="col-4 form-control admin-management-page-card-input-value" aria-label="end_date" id="end_date" name="end_date" placeholder="Enter end date" value="{{ $specialDate->end_date }}">
+                                        <input type="date" class="col-8 form-control admin-management-page-card-input-value" aria-label="end_date" id="end_date" name="end_date" placeholder="Enter end date" value="{{ $specialDate->end_date }}">
                                     </div>
                                     @error('end_date')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -67,10 +67,10 @@
                             <div class="row gx-3 mt-3">
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Is Half Day</span>
                                         </div>
-                                        <div class="col-4 d-flex align-items-center justify-content-center admin-management-page-card-check-input-col">
+                                        <div class="col-8 d-flex align-items-center justify-content-center admin-management-page-card-check-input-col">
                                             <input type="checkbox" class="form-check-input admin-management-page-card-check-input" aria-label="is_half_day" id="is_half_day" name="is_half_day" value="1" {{ $specialDate->is_full_day ? '' : 'checked' }}>
                                         </div>
                                     </div>
@@ -85,10 +85,10 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
                                             <span class="input-group-text admin-management-page-card-input-label-text">Is Closed</span>
                                         </div>
-                                        <div class="col-4 d-flex align-items-center justify-content-center admin-management-page-card-check-input-col">
+                                        <div class="col-8 d-flex align-items-center justify-content-center admin-management-page-card-check-input-col">
                                             <input type="checkbox" class="form-check-input admin-management-page-card-check-input" aria-label="is_closed" id="is_closed" name="is_closed" value="1" {{ $specialDate->is_closed ? 'checked' : '' }}>
                                         </div>
                                     </div>
@@ -105,14 +105,16 @@
                             <div class="row gx-3 mt-3 day-time-section {{ $specialDate->is_full_day ? 'hidden-input-section' : '' }}">
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group admin-management-page-card-input-row">
-                                        <div class="col-8 input-group-prepend admin-management-page-card-input-label">
-                                            <span class="input-group-text admin-management-page-card-input-label-text">Which half of the day</span>
+                                        <div class="col-4 input-group-prepend admin-management-page-card-input-label">
+                                            <span class="input-group-text admin-management-page-card-input-label-text-select-2">Which half of the day</span>
                                         </div>
-                                        <select id="day_time" class="col-4 form-select admin-management-page-card-input-value" name="day_time">
-                                            <option value="">Select day time</option>
-                                            <option value="Morning" {{ $specialDate->day_time == 'Morning' ? 'selected' : '' }}>Morning</option>
-                                            <option value="Afternoon" {{ $specialDate->day_time == 'Afternoon' ? 'selected' : '' }}>Afternoon</option>
-                                        </select>
+                                        <div class="col-8">
+                                            <select id="day_time" class="form-select admin-management-page-card-input-value" name="day_time">
+                                                <option value="">Select day time</option>
+                                                <option value="Morning" {{ $specialDate->day_time == 'Morning' ? 'selected' : '' }}>Morning</option>
+                                                <option value="Afternoon" {{ $specialDate->day_time == 'Afternoon' ? 'selected' : '' }}>Afternoon</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     @error('day_time')
                                         <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
@@ -194,9 +196,10 @@
                 toggleDayTime();
             });
         });
-        // $('#day_time').select2({
-        //     placeholder: 'Select Day Time',
-        //     minimumResultsForSearch: -1,
-        // });
+        $('#day_time').select2({
+            placeholder: 'Select Day Time',
+            width: '100%',
+            minimumResultsForSearch: -1,
+        });
     </script>
 @endpush
