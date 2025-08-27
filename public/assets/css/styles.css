@@ -1086,6 +1086,28 @@ html {
     box-shadow: none !important;
     outline: none !important;
 }
+.booking-create-page-location-sections-box {
+    border-radius: 5px;
+    border: 0.5px solid #DDDDDD;
+}
+.booking-create-page-location-title{
+    font-size: 14px;
+    font-weight: 500;
+}
+.booking-create-page-location-search-input{
+    border-radius: 5px !important;
+    border: 0.5px solid #DDDDDD !important;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8A8A8A !important;
+}
+.booking-create-page-location-map{
+    border-radius: 5px !important;
+    border: 0.5px solid #DDDDDD !important;
+    height: 300px;
+    width: 100%
+}
 
 /* booking-summary */
 .booking-summary-details-card {

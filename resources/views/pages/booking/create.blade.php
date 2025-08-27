@@ -59,7 +59,54 @@
                                 </select>
                             </div> --}}
 
-                            <div class="row g-3">
+                            <div class="booking-create-page-location-sections-box mt-3 p-3">
+                                <span class="booking-create-page-location-title">Pick up location</span>
+                                <div class="row mt-3">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <input id="searchInput" class="input-controls booking-create-page-location-search-input" type="text" placeholder="Enter a location">
+                                            <div class="map booking-create-page-location-map" id="map">
+                                            </div>
+                                            <div class="row g-3 mt-2">
+                                                <div class="col-12 col-md-6">
+                                                    <div class="row input-group booking-create-page-card-input-row">
+                                                        <div class="col-8 input-group-prepend booking-create-page-card-input-label">
+                                                            <span class="input-group-text booking-create-page-card-input-label-text">Latitude</span>
+                                                        </div>
+                                                        <input type="text" class="col-4 form-control booking-create-page-card-input-value" aria-label="location_lat" id="location_lat" name="location_lat">
+                                                    </div>
+                                                    @error('location_lat')
+                                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                                            </svg>
+                                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="row input-group booking-create-page-card-input-row">
+                                                        <div class="col-8 input-group-prepend booking-create-page-card-input-label">
+                                                            <span class="input-group-text booking-create-page-card-input-label-text">Longitude</span>
+                                                        </div>
+                                                        <input type="text" class="col-4 form-control booking-create-page-card-input-value" aria-label="location_lng" id="location_lng" name="location_lng">
+                                                    </div>
+                                                    @error('location_lng')
+                                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                                            </svg>
+                                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row g-3 mt-1">
                                 <div class="col-12 col-md-6">
                                     <div class="row input-group booking-create-page-card-input-row">
                                         <div class="col-8 input-group-prepend booking-create-page-card-input-label">
@@ -254,5 +301,84 @@
             width: '100%',
             minimumResultsForSearch: -1,
         });
+    </script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key={{ config('google-api-token.GOOGLE_MAPS_API_KEY') }}&callback=initAutocomplete&libraries=places&v=weekly"
+        async></script>
+    <script>
+        function initAutocomplete() {
+            var latlng = new google.maps.LatLng({{ '6.8746579' }},
+                {{ '79.8604831' }});
+
+            $('input[name=location_lat]').val('6.8746579');
+            $('input[name=location_lng]').val('79.8604831');
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: latlng,
+                zoom: 13
+            });
+            var marker = new google.maps.Marker({
+                map: map,
+                position: latlng,
+                draggable: true,
+                anchorPoint: new google.maps.Point(0, -29)
+            });
+            var input = document.getElementById('searchInput');
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+            var geocoder = new google.maps.Geocoder();
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo('bounds', map);
+            var infowindow = new google.maps.InfoWindow();
+            autocomplete.addListener('place_changed', function() {
+
+                infowindow.close();
+                marker.setVisible(false);
+                var place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    window.alert("Autocomplete's returned place contains no geometry");
+                    return;
+                }
+
+                // If the place has a geometry, then present it on a map.
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+                } else {
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(17);
+                }
+
+                marker.setPosition(place.geometry.location);
+                marker.setVisible(true);
+
+                bindDataToForm(place.formatted_address, place.geometry.location.lat(), place.geometry.location
+                    .lng());
+                infowindow.setContent(place.formatted_address);
+                infowindow.open(map, marker);
+
+            });
+            // this function will work on marker move event into map
+            google.maps.event.addListener(marker, 'dragend', function() {
+                geocoder.geocode({
+                    'latLng': marker.getPosition()
+                }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+                            bindDataToForm(results[0].formatted_address, marker.getPosition().lat(), marker
+                                .getPosition().lng());
+                            infowindow.setContent(results[0].formatted_address);
+                            infowindow.open(map, marker);
+
+                            // $('input[name=address]').val(results[0].formatted_address);
+                            // $('input[name=city]').val(results[0].name);
+                        }
+                    }
+                });
+            });
+        }
+
+        function bindDataToForm(address, lat, lng) {
+            document.getElementById('location_lat').value = lat;
+            document.getElementById('location_lng').value = lng;
+        }
     </script>
 @endpush
