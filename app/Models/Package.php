@@ -57,4 +57,9 @@ class Package extends Model
     {
         return $this->belongsToMany(Included::class, 'package_includeds')->withTimestamps();
     }
+
+    public function itineraries()
+    {
+        return $this->hasMany(PackageItinerary::class);
+    }
 }

@@ -2,7 +2,7 @@
     <style>
         .active>.page-link,
         .page-link.active {
-            background-image: linear-gradient(310deg, #277eb6, #195276);
+            background-image: linear-gradient(310deg, #155D37, #0D4B2D);
         }
     </style>
     <ul class="pagination " style="justify-content: right;">

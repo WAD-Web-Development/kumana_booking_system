@@ -111,7 +111,7 @@
                                 <div class="col-12">
                                     <div class="row input-group admin-management-page-card-input-row">
                                         <div class="col-4 input-group-prepend admin-management-page-card-input-label">
-                                            <span class="input-group-text admin-management-page-card-input-label-text">Included</span>
+                                            <span class="input-group-text admin-management-page-card-input-label-text-select-2">Included</span>
                                         </div>
                                         <div class="col-8 m-0 p-0">
                                             <select id="included"
@@ -221,7 +221,7 @@
                                 <div class="col-12">
                                     <div class="row input-group admin-management-page-card-input-row">
                                         <div class="col-4 input-group-prepend admin-management-page-card-input-label">
-                                            <span class="input-group-text admin-management-page-card-input-label-text">Animal Sighting</span>
+                                            <span class="input-group-text admin-management-page-card-input-label-text-select-2">Animal Sighting</span>
                                         </div>
                                         <div class="col-8 m-0 p-0">
                                             <select id="animal_sighting"
@@ -342,6 +342,65 @@
                                     @endforeach
                                 </div>
                             </div>
+                            <div class="admin-management-page-itinerary-sections-box mt-3 p-3">
+                                <span class="admin-management-page-itinerary-title">Itineraries</span>
+
+                                <div id="itinerary-sections">
+                                    @foreach($package->itineraries as $index => $itinerary)
+                                        <div class="row gx-3 mt-3 itinerary-item">
+                                            <div class="col-10">
+                                                <div class="row input-group admin-management-page-card-input-row">
+                                                    <div class="col-4 input-group-prepend admin-management-page-card-input-label">
+                                                        <span class="input-group-text admin-management-page-card-input-label-text">Title</span>
+                                                    </div>
+                                                    <input type="text"
+                                                        class="col-8 form-control admin-management-page-card-input-value"
+                                                        name="itinerary[{{ $index }}][title]"
+                                                        value="{{ old('itinerary.'.$index.'.title', $itinerary->title) }}"
+                                                        placeholder="Enter title">
+                                                </div>
+                                            </div>
+                                            <div class="col-2 text-end">
+                                                <button type="button" class="btn btn-danger remove-itinerary">Remove</button>
+                                            </div>
+
+                                            <div class="col-12 col-md-6 mt-3">
+                                                <div class="row input-group admin-management-page-card-input-row">
+                                                    <div class="col-4 input-group-prepend admin-management-page-card-input-label">
+                                                        <span class="input-group-text admin-management-page-card-input-label-text">Start Time</span>
+                                                    </div>
+                                                    <input type="time"
+                                                        class="col-8 form-control admin-management-page-card-input-value"
+                                                        name="itinerary[{{ $index }}][start]"
+                                                        value="{{ old('itinerary.'.$index.'.start', $itinerary->start_time) }}"
+                                                        placeholder="Enter time">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-md-6 mt-3">
+                                                <div class="row input-group admin-management-page-card-input-row">
+                                                    <div class="col-4 input-group-prepend admin-management-page-card-input-label">
+                                                        <span class="input-group-text admin-management-page-card-input-label-text">End Time</span>
+                                                    </div>
+                                                    <input type="time"
+                                                        class="col-8 form-control admin-management-page-card-input-value"
+                                                        name="itinerary[{{ $index }}][end]"
+                                                        value="{{ old('itinerary.'.$index.'.end', $itinerary->end_time) }}"
+                                                        placeholder="Enter time">
+                                                </div>
+                                            </div>
+
+                                            {{-- hidden field for existing itinerary id --}}
+                                            {{-- <input type="hidden" name="itinerary[{{ $index }}][id]" value="{{ $itinerary->id }}"> --}}
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                                <div class="mt-3">
+                                    <button type="button" id="add-itinerary" class="btn btn-primary">+ Add More</button>
+                                </div>
+                            </div>
+
                             <div class="row mt-4">
                                 <div class="col-12 d-flex justify-content-end">
                                     <button type="submit" class="admin-management-page-card-submit-btn px-3">Create Package</button>
@@ -490,5 +549,49 @@
             multiple: true,
             width: '100%'
         });
+    </script>
+
+    <script>
+        let itineraryIndex = document.querySelectorAll('#itinerary-sections .itinerary-item').length;
+
+        function toggleRemoveButtons() {
+            const items = document.querySelectorAll('#itinerary-sections .itinerary-item');
+            const removeButtons = document.querySelectorAll('#itinerary-sections .remove-itinerary');
+
+            // If only 1 itinerary, disable/hide remove button
+            if (items.length === 1) {
+                removeButtons.forEach(btn => btn.setAttribute('disabled', true));
+            } else {
+                removeButtons.forEach(btn => btn.removeAttribute('disabled'));
+            }
+        }
+
+        document.getElementById('add-itinerary').addEventListener('click', function () {
+            let container = document.getElementById('itinerary-sections');
+            let newItem = document.querySelector('.itinerary-item').cloneNode(true);
+
+            // Update input names for new index
+            newItem.querySelectorAll('input').forEach(input => {
+                let name = input.getAttribute('name');
+                input.setAttribute('name', name.replace(/\[\d+\]/, `[${itineraryIndex}]`));
+                input.value = ''; // clear values
+            });
+
+            container.appendChild(newItem);
+            itineraryIndex++;
+
+            toggleRemoveButtons(); // update remove button state
+        });
+
+        // Delegate click event for remove buttons
+        document.getElementById('itinerary-sections').addEventListener('click', function (e) {
+            if (e.target.classList.contains('remove-itinerary')) {
+                e.target.closest('.itinerary-item').remove();
+                toggleRemoveButtons(); // update remove button state
+            }
+        });
+
+        // Initial check
+        toggleRemoveButtons();
     </script>
 @endpush

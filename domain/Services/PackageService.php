@@ -5,6 +5,7 @@ namespace domain\Services;
 use App\Models\Package;
 use App\Models\PackageImage;
 use App\Models\PackageIncluded;
+use App\Models\PackageItinerary;
 use domain\Services\ImageService;
 
 class PackageService
@@ -13,6 +14,7 @@ class PackageService
     protected $packageImage;
     protected $imageService;
     protected $packageIncluded;
+    protected $packageItinerary;
 
     public function __construct()
     {
@@ -20,6 +22,7 @@ class PackageService
         $this->packageImage = new PackageImage();
         $this->imageService = new ImageService();
         $this->packageIncluded = new PackageIncluded();
+        $this->packageItinerary = new PackageItinerary();
     }
 
     /**
@@ -111,6 +114,18 @@ class PackageService
         if (!empty($data['included']) && is_array($data['included'])) {
             $package->includes()->sync($data['included']);
         }
+
+        if (!empty($data['itinerary']) && is_array($data['itinerary'])) {
+            foreach ($data['itinerary'] as $index => $item) {
+                $this->packageItinerary->create([
+                    'package_id' => $package->id,
+                    'title' => $item['title'],
+                    'start_time' => $item['start'],
+                    'end_time' => $item['end'] ?? null,
+                    'index' => $index,
+                ]);
+            }
+        }
     }
 
     public function update($id, $data)
@@ -138,6 +153,20 @@ class PackageService
         } else {
             $package->includes()->detach();
         }
+
+        $this->packageItinerary->where('package_id', $package->id)->delete();
+
+        if (!empty($data['itinerary']) && is_array($data['itinerary'])) {
+            foreach ($data['itinerary'] as $index => $item) {
+                $this->packageItinerary->create([
+                    'package_id' => $package->id,
+                    'title' => $item['title'],
+                    'start_time' => $item['start'],
+                    'end_time' => $item['end'] ?? null,
+                    'index' => $index,
+                ]);
+            }
+        }
     }
 
     public function destroy($id)
@@ -147,7 +176,10 @@ class PackageService
 
         $dataRow = $this->get($id);
         if ($dataRow) {
+
             $this->imageService->delete($dataRow->image_path);
+            $this->packageItinerary->where('package_id', $id)->delete();
+
             $dataRow->delete();
         }
     }

@@ -24,6 +24,11 @@ class StorePackageRequest extends FormRequest
             'room_type_id'  => 'nullable',
             'image' => 'required|mimes:jpeg,png,jpg,gif|max:10240',
             'package_images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240',
+
+            'itinerary' => 'required|array|min:1',
+            'itinerary.*.title' => 'required|string|max:255',
+            'itinerary.*.start' => 'required|date_format:H:i',
+            'itinerary.*.end'   => 'nullable|date_format:H:i|after:itinerary.*.start',
         ];
     }
 
@@ -42,6 +47,10 @@ class StorePackageRequest extends FormRequest
             'room_type_id' => 'Room Type',
             'image' => 'Image',
             'package_images.*' => 'Image',
+            'itinerary' => 'Itinerary',
+            'itinerary.*.title' => 'Itinerary Title',
+            'itinerary.*.start' => 'Itinerary Start Time',
+            'itinerary.*.end' => 'Itinerary End Time',
         ];
     }
 }
