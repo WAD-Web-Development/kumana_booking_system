@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRoomTypeRequest extends FormRequest
+class UpdateRoomTypeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,7 @@ class StoreRoomTypeRequest extends FormRequest
             'room_count'  => 'required|integer|min:1',
             'max_people_count'  => 'required|integer|min:1',
             'price'  => 'required|numeric|min:0',
-            'image' => 'required|mimes:jpeg,png,jpg,gif|max:10240',
+            'image' => 'nullable|mimes:jpeg,png,jpg,gif|max:10240',
         ];
     }
 

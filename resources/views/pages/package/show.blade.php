@@ -58,111 +58,87 @@
                         <h4 class="package-title mt-5">Included</h4>
 
                         <div class="row mt-4 g-4">
-                            <!-- Item 1: With Meals -->
-                            <div class="col-12 col-md-12 col-lg-6 col-xl-4">
-                                <div class="package-include-item">
-                                    <i class="fas fa-utensils package-include-icon me-3"></i>
-                                    <span class="package-include-text">With Meals</span>
+                            @foreach ($package->includes as $included)
+                                <div class="col-12 col-md-12 col-lg-6 col-xl-4">
+                                    <div class="package-include-item">
+                                        <img src="{{ $included->image_url }}" alt="{{ $included->title }}" class="package-include-item-image me-3">
+                                        <span class="package-include-text">{{$included->title}}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Item 2: Pickup and Drop off -->
-                            <div class="col-12 col-md-12 col-lg-6 col-xl-4">
-                                <div class="package-include-item">
-                                    <i class="fas fa-car package-include-icon me-3"></i>
-                                    <span class="package-include-text">Pickup and Drop off</span>
-                                </div>
-                            </div>
-                            <!-- Item 3: Accomodation -->
-                            <div class="col-12 col-md-12 col-lg-6 col-xl-4">
-                                <div class="package-include-item">
-                                    <i class="fas fa-home package-include-icon me-3"></i>
-                                    <span class="package-include-text">Accomodation</span>
-                                </div>
-                            </div>
-                            <!-- Item 4: Personal Guide -->
-                            <div class="col-12 col-md-12 col-lg-6 col-xl-4">
-                                <div class="package-include-item">
-                                    <i class="fas fa-user package-include-icon me-3"></i>
-                                    <span class="package-include-text">Personal Guide</span>
-                                </div>
-                            </div>
-                            <!-- Item 5: Safari -->
-                            <div class="col-12 col-md-12 col-lg-6 col-xl-4">
-                                <div class="package-include-item">
-                                    <i class="fas fa-car-side package-include-icon me-3"></i>
-                                    <span class="package-include-text">Safari</span>
-                                </div>
-                            </div>
-                            <!-- Item 6: Sightseeing and History -->
-                            <div class="col-12 col-md-12 col-lg-6 col-xl-4">
-                                <div class="package-include-item">
-                                    <i class="fas fa-binoculars package-include-icon me-3"></i>
-                                    <span class="package-include-text">Sightseeing and History</span>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
 
                         @if ($package->type != 1)
-                        <h4 class="package-title mt-5">Accommodation</h4>
+                            <h4 class="package-title mt-5">Accommodation</h4>
 
-                        <div class="row mt-4">
-                            <div class="col-12">
-                                <div class="d-flex align-items-center p-2 package-accommodation-card">
-                                    <img src="{{ asset('assets/img/image1.jpg') }}" alt="image" class="package-accommodation-image">
-                                    <div class="ms-4">
-                                        <h5 class="package-accommodation-title">Villa North Green</h5>
-                                        <p class="package-accommodation-description">
-                                            Stay close to nature, experience the wild like never before Stay close to nature, experience
-                                        </p>
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <div class="d-flex align-items-center p-2 package-accommodation-card">
+                                        <img src="{{ $package->roomType->image_url }}" alt="image" class="package-accommodation-image">
+                                        <div class="ms-4">
+                                            <h5 class="package-accommodation-title">{{$package->roomType->title}}</h5>
+                                            <p class="package-accommodation-description">
+                                                {{$package->roomType->description ?? '--'}}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row mt-4">
-                            <div class="col-12 col-md-6">
-                                <div class="d-flex justify-content-between package-other-information-row">
-                                  <span class="package-other-information-label">Master Bedroom</span>
-                                  <span class="package-other-information-value">x2</span>
+                            {{-- <div class="row mt-4">
+                                <div class="col-12 col-md-6">
+                                    <div class="d-flex justify-content-between package-other-information-row">
+                                    <span class="package-other-information-label">Master Bedroom</span>
+                                    <span class="package-other-information-value">x2</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="d-flex justify-content-between package-other-information-row">
-                                    <span class="package-other-information-label">Normal Room</span>
-                                    <span class="package-other-information-value">x3</span>
+                                <div class="col-12 col-md-6">
+                                    <div class="d-flex justify-content-between package-other-information-row">
+                                        <span class="package-other-information-label">Normal Room</span>
+                                        <span class="package-other-information-value">x3</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="d-flex justify-content-between package-other-information-row mt-3">
-                                    <span class="package-other-information-label">Bathroom</span>
-                                    <span class="package-other-information-value">x1 Attached x2 Private</span>
+                                <div class="col-12 col-md-6">
+                                    <div class="d-flex justify-content-between package-other-information-row mt-3">
+                                        <span class="package-other-information-label">Bathroom</span>
+                                        <span class="package-other-information-value">x1 Attached x2 Private</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div> --}}
                         @endif
 
-                        <h4 class="package-title mt-5">Other Information</h4>
+                        @if ($package->type != 2)
+                            <h4 class="package-title mt-5">Other Information</h4>
 
-                        <div class="row mt-4">
-                            <div class="col-12 col-md-6">
-                                <div class="d-flex justify-content-between package-other-information-row">
-                                  <span class="package-other-information-label">Entrance</span>
-                                  <span class="package-other-information-value">North West</span>
+                            <div class="row mt-4">
+                                <div class="col-12 col-md-6">
+                                    <div class="d-flex justify-content-between package-other-information-row">
+                                    <span class="package-other-information-label">Entrance</span>
+                                    <span class="package-other-information-value">{{$package->entrance ?? '--'}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="d-flex justify-content-between package-other-information-row">
+                                        <span class="package-other-information-label">Safari Duration</span>
+                                        <span class="package-other-information-value">{{$package->safari_duration ?? '--'}} Hours</span>
+                                    </div>
+                                </div>
+                                @if ($package->type == 3)
+                                    <div class="col-12 col-md-6">
+                                        <div class="d-flex justify-content-between package-other-information-row mt-3">
+                                            <span class="package-other-information-label">Hotel Distance</span>
+                                            <span class="package-other-information-value">{{ $package->hotel_distance == floor($package->hotel_distance) ? floor($package->hotel_distance) : $package->hotel_distance }} KM from {{ $package->entrance ?? '--' }}</span>
+                                        </div>
+                                    </div>
+                                @endif
+                                <div class="col-12 col-md-6">
+                                    <div class="d-flex justify-content-between package-other-information-row mt-3">
+                                        <span class="package-other-information-label">Animal Sighting</span>
+                                        <span class="package-other-information-value">{{$package->animal_sighting ?? '--'}}</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
-                                <div class="d-flex justify-content-between package-other-information-row">
-                                    <span class="package-other-information-label">Hotel Distance</span>
-                                    <span class="package-other-information-value">5 Km from North Entrance</span>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="d-flex justify-content-between package-other-information-row mt-3">
-                                    <span class="package-other-information-label">Safari Duration</span>
-                                    <span class="package-other-information-value">3-4 Hours</span>
-                                </div>
-                            </div>
-                        </div>
+                        @endif
 
                         <h4 class="package-title mt-5">Possible leopard sightings</h4>
 

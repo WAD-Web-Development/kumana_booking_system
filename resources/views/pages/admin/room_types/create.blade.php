@@ -92,6 +92,19 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <input type="file" name="image" class="form-control image">
+                                    @error('image')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
                             <div class="row mt-4">
                                 <div class="col-12 d-flex justify-content-end">
                                     <button type="submit" class="admin-management-page-card-submit-btn px-3">Create Room Type</button>
@@ -107,5 +120,8 @@
 
 @push('custom_scripts')
     <script>
+        $(document).ready(function() {
+            $('.image').dropify();
+        });
     </script>
 @endpush

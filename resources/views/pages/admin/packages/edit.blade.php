@@ -403,7 +403,7 @@
 
                             <div class="row mt-4">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="admin-management-page-card-submit-btn px-3">Create Package</button>
+                                    <button type="submit" class="admin-management-page-card-submit-btn px-3">Update Package</button>
                                 </div>
                             </div>
                         </form>

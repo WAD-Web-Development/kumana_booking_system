@@ -62,4 +62,9 @@ class Package extends Model
     {
         return $this->hasMany(PackageItinerary::class);
     }
+
+    public function roomType()
+    {
+        return $this->belongsTo(RoomType::class, 'room_type_id');
+    }
 }

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use domain\Facades\ImageFacade;
+use domain\Facades\RoomTypeFacade;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\ParentController;
 use App\Http\Requests\StoreRoomTypeRequest;
-use domain\Facades\RoomTypeFacade;
+use App\Http\Requests\UpdateRoomTypeRequest;
 
 class RoomTypeController extends ParentController
 {
@@ -39,6 +41,12 @@ class RoomTypeController extends ParentController
     public function store(StoreRoomTypeRequest $request)
     {
         try {
+
+            if ($request->image) {
+                $imagePath = ImageFacade::store($request->image, 'room_type');
+
+                $request->merge(['image_path' => $imagePath]);
+            }
 
             RoomTypeFacade::store($request->all());
 
@@ -75,9 +83,38 @@ class RoomTypeController extends ParentController
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreRoomTypeRequest $request, string $id)
+    public function update(UpdateRoomTypeRequest $request, string $id)
     {
         try {
+
+            if ($request->has('is_image_removed') && $request->input('is_image_removed') == 1) {
+
+                $validator = Validator::make($request->all(), [
+                    'image' => 'required|mimes:jpeg,png,jpg,gif|max:10240',
+                ]);
+
+                if ($validator->fails()) {
+                    return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+
+                $dataRow = RoomTypeFacade::get($id);
+                ImageFacade::delete($dataRow->image_path);
+                $request->merge(['image_path' => null]);
+            }
+
+            if ($request->image) {
+
+                if ($request->has('is_image_removed') && $request->input('is_image_removed') != 1) {
+                    $dataRow = RoomTypeFacade::get($id);
+                    ImageFacade::delete($dataRow->image_path);
+                }
+
+                $imagePath = ImageFacade::store($request->image, 'room_type');
+
+                $request->merge(['image_path' => $imagePath]);
+            }
 
             RoomTypeFacade::update($id, $request->all());
 

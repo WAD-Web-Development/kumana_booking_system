@@ -3,14 +3,17 @@
 namespace domain\Services;
 
 use App\Models\RoomType;
+use domain\Services\ImageService;
 
 class RoomTypeService
 {
     protected $roomType;
+    protected $imageService;
 
     public function __construct()
     {
         $this->roomType = new RoomType();
+        $this->imageService = new ImageService();
     }
 
     /**
@@ -61,6 +64,7 @@ class RoomTypeService
             'room_count' => $data['room_count'],
             'max_people_count' => $data['max_people_count'],
             'price' => $data['price'],
+            'image_path' => $data['image_path'] ?? null,
         ]);
     }
 
@@ -74,6 +78,7 @@ class RoomTypeService
 
         $dataRow = $this->get($id);
         if ($dataRow) {
+            $this->imageService->delete($dataRow->image_path);
             $dataRow->delete();
         }
     }
