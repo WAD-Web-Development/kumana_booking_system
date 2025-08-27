@@ -7,7 +7,7 @@
                 <div class="card booking-package-details-card">
                     <div class="card-header px-4 py-3 d-flex justify-content-between align-items-center booking-package-details-card-header">
                         <h5 class="booking-package-details-card-title mb-0">Selected Package Details</h5>
-                        <a href="{{ route('package.index') }}" class="booking-package-details-card-back-btn">Go back to package details</a>
+                        <a href="{{ route('packages.show', $package->id) }}" class="booking-package-details-card-back-btn">Go back to package details</a>
                     </div>
                     <div class="card-body px-0 py-0">
                         <div class="row g-0">
@@ -48,7 +48,7 @@
                             <h5 class="booking-details-card-section-title mt-2">Safari</h5>
                             <p class="booking-details-card-section-description mb-4">Select your preferred date for the safari</p>
 
-                            <div class="row input-group mb-3 booking-details-card-input-row">
+                            {{-- <div class="row input-group mb-3 booking-details-card-input-row">
                                 <div class="col-8 input-group-prepend booking-details-card-input-label">
                                     <span class="input-group-text booking-details-card-input-label-text" id="basic-addon1">Pick up location</span>
                                 </div>
@@ -57,57 +57,81 @@
                                     <option value="2">Entrance 2</option>
                                     <option value="3">North Side G2</option>
                                 </select>
-                            </div>
+                            </div> --}}
 
                             <div class="row g-3">
-                                <div class="col-12 col-md-6 d-flex align-items-stretch">
-                                    <div class="row input-group mb-3 booking-details-card-input-row">
-                                        <div class="col-8 input-group-prepend booking-details-card-input-label">
-                                            <span class="input-group-text booking-details-card-input-label-text" id="basic-addon1">Which half of the day</span>
+                                <div class="col-12 col-md-6">
+                                    <div class="row input-group booking-create-page-card-input-row">
+                                        <div class="col-8 input-group-prepend booking-create-page-card-input-label">
+                                            <span class="input-group-text booking-create-page-card-input-label-text-select-2">Which half of the day</span>
                                         </div>
-                                        <select class="col-4 form-select booking-details-card-input-value" aria-label="Pick up location">
-                                            <option selected>Morning</option>
-                                            <option value="2">Afternoon</option>
-                                        </select>
+                                        <div class="col-4 m-0 p-0">
+                                            <select id="half_of_the_day" class="form-select booking-create-page-card-input-value" name="half_of_the_day">
+                                                <option value="">Select half</option>
+                                                <option value="Morning">Morning</option>
+                                                <option value="Afternoon">Afternoon</option>
+                                            </select>
+                                        </div>
                                     </div>
+                                    @error('number_of_rooms')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
                                 </div>
-                                <div class="col-12 col-md-6 d-flex align-items-stretch">
-                                    <div class="row input-group mb-3 booking-details-card-input-row">
-                                        <div class="col-8 input-group-prepend booking-details-card-input-label">
-                                            <span class="input-group-text booking-details-card-input-label-text" id="basic-addon1">Safari Date</span>
+                                <div class="col-12 col-md-6">
+                                    <div class="row input-group booking-create-page-card-input-row">
+                                        <div class="col-8 input-group-prepend booking-create-page-card-input-label">
+                                            <span class="input-group-text booking-create-page-card-input-label-text">Safari Date</span>
                                         </div>
-                                        <input
-                                            type="date"
-                                            class="col-4 form-control booking-details-card-input-value"
-                                            aria-label="Safari Date">
+                                        <input type="date" class="col-4 form-control booking-create-page-card-input-value" aria-label="safari_date" id="safari_date" name="safari_date" placeholder="Enter date">
                                     </div>
+                                    @error('safari_date')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
 
-                            <div class="row g-3">
-                                <div class="col-12 col-md-6 d-flex align-items-stretch">
-                                    <div class="row input-group mb-3 booking-details-card-input-row">
-                                        <div class="col-8 input-group-prepend booking-details-card-input-label">
-                                            <span class="input-group-text booking-details-card-input-label-text" id="basic-addon1">Passengers with residence visa</span>
+                            <div class="row g-3 mt-1">
+                                <div class="col-12 col-md-6">
+                                    <div class="row input-group booking-create-page-card-input-row">
+                                        <div class="col-8 input-group-prepend booking-create-page-card-input-label">
+                                            <span class="input-group-text booking-create-page-card-input-label-text">Passengers with residence visa</span>
                                         </div>
-                                        <select class="col-4 form-select booking-details-card-input-value" aria-label="Pick up location">
-                                            <option selected> 1</option>
-                                            <option value="2"> 2</option>
-                                            <option value="3"> 3</option>
-                                        </select>
+                                        <input type="number" class="col-4 form-control booking-create-page-card-input-value" aria-label="residence_visa_count" id="residence_visa_count" name="residence_visa_count" placeholder="Enter count">
                                     </div>
+                                    @error('residence_visa_count')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
                                 </div>
-                                <div class="col-12 col-md-6 d-flex align-items-stretch">
-                                    <div class="row input-group mb-3 booking-details-card-input-row">
-                                        <div class="col-8 input-group-prepend booking-details-card-input-label">
-                                            <span class="input-group-text booking-details-card-input-label-text" id="basic-addon1">Passengers with travel visa</span>
+                                <div class="col-12 col-md-6">
+                                    <div class="row input-group booking-create-page-card-input-row">
+                                        <div class="col-8 input-group-prepend booking-create-page-card-input-label">
+                                            <span class="input-group-text booking-create-page-card-input-label-text">Passengers with travel visa</span>
                                         </div>
-                                        <select class="col-4 form-select booking-details-card-input-value" aria-label="Pick up location">
-                                            <option selected> 1</option>
-                                            <option value="2">  2</option>
-                                            <option value="3"> 3</option>
-                                        </select>
+                                        <input type="number" class="col-4 form-control booking-create-page-card-input-value" aria-label="travel_visa_count" id="travel_visa_count" name="travel_visa_count" placeholder="Enter count">
                                     </div>
+                                    @error('travel_visa_count')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -117,28 +141,44 @@
                             <p class="booking-details-card-section-description mb-4">Select your preferred date for the safari</p>
 
                             <div class="row g-3">
-                                <div class="col-12 col-md-6 d-flex align-items-stretch">
-                                    <div class="row input-group mb-3 booking-details-card-input-row">
-                                        <div class="col-8 input-group-prepend booking-details-card-input-label">
-                                            <span class="input-group-text booking-details-card-input-label-text" id="basic-addon1">Number of rooms</span>
+                                <div class="col-12 col-md-6">
+                                    <div class="row input-group booking-create-page-card-input-row">
+                                        <div class="col-8 input-group-prepend booking-create-page-card-input-label">
+                                            <span class="input-group-text booking-create-page-card-input-label-text-select-2">Number of rooms</span>
                                         </div>
-                                        <select class="col-4 form-select booking-details-card-input-value" aria-label="Pick up location">
-                                            <option selected> 1</option>
-                                            <option value="2"> 2</option>
-                                            <option value="3"> 3</option>
-                                        </select>
+                                        <div class="col-4 m-0 p-0">
+                                            <select id="number_of_rooms" class="form-select booking-create-page-card-input-value" name="number_of_rooms">
+                                                <option value="">Select rooms</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                            </select>
+                                        </div>
                                     </div>
+                                    @error('number_of_rooms')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
                                 </div>
-                                <div class="col-12 col-md-6 d-flex align-items-stretch">
-                                    <div class="row input-group mb-3 booking-details-card-input-row">
-                                        <div class="col-8 input-group-prepend booking-details-card-input-label">
-                                            <span class="input-group-text booking-details-card-input-label-text" id="basic-addon1">Check in and out</span>
+                                <div class="col-12 col-md-6">
+                                    <div class="row input-group booking-create-page-card-input-row">
+                                        <div class="col-8 input-group-prepend booking-create-page-card-input-label">
+                                            <span class="input-group-text booking-create-page-card-input-label-text">Check In and Out</span>
                                         </div>
-                                        <input
-                                            type="date"
-                                            class="col-4 form-control booking-details-card-input-value"
-                                            aria-label="Safari Date">
+                                        <input type="date" class="col-4 form-control booking-create-page-card-input-value" aria-label="check_in_out" id="check_in_out" name="check_in_out" placeholder="Enter dates">
                                     </div>
+                                    @error('check_in_out')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -148,29 +188,37 @@
                             <p class="booking-details-card-section-description mb-4">Select your preferred date for the safari</p>
 
                             <div class="row g-3">
-                                <div class="col-12 col-md-6 d-flex align-items-stretch">
-                                    <div class="row input-group mb-3 booking-details-card-input-row">
-                                        <div class="col-8 input-group-prepend booking-details-card-input-label">
-                                            <span class="input-group-text booking-details-card-input-label-text" id="basic-addon1">Customer Name</span>
+                                <div class="col-12 col-md-6">
+                                    <div class="row input-group booking-create-page-card-input-row">
+                                        <div class="col-8 input-group-prepend booking-create-page-card-input-label">
+                                            <span class="input-group-text booking-create-page-card-input-label-text">Customer Name</span>
                                         </div>
-                                        <input
-                                            type="text"
-                                            class="col-4 form-control booking-details-card-input-value"
-                                            aria-label="Customer Name"
-                                            placeholder="Enter name">
+                                        <input type="text" class="col-4 form-control booking-create-page-card-input-value" aria-label="customer_name" id="customer_name" name="customer_name" placeholder="Enter name">
                                     </div>
+                                    @error('customer_name')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
                                 </div>
-                                <div class="col-12 col-md-6 d-flex align-items-stretch">
-                                    <div class="row input-group mb-3 booking-details-card-input-row">
-                                        <div class="col-8 input-group-prepend booking-details-card-input-label">
-                                            <span class="input-group-text booking-details-card-input-label-text" id="basic-addon1">Contact Number</span>
+                                <div class="col-12 col-md-6">
+                                    <div class="row input-group booking-create-page-card-input-row">
+                                        <div class="col-8 input-group-prepend booking-create-page-card-input-label">
+                                            <span class="input-group-text booking-create-page-card-input-label-text">Contact Number</span>
                                         </div>
-                                        <input
-                                            type="tel"
-                                            class="col-4 form-control booking-details-card-input-value"
-                                            aria-label="Contact Number"
-                                            placeholder="Enter contact number">
+                                        <input type="text" class="col-4 form-control booking-create-page-card-input-value" aria-label="contact_no" id="contact_no" name="contact_no" placeholder="Enter number">
                                     </div>
+                                    @error('contact_no')
+                                        <div class="invalid-feedback d-flex align-items-center mt-1 px-3 py-2" role="alert">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.042 18.6715C5.43958 18.6715 1.70862 14.9405 1.70862 10.3382C1.70862 5.73584 5.43958 2.00488 10.042 2.00488C14.6443 2.00488 18.3753 5.73584 18.3753 10.3382C18.3753 14.9405 14.6443 18.6715 10.042 18.6715ZM9.20862 12.8382V14.5049H10.8753V12.8382H9.20862ZM9.20862 6.17155V11.1715H10.8753V6.17155H9.20862Z" fill="white"/>
+                                            </svg>
+                                            <span class="invalid-feedback-text mx-2">{{ $message }}</span>
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -195,4 +243,16 @@
 @endsection
 
 @push('custom_scripts')
+    <script>
+        $('#number_of_rooms').select2({
+            placeholder: 'Select rooms',
+            width: '100%',
+            minimumResultsForSearch: -1,
+        });
+        $('#half_of_the_day').select2({
+            placeholder: 'Select half',
+            width: '100%',
+            minimumResultsForSearch: -1,
+        });
+    </script>
 @endpush

@@ -1043,6 +1043,49 @@ html {
     font-size: 16px;
     font-weight: 400;
 }
+.booking-create-page-card-input-row {
+    border-radius: 5px;
+    border: 0.5px solid #DDDDDD;
+    padding: 0;
+    margin: 0;
+    height: 54.89px;
+    width: 100%;
+}
+.booking-create-page-card-input-label {
+    border: none;
+    padding: 0;
+    margin: 0px;
+    height: 100%;
+}
+.booking-create-page-card-input-label-text {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px 10px 20px;
+    background-color: #FFFFFF;
+    border: none;
+    border-right: 2px solid #DDDDDD;
+}
+.booking-create-page-card-input-label-text-select-2 {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px 10px 20px;
+    background-color: #FFFFFF;
+    border: none;
+    border-right: 1px solid #DDDDDD;
+}
+.booking-create-page-card-input-value {
+    border: none;
+    padding: 10px 20px 10px 20px;
+    margin: 0px;
+    height: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8A8A8A !important;
+}
+.booking-create-page-card-input-value:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
 
 /* booking-summary */
 .booking-summary-details-card {
