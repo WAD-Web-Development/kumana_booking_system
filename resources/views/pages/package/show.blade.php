@@ -186,40 +186,26 @@
 
                         </div>
 
-                        <h4 class="package-title mt-5">Itinerary</h4>
+                        @if($package->itineraries->isNotEmpty())
+                            <h4 class="package-title mt-5">Itinerary</h4>
 
-                        <ul class="list-unstyled mt-4">
-                            <li class="d-flex justify-content-between align-items-center package-itinerary-row">
-                              <div class="d-flex align-items-center">
-                                <span class="package-itinerary-number me-4">01</span>
-                                <span class="package-itinerary-text">Check in to the Hotel</span>
-                              </div>
-                              <div class="package-itinerary-time">
-                                {{-- <span>9:00am</span> --}}
-                                <span class="ms-3">6:20am</span>
-                              </div>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center package-itinerary-row">
-                              <div class="d-flex align-items-center">
-                                <span class="package-itinerary-number me-4">04</span>
-                                <span class="package-itinerary-text">Breakfast</span>
-                              </div>
-                              <div class="package-itinerary-time">
-                                {{-- <span>9:00am</span> --}}
-                                <span class="ms-3">7:10am</span>
-                              </div>
-                            </li>
-                            <li class="d-flex justify-content-between align-items-center package-itinerary-row">
-                              <div class="d-flex align-items-center">
-                                <span class="package-itinerary-number me-4">03</span>
-                                <span class="package-itinerary-text">Break</span>
-                              </div>
-                              <div class="package-itinerary-time">
-                                <span>9:00am</span>
-                                <span class="ms-3">10:10am</span>
-                              </div>
-                            </li>
-                        </ul>
+                            <ul class="list-unstyled mt-4">
+                                @foreach ($package->itineraries as $index => $itinerary)
+                                    <li class="d-flex justify-content-between align-items-center package-itinerary-row">
+                                    <div class="d-flex align-items-center">
+                                        <span class="package-itinerary-number me-4">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                                        <span class="package-itinerary-text">{{$itinerary->title}}</span>
+                                    </div>
+                                    <div class="package-itinerary-time">
+                                        <span>{{ date('h:i A', strtotime($itinerary->start_time)) }}</span>
+                                        @if ($itinerary->end_time)
+                                            <span class="ms-3">{{ date('h:i A', strtotime($itinerary->end_time)) }}</span>
+                                        @endif
+                                    </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
 
                         <h4 class="package-title mt-5">Photos and Gallery</h4>
 
