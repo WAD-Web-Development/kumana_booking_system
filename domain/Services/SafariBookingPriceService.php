@@ -70,4 +70,41 @@ class SafariBookingPriceService
             $row->save();
         }
     }
+
+    public function getPrice($residenceVisa, $travelVisa, $dayTime)
+    {
+        $residentRow = $this->safariBookingPrice
+        ->where('visa_type', 'Resident')
+        ->where('person_count', $residenceVisa)
+        ->first();
+
+        $touristRow = $this->safariBookingPrice
+        ->where('visa_type', 'Tourist')
+        ->where('person_count', $travelVisa)
+        ->first();
+
+        if ($residentRow) {
+            if ($dayTime == 'half') {
+                $residentPersonPrice = $residentRow->half_day_price;
+            } else {
+                $residentPersonPrice = $residentRow->full_day_price;
+            }
+            $residentPrice = $residentPersonPrice * $residenceVisa;
+        }else {
+            $residentPrice = 0;
+        }
+
+        if ($touristRow) {
+            if ($dayTime == 'half') {
+                $touristPersonPrice = $touristRow->half_day_price;
+            } else {
+                $touristPersonPrice = $touristRow->full_day_price;
+            }
+            $touristPrice = $touristPersonPrice * $travelVisa;
+        }else {
+            $touristPrice = 0;
+        }
+
+        return $residentPrice + $touristPrice;
+    }
 }

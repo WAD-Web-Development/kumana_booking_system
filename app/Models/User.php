@@ -74,4 +74,14 @@ class User extends Authenticatable
             return null;
         }
     }
+
+    public function tempBookings()
+    {
+        return $this->hasMany(TempBooking::class);
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
 }

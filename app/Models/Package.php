@@ -67,4 +67,14 @@ class Package extends Model
     {
         return $this->belongsTo(RoomType::class, 'room_type_id');
     }
+
+    public function tempBookings()
+    {
+        return $this->hasMany(TempBooking::class);
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
 }

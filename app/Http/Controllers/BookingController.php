@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Throwable;
 use Illuminate\Http\Request;
+use domain\Facades\BookingFacade;
 use domain\Facades\PackageFacade;
+use domain\Facades\RoomTypeFacade;
+use domain\Facades\SafariBookingPriceFacade;
 
 class BookingController extends Controller
 {
@@ -13,20 +16,85 @@ class BookingController extends Controller
         try {
 
             $package = PackageFacade::get($id);
+            if ($package->type != 1){
+                $roomType= RoomTypeFacade::get($package->room_type_id);
+                $roomCountForType = $roomType->room_count;
+            }else {
+                $roomCountForType = 0;
+            }
 
-            return view('pages.booking.create', compact('package'));
+            return view('pages.booking.create', compact('package','roomCountForType'));
         } catch (Throwable $th) {
             return redirect()->back()->with('error', 'Something went wrong');
+        }
+    }
+
+    public function tempStore(Request $request)
+    {
+        try {
+
+            $residenceVisa = $request->residence_visa ?? 0;
+            $travelVisa = $request->travel_visa ?? 0;
+
+            if ($request->package_type == 1) {
+                $totalPrice = SafariBookingPriceFacade::getPrice($residenceVisa, $travelVisa, $request->package_safari_type);
+            } elseif ($request->package_type == 2) {
+                $roomType= RoomTypeFacade::get($request->room_type_id);
+                $roomPrice = $roomType->price;
+                $totalPrice = $roomPrice * $request->number_of_rooms;
+            }else {
+                $safariTotalPrice = SafariBookingPriceFacade::getPrice($residenceVisa, $travelVisa, $request->package_safari_type);
+                $roomType= RoomTypeFacade::get($request->room_type_id);
+                $roomPrice = $roomType->price;
+                $roomTotalPrice = $roomPrice * $request->number_of_rooms;
+                $totalPrice = $safariTotalPrice + $roomTotalPrice;
+            }
+
+            $request->merge([
+                'number_of_customers' => $residenceVisa + $travelVisa,
+                'room_check_in_date' => $request->check_in_out,//temp
+                'room_check_out_date' => $request->check_in_out,//temp
+                'price' => $totalPrice,
+            ]);
+
+            $tempBooking = BookingFacade::tempStore($request->all());
+
+            $package = PackageFacade::get($request->package_id);
+            if ($package->type != 1){
+                $roomType= RoomTypeFacade::get($package->room_type_id);
+                $roomCountForType = $roomType->room_count;
+            }else {
+                $roomCountForType = 0;
+            }
+
+            return redirect()->route('booking.summary', ['id' => $tempBooking->id]);
+
+            // return view('pages.booking.summary', compact('tempBooking', 'package', 'roomCountForType'));
+        } catch (Throwable $th) {
+            return redirect()->back()->with('error', $th);
         }
     }
 
     public function summary($id)
     {
         try {
-            // $package = Package::findOrFail($id);
 
-            // return view('packages.show', compact('package'));
-            return view('pages.booking.summary');
+            $tempBooking = BookingFacade::getTempBooking($id);
+
+            if (!$tempBooking || $tempBooking->user_id !== auth()->id()) {
+                return redirect()->route('welcome')->with('error', 'No temporary booking found.');
+            }
+
+            $package = PackageFacade::get($tempBooking->package_id);
+            if ($package->type != 1){
+                $roomType= RoomTypeFacade::get($package->room_type_id);
+                $roomCountForType = $roomType->room_count;
+            }else {
+                $roomCountForType = 0;
+            }
+
+            return view('pages.booking.summary', compact('tempBooking', 'package', 'roomCountForType'));
+
         } catch (Throwable $th) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
@@ -64,4 +132,6 @@ class BookingController extends Controller
             return redirect()->back()->with('error', 'Something went wrong');
         }
     }
+
+
 }

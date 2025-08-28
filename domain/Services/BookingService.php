@@ -3,14 +3,20 @@
 namespace domain\Services;
 
 use App\Models\Booking;
+use App\Models\TempBooking;
+use Illuminate\Support\Facades\Auth;
 
 class BookingService
 {
     protected $booking;
+    protected $tempBooking;
+    protected $authUser;
 
     public function __construct()
     {
         $this->booking = new Booking();
+        $this->tempBooking = new TempBooking();
+        $this->authUser = Auth::user();
     }
 
     /**
@@ -46,6 +52,36 @@ class BookingService
     public function get($id)
     {
         return $this->booking->find($id);
+    }
+
+    public function getTempBooking($id)
+    {
+        return $this->tempBooking->find($id);
+    }
+
+    public function tempStore($data)
+    {
+        $tempBooking = $this->tempBooking->create([
+            'package_id' => $data['package_id'],
+            'user_id' => $this->authUser->id,
+            'location_lat' => $data['location_lat'],
+            'location_lng' => $data['location_lng'],
+            'safari_date' => $data['safari_date'] ?? null,
+            'is_full_day' => $data['is_full_day'] ?? null,
+            'safari_time' => $data['safari_time'] ?? null,
+            'number_of_customers' => $data['number_of_customers'] ?? null,
+            'residence_visa' => $data['residence_visa'] ?? null,
+            'travel_visa' => $data['travel_visa'] ?? null,
+            'room_type_id' => $data['room_type_id'] ?? null,
+            'room_check_in_date' => $data['room_check_in_date'] ?? null,
+            'room_check_out_date' => $data['room_check_out_date'] ?? null,
+            'number_of_rooms' => $data['number_of_rooms'] ?? null,
+            'customer_name' => $data['customer_name'],
+            'contact_no' => $data['contact_no'],
+            'price' => $data['price'],
+        ]);
+
+        return $tempBooking;
     }
 
     public function store($data)

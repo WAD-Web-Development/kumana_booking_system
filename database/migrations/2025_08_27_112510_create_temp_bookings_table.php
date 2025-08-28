@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bookings', function (Blueprint $table) {
+        Schema::create('temp_bookings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('package_id');
             $table->unsignedBigInteger('user_id');
@@ -32,12 +32,7 @@ return new class extends Migration
             $table->string('contact_no', 20);
             $table->decimal('price', 10, 2)->nullable();
             $table->string('currency', 10)->default('LKR');
-            $table->text('note')->nullable();
             $table->string('status')->default('Pending');
-            $table->tinyInteger('is_paid')->default(0);
-            $table->string('reference_id')->nullable();
-            $table->timestamp('confirmed_at')->nullable();
-            $table->timestamp('cancelled_at')->nullable();
             $table->timestamps();
         });
     }
@@ -47,6 +42,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bookings');
+        Schema::dropIfExists('temp_bookings');
     }
 };

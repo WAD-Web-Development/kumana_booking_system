@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Booking extends Model
+class TempBooking extends Model
 {
     use HasFactory;
 
@@ -29,12 +29,7 @@ class Booking extends Model
         'contact_no',
         'price',
         'currency',
-        'note',
         'status',
-        'is_paid',
-        'reference_id',
-        'confirmed_at',
-        'cancelled_at',
     ];
 
     public function package()
@@ -46,5 +41,4 @@ class Booking extends Model
     {
         return $this->belongsTo(User::class);
     }
-
 }

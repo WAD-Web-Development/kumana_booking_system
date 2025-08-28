@@ -78,7 +78,7 @@
             @endrole
         </div>
         <div class="mt-auto">
-            <a href="{{ route('booking.create', 1) }}" class="side-bar-new-booking-btn my-4 mx-4">New Booking <i class="fas fa-arrow-right side-bar-new-booking-btn-arrow"></i></a>
+            <a href="{{ route('welcome') }}" class="side-bar-new-booking-btn my-4 mx-4">New Booking <i class="fas fa-arrow-right side-bar-new-booking-btn-arrow"></i></a>
         </div>
     </div>
     <div class="card-footer side-bar-card-footer border-1 px-0 py-0">
