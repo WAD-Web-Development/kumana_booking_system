@@ -57,6 +57,8 @@ Route::get('/packages/{id}', [PackageController::class, 'show'])->name('packages
 Route::get('/booking/{id}', [BookingController::class, 'create'])->name('booking.create');
 Route::post('/booking/temp/store', [BookingController::class, 'tempStore'])->name('booking.temp.store');
 Route::get('/booking-summary/{id}', [BookingController::class, 'summary'])->name('booking.summary');
+Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
+Route::get('/booking/edit/{id}', [BookingController::class, 'edit'])->name('booking.edit');
 Route::get('/booking-confirmation/{id}', [BookingController::class, 'confirmation'])->name('booking.confirmation');
 Route::get('/my-bookings', [BookingController::class, 'myBookings'])->name('booking.myBookings');
 Route::get('/my-booking-details/{id}', [BookingController::class, 'myBookingDetails'])->name('booking.myBookingDetails');

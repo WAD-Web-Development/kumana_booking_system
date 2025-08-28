@@ -12,6 +12,7 @@ class Booking extends Model
     protected $fillable = [
         'package_id',
         'user_id',
+        'temp_booking_id',
         'location_lat',
         'location_lng',
         'address',

@@ -16,7 +16,7 @@
                             Booking Reference ID
                         </div>
                         <div class="mb-4 booking-confirmation-card-reference-id-value">
-                            33542#
+                            {{$booking->reference_id}}
                         </div>
                         <div class="mb-5 booking-confirmation-card-description">
                             We have emailed a confirmation email to your<br>

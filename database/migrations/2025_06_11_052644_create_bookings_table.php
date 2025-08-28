@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('package_id');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('temp_booking_id');
             $table->decimal('location_lat', 10, 7)->nullable();
             $table->decimal('location_lng', 10, 7)->nullable();
             $table->text('address')->nullable();

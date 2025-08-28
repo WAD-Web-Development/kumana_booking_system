@@ -54,9 +54,19 @@ class BookingService
         return $this->booking->find($id);
     }
 
+    public function getBookingUsingTempId($id)
+    {
+        return $this->booking->where('temp_booking_id', $id)->first();
+    }
+
     public function getTempBooking($id)
     {
         return $this->tempBooking->find($id);
+    }
+
+    public function getUserLastTempBooking()
+    {
+        return $this->tempBooking->where('user_id', $this->authUser->id)->latest()->first();
     }
 
     public function tempStore($data)
@@ -87,8 +97,31 @@ class BookingService
     public function store($data)
     {
         $booking = $this->booking->create([
-            // 'title' => $data['title'],
+            'package_id' => $data['package_id'],
+            'user_id' => $this->authUser->id,
+            'temp_booking_id' => $data['id'],
+            'location_lat' => $data['location_lat'],
+            'location_lng' => $data['location_lng'],
+            'safari_date' => $data['safari_date'] ?? null,
+            'is_full_day' => $data['is_full_day'] ?? null,
+            'safari_time' => $data['safari_time'] ?? null,
+            'number_of_customers' => $data['number_of_customers'] ?? null,
+            'residence_visa' => $data['residence_visa'] ?? null,
+            'travel_visa' => $data['travel_visa'] ?? null,
+            'room_type_id' => $data['room_type_id'] ?? null,
+            'room_check_in_date' => $data['room_check_in_date'] ?? null,
+            'room_check_out_date' => $data['room_check_out_date'] ?? null,
+            'number_of_rooms' => $data['number_of_rooms'] ?? null,
+            'customer_name' => $data['customer_name'],
+            'contact_no' => $data['contact_no'],
+            'price' => $data['price'],
+            'reference_id' => $data['reference_id'],
+            'confirmed_at' => now(),
+            'status' => 'Confirmed',
+            'note' => $data['note'] ?? null,
         ]);
+
+        return $booking;
     }
 
     public function update($id, $data)

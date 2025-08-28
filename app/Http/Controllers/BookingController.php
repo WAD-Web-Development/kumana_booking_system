@@ -59,19 +59,35 @@ class BookingController extends Controller
 
             $tempBooking = BookingFacade::tempStore($request->all());
 
-            $package = PackageFacade::get($request->package_id);
-            if ($package->type != 1){
-                $roomType= RoomTypeFacade::get($package->room_type_id);
-                $roomCountForType = $roomType->room_count;
-            }else {
-                $roomCountForType = 0;
+            return redirect()->route('booking.summary', ['id' => $tempBooking->id]);
+        } catch (Throwable $th) {
+            return redirect()->back()->with('error', 'Something went wrong');
+        }
+    }
+
+    public function store(Request $request)
+    {
+        try {
+
+            $tempBooking = BookingFacade::getTempBooking($request->temp_booking_id);
+
+            $referenceId = 'B' . $tempBooking->id . now()->timestamp;
+
+            $IsExitBooking = BookingFacade::getBookingUsingTempId($request->temp_booking_id);
+
+            if ($IsExitBooking) {
+                return redirect()->route('booking.confirmation', ['id' => $IsExitBooking->id])->with('error', 'Booking Already Confirmed.');
             }
 
-            return redirect()->route('booking.summary', ['id' => $tempBooking->id]);
+            $data = $tempBooking->toArray();
+            $data['note'] = $request->note;
+            $data['reference_id'] = $referenceId;
 
-            // return view('pages.booking.summary', compact('tempBooking', 'package', 'roomCountForType'));
+            $booking = BookingFacade::store($data);
+
+            return redirect()->route('booking.confirmation', ['id' => $booking->id]);
         } catch (Throwable $th) {
-            return redirect()->back()->with('error', $th);
+            return redirect()->back()->with('error', 'Something went wrong');
         }
     }
 
@@ -83,6 +99,12 @@ class BookingController extends Controller
 
             if (!$tempBooking || $tempBooking->user_id !== auth()->id()) {
                 return redirect()->route('welcome')->with('error', 'No temporary booking found.');
+            }
+
+            $userLastTempBooking = BookingFacade::getUserLastTempBooking();
+
+            if (!$userLastTempBooking || $userLastTempBooking->id != $id) {
+                return redirect()->route('welcome')->with('error', 'You can only access your last booking.');
             }
 
             $package = PackageFacade::get($tempBooking->package_id);
@@ -103,10 +125,13 @@ class BookingController extends Controller
     public function confirmation($id)
     {
         try {
-            // $package = Package::findOrFail($id);
+            $booking = BookingFacade::get($id);
 
-            // return view('packages.show', compact('package'));
-            return view('pages.booking.confirmation');
+            if (!$booking || $booking->user_id !== auth()->id()) {
+                return redirect()->route('welcome')->with('error', 'No booking found.');
+            }
+
+            return view('pages.booking.confirmation', compact('booking'));
         } catch (Throwable $th) {
             return redirect()->back()->with('error', 'Something went wrong');
         }
