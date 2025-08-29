@@ -74,8 +74,8 @@ class BookingService
         $tempBooking = $this->tempBooking->create([
             'package_id' => $data['package_id'],
             'user_id' => $this->authUser->id,
-            'location_lat' => $data['location_lat'],
-            'location_lng' => $data['location_lng'],
+            'location_lat' => $data['location_lat'] ?? null,
+            'location_lng' => $data['location_lng'] ?? null,
             'safari_date' => $data['safari_date'] ?? null,
             'is_full_day' => $data['is_full_day'] ?? null,
             'safari_time' => $data['safari_time'] ?? null,
@@ -100,8 +100,8 @@ class BookingService
             'package_id' => $data['package_id'],
             'user_id' => $this->authUser->id,
             'temp_booking_id' => $data['id'],
-            'location_lat' => $data['location_lat'],
-            'location_lng' => $data['location_lng'],
+            'location_lat' => $data['location_lat'] ?? null,
+            'location_lng' => $data['location_lng'] ?? null,
             'safari_date' => $data['safari_date'] ?? null,
             'is_full_day' => $data['is_full_day'] ?? null,
             'safari_time' => $data['safari_time'] ?? null,
@@ -121,11 +121,10 @@ class BookingService
             'note' => $data['note'] ?? null,
         ]);
 
+        $tempBooking = $this->getTempBooking($id);
+        $tempBooking->update(['status' => 'Confirmed']);
+
         return $booking;
     }
 
-    public function update($id, $data)
-    {
-        $this->get($id)->update($data);
-    }
 }

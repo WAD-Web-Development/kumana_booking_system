@@ -48,6 +48,17 @@
                         <form action="{{ route('booking.temp.store') }}" method="POST" id="booking-temp-form" enctype="multipart/form-data">
                         @csrf
 
+                        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
                             <input type="hidden" name="package_id" id="package_id" value="{{$package->id}}">
                             <input type="hidden" name="package_type" id="package_type" value="{{$package->type}}">
                             @if ($package->type != 2)
@@ -311,8 +322,8 @@
             width: '100%',
             minimumResultsForSearch: -1,
         });
-        $('#half_of_the_day').select2({
-            placeholder: 'Select half',
+        $('#safari_time').select2({
+            placeholder: 'Select time',
             width: '100%',
             minimumResultsForSearch: -1,
         });

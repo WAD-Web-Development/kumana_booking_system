@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use domain\Facades\BookingFacade;
 use domain\Facades\PackageFacade;
 use domain\Facades\RoomTypeFacade;
+use App\Http\Requests\StoreBookingRequest;
 use domain\Facades\SafariBookingPriceFacade;
+use App\Http\Requests\StoreTempBookingRequest;
 
 class BookingController extends Controller
 {
@@ -29,7 +31,7 @@ class BookingController extends Controller
         }
     }
 
-    public function tempStore(Request $request)
+    public function tempStore(StoreTempBookingRequest $request)
     {
         try {
 
@@ -61,22 +63,22 @@ class BookingController extends Controller
 
             return redirect()->route('booking.summary', ['id' => $tempBooking->id]);
         } catch (Throwable $th) {
-            return redirect()->back()->with('error', 'Something went wrong');
+            return redirect()->back()->with('error', $th);
         }
     }
 
-    public function store(Request $request)
+    public function store(StoreBookingRequest $request)
     {
         try {
 
             $tempBooking = BookingFacade::getTempBooking($request->temp_booking_id);
 
-            $referenceId = 'B' . $tempBooking->id . now()->timestamp;
+            $referenceId = '#' . $tempBooking->id . now()->timestamp;
 
             $IsExitBooking = BookingFacade::getBookingUsingTempId($request->temp_booking_id);
 
             if ($IsExitBooking) {
-                return redirect()->route('booking.confirmation', ['id' => $IsExitBooking->id])->with('error', 'Booking Already Confirmed.');
+                return redirect()->route('booking.confirmation', ['id' => $IsExitBooking->id]);
             }
 
             $data = $tempBooking->toArray();
@@ -106,6 +108,12 @@ class BookingController extends Controller
             if (!$userLastTempBooking || $userLastTempBooking->id != $id) {
                 return redirect()->route('welcome')->with('error', 'You can only access your last booking.');
             }
+
+            // $IsExitBooking = BookingFacade::getBookingUsingTempId($tempBooking->id);
+
+            // if ($IsExitBooking) {
+            //     return redirect()->route('booking.confirmation', ['id' => $IsExitBooking->id])->with('error', 'Booking Already Confirmed.');
+            // }
 
             $package = PackageFacade::get($tempBooking->package_id);
             if ($package->type != 1){
@@ -149,9 +157,6 @@ class BookingController extends Controller
     public function myBookingDetails($id)
     {
         try {
-            // $package = Package::findOrFail($id);
-
-            // return view('packages.show', compact('package'));
             return view('pages.booking.details');
         } catch (Throwable $th) {
             return redirect()->back()->with('error', 'Something went wrong');
