@@ -10,8 +10,9 @@ use domain\Facades\RoomTypeFacade;
 use App\Http\Requests\StoreBookingRequest;
 use domain\Facades\SafariBookingPriceFacade;
 use App\Http\Requests\StoreTempBookingRequest;
+use App\Http\Controllers\ParentController;
 
-class BookingController extends Controller
+class BookingController extends ParentController
 {
     public function create($id)
     {
@@ -84,6 +85,7 @@ class BookingController extends Controller
             $data = $tempBooking->toArray();
             $data['note'] = $request->note;
             $data['reference_id'] = $referenceId;
+            $data['user_id'] = auth()->id();
 
             $booking = BookingFacade::store($data);
 
@@ -109,11 +111,11 @@ class BookingController extends Controller
                 return redirect()->route('welcome')->with('error', 'You can only access your last booking.');
             }
 
-            // $IsExitBooking = BookingFacade::getBookingUsingTempId($tempBooking->id);
+            $IsExitBooking = BookingFacade::getBookingUsingTempId($tempBooking->id);
 
-            // if ($IsExitBooking) {
-            //     return redirect()->route('booking.confirmation', ['id' => $IsExitBooking->id])->with('error', 'Booking Already Confirmed.');
-            // }
+            if ($IsExitBooking) {
+                return redirect()->route('booking.confirmation', ['id' => $IsExitBooking->id])->with('error', 'Booking Already Confirmed.');
+            }
 
             $package = PackageFacade::get($tempBooking->package_id);
             if ($package->type != 1){

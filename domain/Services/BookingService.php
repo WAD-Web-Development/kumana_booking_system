@@ -4,19 +4,16 @@ namespace domain\Services;
 
 use App\Models\Booking;
 use App\Models\TempBooking;
-use Illuminate\Support\Facades\Auth;
 
 class BookingService
 {
     protected $booking;
     protected $tempBooking;
-    protected $authUser;
 
     public function __construct()
     {
         $this->booking = new Booking();
         $this->tempBooking = new TempBooking();
-        $this->authUser = Auth::user();
     }
 
     /**
@@ -66,14 +63,14 @@ class BookingService
 
     public function getUserLastTempBooking()
     {
-        return $this->tempBooking->where('user_id', $this->authUser->id)->latest()->first();
+        return $this->tempBooking->where('user_id', auth()->id())->latest()->first();
     }
 
     public function tempStore($data)
     {
         $tempBooking = $this->tempBooking->create([
             'package_id' => $data['package_id'],
-            'user_id' => $this->authUser->id,
+            'user_id' => auth()->id(),
             'location_lat' => $data['location_lat'] ?? null,
             'location_lng' => $data['location_lng'] ?? null,
             'safari_date' => $data['safari_date'] ?? null,
@@ -98,7 +95,7 @@ class BookingService
     {
         $booking = $this->booking->create([
             'package_id' => $data['package_id'],
-            'user_id' => $this->authUser->id,
+            'user_id' => $data['user_id'],
             'temp_booking_id' => $data['id'],
             'location_lat' => $data['location_lat'] ?? null,
             'location_lng' => $data['location_lng'] ?? null,
@@ -121,7 +118,7 @@ class BookingService
             'note' => $data['note'] ?? null,
         ]);
 
-        $tempBooking = $this->getTempBooking($id);
+        $tempBooking = $this->getTempBooking($data['id']);
         $tempBooking->update(['status' => 'Confirmed']);
 
         return $booking;
